@@ -13,7 +13,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/30" style={{ backdropFilter: "blur(16px)", background: "hsl(213 60% 11% / 0.85)" }}>
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/20" style={{ backdropFilter: "blur(20px)", background: "hsl(var(--background) / 0.8)" }}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
         <a href="#" className="flex items-center gap-2">
           <img src={logo} alt="LegisBrasil.IA" className="h-8 md:h-10 w-auto" />
@@ -49,7 +49,7 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-border/30 px-6 py-6 space-y-4" style={{ background: "hsl(213 60% 11% / 0.95)", backdropFilter: "blur(16px)" }}>
+        <div className="md:hidden border-t border-border/20 px-6 py-6 space-y-4" style={{ background: "hsl(var(--background) / 0.95)", backdropFilter: "blur(20px)" }}>
           {navLinks.map((link) => (
             <a
               key={link.href}
