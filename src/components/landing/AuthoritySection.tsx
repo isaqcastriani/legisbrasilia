@@ -132,6 +132,7 @@ const AuthoritySection = () => {
                   className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
                   style={{
                     background: "hsl(213 45% 9%)",
+                    boxShadow: "0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7)",
                   }}
                 >
                   <div className="grid md:grid-cols-[1fr_1.3fr] gap-4 md:gap-[30px] min-h-[380px]">
