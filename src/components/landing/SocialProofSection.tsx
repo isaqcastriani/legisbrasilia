@@ -82,7 +82,7 @@ const SocialProofSection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="overflow-x-auto rounded-2xl bento-card p-0 overflow-hidden">
+          <div className="overflow-x-auto p-0 overflow-hidden">
             <table className="w-full border-collapse min-w-[700px]">
               <thead>
                 <tr>
