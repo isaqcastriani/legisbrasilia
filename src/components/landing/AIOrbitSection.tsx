@@ -189,9 +189,6 @@ const AIOrbitSection = () => {
             </a>
 
             <div className="mt-4 min-h-[52px] max-w-sm">
-              <span className="block text-[10px] font-mono uppercase tracking-[0.18em] text-primary/70 mb-1">
-                IA em destaque agora
-              </span>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeModel.name}
@@ -199,11 +196,9 @@ const AIOrbitSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-flex items-center gap-3 rounded-full border border-primary/20 bg-primary/10 px-4 py-2"
+                  className="inline-flex items-center gap-3 px-1 py-1"
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/20 bg-background/60">
-                    <img src={activeModel.logo} alt={activeModel.name} className="h-4 w-4 object-contain" loading="lazy" />
-                  </span>
+                  <img src={activeModel.logo} alt={activeModel.name} className="h-6 w-6 object-contain" loading="lazy" />
                   <span className="text-sm font-semibold text-foreground">{activeModel.name}</span>
                 </motion.div>
               </AnimatePresence>
