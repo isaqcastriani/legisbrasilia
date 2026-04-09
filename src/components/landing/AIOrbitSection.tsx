@@ -206,23 +206,23 @@ const AIOrbitSection = () => {
             <div className="relative w-[420px] h-[420px] md:w-[620px] md:h-[620px] lg:w-[820px] lg:h-[820px]">
               <svg
                 className="absolute inset-0 w-full h-full opacity-30"
-                viewBox="0 0 680 620"
+                viewBox="0 0 820 820"
                 aria-hidden="true"
               >
                 <ellipse
-                  cx="340"
-                  cy="300"
-                  rx="240"
-                  ry="240"
+                  cx="410"
+                  cy="410"
+                  rx="310"
+                  ry="310"
                   fill="none"
                   stroke="hsl(var(--border) / 0.18)"
                   strokeWidth="1"
                 />
                 <ellipse
-                  cx="340"
-                  cy="300"
-                  rx="170"
-                  ry="170"
+                  cx="410"
+                  cy="410"
+                  rx="210"
+                  ry="210"
                   fill="none"
                   stroke="hsl(var(--border) / 0.12)"
                   strokeWidth="1"
@@ -232,15 +232,15 @@ const AIOrbitSection = () => {
 
               <motion.div
                 className="absolute inset-0"
-                style={{ transformOrigin: "340px 300px" }}
+                style={{ transformOrigin: "410px 410px" }}
                 animate={{ rotate: -(activeIndex * stepAngle) }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 {aiModels.map((model, i) => {
                   const angle = (i * 360) / aiModels.length;
                   const rad = (angle * Math.PI) / 180;
-                  const x = 340 + orbitRadius * Math.cos(rad);
-                  const y = 300 + orbitRadius * Math.sin(rad);
+                  const x = 410 + orbitRadius * Math.cos(rad);
+                  const y = 410 + orbitRadius * Math.sin(rad);
 
                   return (
                     <div
