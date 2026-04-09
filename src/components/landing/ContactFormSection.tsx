@@ -23,116 +23,153 @@ const ContactFormSection = () => {
     setForm((p) => ({ ...p, [k]: v }));
 
   return (
-    <section
-      id="contato"
-      className="relative py-16 md:py-24"
-    >
-      <div className="max-w-[600px] mx-auto px-5 md:px-8">
+    <section id="contato" className="relative py-16 md:py-24">
+      <div className="max-w-[1100px] mx-auto px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative rounded-2xl p-[1px]"
-          style={{
-            background:
-              "linear-gradient(145deg, hsl(var(--primary) / 0.2), hsl(var(--secondary) / 0.1), hsl(var(--primary) / 0.05))",
-          }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5"
         >
+          {/* Left — CTA card with primary bg */}
           <div
-            className="rounded-2xl p-7 md:p-9"
+            className="relative rounded-2xl p-8 md:p-10 flex flex-col justify-between min-h-[380px] overflow-hidden"
+            style={{ background: "hsl(var(--primary))" }}
+          >
+            <div>
+              <span
+                className="inline-block text-[11px] font-mono font-semibold tracking-widest uppercase mb-6"
+                style={{ color: "hsl(var(--primary-foreground) / 0.6)" }}
+              >
+                Solicitar Acesso
+              </span>
+              <h2
+                className="font-heading text-[1.75rem] md:text-[2.25rem] font-bold leading-[1.1] mb-5"
+                style={{ color: "hsl(var(--primary-foreground))" }}
+              >
+                O padrão do seu escritório muda aqui.
+              </h2>
+              <p
+                className="text-sm md:text-base leading-relaxed max-w-md"
+                style={{ color: "hsl(var(--primary-foreground) / 0.7)" }}
+              >
+                Junte-se aos profissionais que escolheram trocar volume de trabalho mecânico por precisão validada.
+              </p>
+            </div>
+            <p
+              className="text-[12px] leading-relaxed"
+              style={{ color: "hsl(var(--primary-foreground) / 0.5)" }}
+            >
+              Sem cartão de crédito. Sem compromisso. Com a segurança de quem leva o Direito a sério.
+            </p>
+          </div>
+
+          {/* Right — Form card */}
+          <div
+            className="relative rounded-2xl p-[1px]"
             style={{
-              background: "hsl(213 50% 10%)",
-              boxShadow:
-                "0 25px 60px -15px hsl(213 60% 4% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.03)",
+              background:
+                "linear-gradient(145deg, hsl(var(--primary) / 0.2), hsl(var(--secondary) / 0.1), hsl(var(--primary) / 0.05))",
             }}
           >
-            <h3 className="font-heading text-lg font-bold text-primary text-center mb-1">
-              Solicitar Acesso
-            </h3>
-            <p className="text-center text-[12px] text-muted-foreground mb-6">
-              Ative sua infraestrutura jurídica de alta performance
-            </p>
+            <div
+              className="rounded-2xl p-7 md:p-9 h-full flex flex-col"
+              style={{
+                background: "hsl(213 50% 10%)",
+                boxShadow:
+                  "0 25px 60px -15px hsl(213 60% 4% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.03)",
+              }}
+            >
+              <h3 className="font-heading text-lg font-bold text-primary text-center mb-1">
+                Solicitar Acesso
+              </h3>
+              <p className="text-center text-[12px] text-muted-foreground mb-6">
+                Ative sua infraestrutura jurídica de alta performance
+              </p>
 
-            <form className="space-y-3.5" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="text"
-                placeholder="Nome completo"
-                value={form.name}
-                onChange={(e) => set("name", e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
-                style={{
-                  borderColor: "hsl(var(--border) / 0.12)",
-                  background: "hsl(213 50% 8%)",
-                }}
-              />
-              <input
-                type="email"
-                placeholder="Email profissional"
-                value={form.email}
-                onChange={(e) => set("email", e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
-                style={{
-                  borderColor: "hsl(var(--border) / 0.12)",
-                  background: "hsl(213 50% 8%)",
-                }}
-              />
-              <div className="grid grid-cols-2 gap-3">
+              <form className="space-y-3.5 flex-1 flex flex-col" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="text"
-                  placeholder="Telefone"
-                  value={form.phone}
-                  onChange={(e) => set("phone", e.target.value)}
+                  placeholder="Nome completo"
+                  value={form.name}
+                  onChange={(e) => set("name", e.target.value)}
                   className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
                   style={{
                     borderColor: "hsl(var(--border) / 0.12)",
                     background: "hsl(213 50% 8%)",
                   }}
                 />
-                <select
-                  value={form.profession}
-                  onChange={(e) => set("profession", e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition appearance-none"
+                <input
+                  type="email"
+                  placeholder="Email profissional"
+                  value={form.email}
+                  onChange={(e) => set("email", e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
                   style={{
                     borderColor: "hsl(var(--border) / 0.12)",
                     background: "hsl(213 50% 8%)",
                   }}
-                >
-                  <option value="">Profissão</option>
-                  {professions.map((p) => (
-                    <option key={p} value={p}>
-                      {p}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <label className="flex items-start gap-2.5 cursor-pointer pt-1">
-                <input
-                  type="checkbox"
-                  checked={form.terms}
-                  onChange={(e) => set("terms", e.target.checked)}
-                  className="mt-0.5 w-4 h-4 rounded accent-primary"
                 />
-                <span className="text-[11px] text-muted-foreground">
-                  Concordo com os{" "}
-                  <a href="#" className="text-primary hover:underline">
-                    Termos
-                  </a>{" "}
-                  e{" "}
-                  <a href="#" className="text-primary hover:underline">
-                    Privacidade
-                  </a>
-                </span>
-              </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    placeholder="Telefone"
+                    value={form.phone}
+                    onChange={(e) => set("phone", e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
+                    style={{
+                      borderColor: "hsl(var(--border) / 0.12)",
+                      background: "hsl(213 50% 8%)",
+                    }}
+                  />
+                  <select
+                    value={form.profession}
+                    onChange={(e) => set("profession", e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition appearance-none"
+                    style={{
+                      borderColor: "hsl(var(--border) / 0.12)",
+                      background: "hsl(213 50% 8%)",
+                    }}
+                  >
+                    <option value="">Profissão</option>
+                    {professions.map((p) => (
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-sm cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all"
-              >
-                Solicitar Acesso
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+                <label className="flex items-start gap-2.5 cursor-pointer pt-1">
+                  <input
+                    type="checkbox"
+                    checked={form.terms}
+                    onChange={(e) => set("terms", e.target.checked)}
+                    className="mt-0.5 w-4 h-4 rounded accent-primary"
+                  />
+                  <span className="text-[11px] text-muted-foreground">
+                    Concordo com os{" "}
+                    <a href="#" className="text-primary hover:underline">
+                      Termos
+                    </a>{" "}
+                    e{" "}
+                    <a href="#" className="text-primary hover:underline">
+                      Privacidade
+                    </a>
+                  </span>
+                </label>
+
+                <div className="flex-1" />
+
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-sm cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all"
+                >
+                  Solicitar Acesso
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </form>
+            </div>
           </div>
         </motion.div>
       </div>
