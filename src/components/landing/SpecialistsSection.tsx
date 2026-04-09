@@ -15,43 +15,37 @@ const specialists = [
     img: imgAguia,
     name: "Águia",
     role: "Super Analista",
-    result: "200 páginas → 3 min",
-    desc: "Examina processos na íntegra, identifica pontos jurídicos cruciais e extrai o núcleo decisório de grandes volumes documentais em segundos.",
+    desc: "Responsável por examinar processos na íntegra, identificar pontos jurídicos cruciais e extrair o núcleo decisório de grandes volumes documentais em segundos.",
   },
   {
     img: imgGolfinho,
     name: "Golfinho",
     role: "Análise Multimodal",
-    result: "4h de audiência → resumo",
-    desc: "Assiste a vídeos e ouve áudios de audiências gravadas, transcrevendo e indexando o conteúdo para transformar horas de gravação em estratégia.",
+    desc: "Assiste a vídeos e ouve áudios de audiências gravadas, transcrevendo e indexando o conteúdo para transformar horas de gravação em 15 minutos de estratégia pura.",
   },
   {
     img: imgRobo,
     name: "Robô",
     role: "Juiz Robô (Jurimetria)",
-    result: "Chance de êxito: 73%",
-    desc: "Aplica inteligência de dados para identificar tendências de tribunais e prever probabilidades de êxito com base no cenário nacional.",
+    desc: "Aplica inteligência de dados para identificar tendências de tribunais e prever as probabilidades de êxito e resultados do processo com base no cenário nacional.",
   },
   {
     img: imgPantera,
     name: "Pantera",
-    role: "Estrategista",
-    result: "3 teses sugeridas",
-    desc: "Sugere caminhos jurídicos ranqueados por probabilidade, baseado em dados reais e jurimetria avançada.",
+    role: "O Estrategista",
+    desc: "Utiliza jurimetria e dados técnicos para sugerir caminhos jurídicos, indicando as medidas mais eficazes e as melhores peças para cada situação concreta.",
   },
   {
     img: imgFila,
     name: "Fila Brasileiro",
-    role: "Detector de Falhas",
-    result: "2 contradições encontradas",
-    desc: "Encontra contradições e falácias em depoimentos e documentos automaticamente.",
+    role: "Detector de Mentiras",
+    desc: "Identifica inconsistências factuais, contradições cronológicas, falácias argumentativas e falsas memórias em depoimentos e documentos.",
   },
   {
     img: imgArara,
     name: "Arara Azul",
-    role: "Jurisprudência",
-    result: "12 precedentes com link",
-    desc: "Localiza precedentes com links auditáveis e fontes oficiais dos tribunais brasileiros.",
+    role: "Buscador de Jurisprudência",
+    desc: "Localiza precedentes alinhados ao caso com links auditáveis e fontes oficiais, eliminando o risco de citações falsas ou leis revogadas.",
   },
 ];
 
@@ -60,7 +54,6 @@ const SpecialistsSection = () => {
   const next = () => setIdx((p) => (p + 1) % specialists.length);
   const prev = () => setIdx((p) => (p - 1 + specialists.length) % specialists.length);
 
-  // Show 3 on desktop, 2 on tablet, 1 on mobile
   const getVisible = () => {
     if (typeof window === "undefined") return 3;
     if (window.innerWidth >= 1024) return 3;
@@ -81,18 +74,18 @@ const SpecialistsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight mb-4">
-            6 Especialistas.{" "}
-            <span className="text-gradient">Uma Equipe.</span>
+            Pare de trabalhar sozinho.{" "}
+            <span className="text-gradient">Ative sua Equipe de Especialistas.</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Cada um resolve uma etapa diferente — juntos, cobrem todo o ciclo jurídico.
+            Muito mais que um software, a LegisBrasil.IA funciona como uma equipe digital de apoio, onde diferentes especialistas trabalham integrados para garantir precisão e rapidez em cada caso.
           </p>
         </motion.div>
 
-        {/* Carousel cards with images */}
+        {/* Carousel */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
             {items.map((s) => (
@@ -105,7 +98,6 @@ const SpecialistsSection = () => {
                 className="rounded-2xl border border-border/20 overflow-hidden group hover:border-primary/20 transition-all"
                 style={{ background: "hsl(var(--card) / 0.5)" }}
               >
-                {/* Image area */}
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={s.img}
@@ -121,12 +113,6 @@ const SpecialistsSection = () => {
                 <div className="p-6 space-y-3">
                   <div className="badge-glow w-fit text-xs">{s.role}</div>
                   <h3 className="font-heading text-lg font-bold text-foreground">{s.name}</h3>
-
-                  {/* Result highlight */}
-                  <div className="px-3 py-2 rounded-lg text-sm font-medium text-primary" style={{ background: "hsl(var(--primary) / 0.06)" }}>
-                    ⚡ {s.result}
-                  </div>
-
                   <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
                 </div>
               </motion.div>
@@ -159,7 +145,7 @@ const SpecialistsSection = () => {
           viewport={{ once: true }}
           className="flex justify-center mt-14"
         >
-          <CtaButton>ATIVAR MINHA EQUIPE</CtaButton>
+          <CtaButton>CONTRATAR MINHA EQUIPE DE ELITE</CtaButton>
         </motion.div>
       </div>
     </section>

@@ -1,14 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Clock, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import logo from "@/assets/logo-white.png";
-
-/*
- * Richard: Awareness Level 5 — "Troque X por Y em Z dias, sem risco"
- * Richard: Reduzir fricção final — garantias, facilidade, zero risco.
- * Richard: Efeito Zeigarnik — form curto para criar loop incompleto.
- * Richard: Loss aversion CTA — urgência sem ser spam.
- */
 
 const professions = [
   "Advogado(a)", "Magistrado(a)", "Procurador(a)",
@@ -34,38 +27,13 @@ const FooterSection = () => {
                 viewport={{ once: true }}
                 className="space-y-7"
               >
-                {/* Richard: Awareness 5 — risco zero, fricção mínima */}
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight">
-                  Teste Com Seu{" "}
-                  <span className="text-gradient">Processo Real</span>
-                  <br />
-                  <span className="text-muted-foreground text-2xl md:text-3xl">Sem risco. Sem cartão.</span>
+                  Eleve o Padrão do seu Escritório para a{" "}
+                  <span className="text-gradient">Era da Inteligência Segura</span>{" "}
+                  e resgate seu tempo estratégico com a IA que entende o Direito Brasileiro
                 </h2>
-
-                {/* Richard: Reduzir ansiedade — garantias claras */}
-                <ul className="space-y-3">
-                  {[
-                    { icon: Zap, text: "Resultado em 3 minutos, não em 3 dias" },
-                    { icon: CheckCircle2, text: "Validado por +50 magistrados e juristas" },
-                    { icon: Clock, text: "Sem contrato. Cancele quando quiser" },
-                  ].map((b, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -8 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
-                      className="flex items-center gap-3"
-                    >
-                      <b.icon className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{b.text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Richard: Reforço positivo humano */}
-                <p className="text-xs text-muted-foreground/50 italic">
-                  "O medo de IA errar é válido. Por isso cada resposta tem link para a fonte. Se não tem fonte, não entrega." — Dr. Mazloum
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Junte-se aos profissionais que priorizam a técnica, a segurança e a soberania digital. Preencha os dados para ativar sua infraestrutura jurídica de alta performance.
                 </p>
               </motion.div>
 
@@ -79,7 +47,7 @@ const FooterSection = () => {
               >
                 <h3 className="font-heading text-xl font-bold text-primary text-center mb-1">Solicitar Acesso</h3>
                 <p className="text-center text-sm text-muted-foreground mb-7">
-                  Leva menos de 30 segundos
+                  Ative sua infraestrutura jurídica
                 </p>
 
                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -123,14 +91,9 @@ const FooterSection = () => {
                   </label>
 
                   <button type="submit" className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-sm cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all">
-                    Solicitar Acesso Gratuito
+                    Solicitar Acesso
                     <ArrowRight className="w-4 h-4" />
                   </button>
-
-                  {/* Richard: Micro-copy para reduzir ansiedade */}
-                  <p className="text-center text-[11px] text-muted-foreground/40">
-                    Sem cartão de crédito · Sem contrato · Cancele quando quiser
-                  </p>
                 </form>
               </motion.div>
             </div>
