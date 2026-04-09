@@ -64,52 +64,75 @@ const SpecialistsSection = () => {
   const count = getVisible();
   const items = Array.from({ length: count }, (_, i) => ({
     ...specialists[(idx + i) % specialists.length],
-    originalIdx: (idx + i) % specialists.length,
+    key: (idx + i) % specialists.length,
   }));
 
   return (
-    <section id="especialistas" className="section-spacing relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="especialistas" className="relative section-spacing overflow-hidden">
+      {/* Warm gradient background like Antimetal's amber section */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(180deg, hsl(var(--background)) 0%, hsl(213 50% 13%) 30%, hsl(213 45% 14%) 70%, hsl(var(--background)) 100%)`,
+        }}
+      />
+      <div className="absolute inset-0 grid-lines-dense pointer-events-none" />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+        {/* Section label */}
         <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="section-label mb-5"
+        >
+          <span className="text-secondary">🤖</span>
+          <span>Especialistas IA</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] max-w-3xl mb-4"
+        >
+          Pare de trabalhar sozinho.
+        </motion.h2>
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          transition={{ delay: 0.1 }}
+          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-14 leading-relaxed"
         >
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight mb-4">
-            Pare de trabalhar sozinho.{" "}
-            <span className="text-gradient">Ative sua Equipe de Especialistas.</span>
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Muito mais que um software, a LegisBrasil.IA funciona como uma equipe digital de apoio, onde diferentes especialistas trabalham integrados para garantir precisão e rapidez em cada caso.
-          </p>
-        </motion.div>
+          Muito mais que um software, a LegisBrasil.IA funciona como uma equipe digital de apoio, onde diferentes especialistas trabalham integrados para garantir precisão e rapidez em cada caso.
+        </motion.p>
 
-        {/* Carousel */}
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
             {items.map((s) => (
               <motion.div
-                key={s.name}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl border border-border/20 overflow-hidden group hover:border-primary/20 transition-all"
-                style={{ background: "hsl(var(--card) / 0.5)" }}
+                key={s.key}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="anti-card group"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-52 overflow-hidden">
                   <img
                     src={s.img}
                     alt={s.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                     width={512}
                     height={512}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
                 </div>
-
                 <div className="p-6 space-y-3">
                   <div className="badge-glow w-fit text-xs">{s.role}</div>
                   <h3 className="font-heading text-lg font-bold text-foreground">{s.name}</h3>
@@ -121,8 +144,11 @@ const SpecialistsSection = () => {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-center gap-3 mt-10">
-          <button onClick={prev} className="w-10 h-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all">
+        <div className="flex items-center justify-center gap-4 mt-10">
+          <button
+            onClick={prev}
+            className="w-10 h-10 rounded-full border border-border/30 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
+          >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <div className="flex gap-1.5">
@@ -130,11 +156,16 @@ const SpecialistsSection = () => {
               <button
                 key={i}
                 onClick={() => setIdx(i)}
-                className={`h-1.5 rounded-full transition-all ${i === idx ? "bg-primary w-6" : "bg-border w-1.5"}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === idx ? "bg-primary w-6" : "bg-border/40 w-1.5"
+                }`}
               />
             ))}
           </div>
-          <button onClick={next} className="w-10 h-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all">
+          <button
+            onClick={next}
+            className="w-10 h-10 rounded-full border border-border/30 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
+          >
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>

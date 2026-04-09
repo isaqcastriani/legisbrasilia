@@ -20,53 +20,97 @@ const features = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
+
 const ProblemSection = () => {
   return (
-    <section className="section-spacing relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative section-spacing">
+      <div className="absolute inset-0 grid-lines pointer-events-none" />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+        {/* Section label like Antimetal */}
         <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="section-label mb-5"
+        >
+          <span className="text-primary">⚡</span>
+          <span>Infraestrutura Jurídica</span>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] max-w-3xl mb-5"
+        >
+          Sua Equipe de Elite Digital
+        </motion.h2>
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mb-16"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-16 leading-relaxed"
         >
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight mb-5">
-            Sua Equipe de Elite Digital:{" "}
-            <span className="text-gradient">Inteligência que entende o Direito Brasileiro.</span>
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Somos a primeira infraestrutura de IA desenvolvida por magistrados e juristas para dominar todo o ciclo jurídico brasileiro, da prova à peça final.
-          </p>
-        </motion.div>
+          Somos a primeira infraestrutura de IA desenvolvida por magistrados e juristas para dominar todo o ciclo jurídico brasileiro, da prova à peça final.
+        </motion.p>
 
-        {/* Grid de 3 cards minimalistas e simétricos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Feature cards — Antimetal style: horizontal rule + cards */}
+        <div className="anti-divider mb-12" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:divide-x md:divide-border/15">
           {features.map((f, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -3 }}
-              className="group rounded-2xl border border-border/20 hover:border-primary/20 p-8 transition-all relative overflow-hidden"
-              style={{ background: "hsl(var(--card) / 0.3)" }}
+              variants={cardVariants}
+              className="group px-0 md:px-8 py-8 md:py-0 first:pl-0 last:pr-0 border-b md:border-b-0 border-border/15 last:border-b-0"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.04), transparent 70%)" }} />
-              <div className="relative z-10">
-                <f.icon className="w-7 h-7 text-primary mb-5" strokeWidth={1.5} />
-                <h3 className="font-heading text-lg font-bold text-foreground mb-2">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  style={{ background: "hsl(var(--primary) / 0.08)" }}
+                >
+                  <f.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-heading text-lg font-semibold text-foreground">
+                  {f.title}
+                </h3>
               </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {f.desc}
+              </p>
             </motion.div>
           ))}
         </div>
+
+        <div className="anti-divider mt-12 mb-14" />
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex justify-center mt-16"
+          className="flex justify-center"
         >
           <CtaButton>ASSINAR A INTELIGÊNCIA QUE ENTENDE O DIREITO</CtaButton>
         </motion.div>
