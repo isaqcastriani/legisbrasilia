@@ -7,6 +7,7 @@ import ContactFormSection from "@/components/landing/ContactFormSection";
 import FooterSection from "@/components/landing/FooterSection";
 import SectionDivider from "@/components/landing/SectionDivider";
 import WaveDivider from "@/components/landing/WaveDivider";
+import AIOrbitSection from "@/components/landing/AIOrbitSection";
 
 const Index = () => {
   return (
@@ -20,6 +21,8 @@ const Index = () => {
       <WaveDivider color="hsl(213 55% 8%)" />
       <AuthoritySection />
       <WaveDivider flip />
+      <AIOrbitSection />
+      <WaveDivider />
       <SocialProofSection />
       <WaveDivider />
       <ContactFormSection />
