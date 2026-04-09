@@ -133,9 +133,9 @@ function Particles() {
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       // Fluid-like push effect
-      const influence = Math.max(0, 1 - dist / 2.5);
-      const pushStrength = influence * influence * 0.6;
-      const wave = Math.sin(timeRef.current * 3 + dist * 2) * influence * 0.08;
+      const influence = Math.max(0, 1 - dist / 3.5);
+      const pushStrength = influence * influence * 2.0;
+      const wave = Math.sin(timeRef.current * 3 + dist * 2) * influence * 0.25;
 
       // Compute displacement in local space
       const pushX = (dx / (dist + 0.01)) * pushStrength;
