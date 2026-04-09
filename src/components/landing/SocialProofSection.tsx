@@ -131,7 +131,7 @@ const SocialProofSection = () => {
                         borderTop: "1px solid hsl(var(--border) / 0.3)",
                       }}
                     >
-                      <td className="px-6 py-5 text-[13px] font-medium align-top text-foreground">
+                      <td className="px-6 py-5 text-[15px] font-semibold align-top text-foreground">
                         {row.feature}
                       </td>
 
@@ -144,19 +144,19 @@ const SocialProofSection = () => {
                             : {}),
                         }}
                       >
-                        <span className="text-[12px] font-bold text-primary-foreground leading-relaxed">
+                        <span className="text-[15px] font-bold text-primary-foreground leading-relaxed">
                           {row.legis}
                         </span>
                       </td>
 
                       <td className="px-6 py-5 text-center align-top">
-                        <span className="text-[12px] leading-relaxed text-muted-foreground">
+                        <span className="text-[15px] leading-relaxed text-muted-foreground">
                           {row.iaGen}
                         </span>
                       </td>
 
                       <td className="px-6 py-5 text-center align-top">
-                        <span className="text-[12px] leading-relaxed text-muted-foreground">
+                        <span className="text-[15px] leading-relaxed text-muted-foreground">
                           {row.manual}
                         </span>
                       </td>
