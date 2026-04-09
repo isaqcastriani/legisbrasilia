@@ -6,22 +6,22 @@ import SocialProofSection from "@/components/landing/SocialProofSection";
 import ContactFormSection from "@/components/landing/ContactFormSection";
 import FooterSection from "@/components/landing/FooterSection";
 import SectionDivider from "@/components/landing/SectionDivider";
-import PixelDivider from "@/components/landing/PixelDivider";
+import WaveDivider from "@/components/landing/WaveDivider";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       
       <HeroSection />
-      <PixelDivider />
+      <WaveDivider />
       <ProblemSection />
-      <PixelDivider flip />
+      <WaveDivider flip />
       <SpecialistsSection />
-      <PixelDivider color="hsl(213 55% 8%)" />
+      <WaveDivider color="hsl(213 55% 8%)" />
       <AuthoritySection />
-      <PixelDivider flip />
+      <WaveDivider flip />
       <SocialProofSection />
-      <PixelDivider />
+      <WaveDivider />
       <ContactFormSection />
       <SectionDivider />
       <FooterSection />
