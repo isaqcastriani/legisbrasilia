@@ -1,10 +1,55 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import logo from "@/assets/logo-white.png";
+import footerBg from "@/assets/footer-cta-bg.jpg";
 
 const FooterSection = () => {
   return (
     <>
+      {/* CTA Section — title + button + full-width image */}
+      <section className="relative">
+        <div className="relative z-10 text-center pt-24 md:pt-32 pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto px-5"
+          >
+            <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.06] mb-4">
+              Pronto para a nova era jurídica?
+            </h2>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-8 max-w-xl mx-auto">
+              Solicite seu acesso ou agende uma demonstração de 15 minutos.
+            </p>
+            <a
+              href="#contato"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-[13px] tracking-wide cta-3d hover:translate-y-[-2px] active:translate-y-[1px] transition-all"
+            >
+              Solicitar Acesso
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.div>
+        </div>
 
+        {/* Full-width cinematic image */}
+        <div className="relative w-full h-[300px] md:h-[450px] lg:h-[550px] overflow-hidden">
+          <img
+            src={footerBg}
+            alt=""
+            className="w-full h-full object-cover object-center"
+            loading="lazy"
+            width={1920}
+            height={800}
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 35%, transparent 70%, hsl(213 60% 5%) 100%)",
+            }}
+          />
+        </div>
+      </section>
       {/* Footer — 3D cards with depth */}
       <footer
         className="relative py-12 md:py-16"
