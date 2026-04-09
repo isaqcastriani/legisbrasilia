@@ -175,10 +175,10 @@ const SocialProofSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-white/[0.08] p-8 md:p-10 flex flex-col justify-between"
+            className="rounded-2xl border border-white/[0.06] p-8 md:p-10 flex flex-col justify-between overflow-hidden relative"
             style={{
-              background: "hsl(213 45% 9%)",
-              boxShadow: "0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7)",
+              background: "linear-gradient(145deg, hsl(213 50% 18%) 0%, hsl(213 55% 12%) 100%)",
+              boxShadow: "0 20px 60px -15px hsl(213 60% 6% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 6% / 0.4)",
             }}
           >
             <div>
