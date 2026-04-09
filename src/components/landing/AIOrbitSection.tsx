@@ -30,18 +30,10 @@ const aiModels = [
   { name: "Llama 4", logo: llama, size: "lg", angle: 142 },
 ] as const;
 
-const orbitRadius = 235;
+const orbitRadius = 220;
 const stepAngle = 360 / aiModels.length;
-const diskSizeMap = {
-  sm: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24",
-  md: "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28",
-  lg: "w-24 h-24 md:w-28 md:h-28 lg:w-36 lg:h-36",
-} as const;
-const logoSizeMap = {
-  sm: "w-8 h-8 md:w-10 md:h-10",
-  md: "w-10 h-10 md:w-12 md:h-12",
-  lg: "w-12 h-12 md:w-16 md:h-16",
-} as const;
+const diskSize = "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28";
+const logoSize = "w-9 h-9 md:w-11 md:h-11";
 
 const AIOrbitSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
