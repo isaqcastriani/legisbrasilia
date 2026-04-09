@@ -70,23 +70,23 @@ const ParallaxCard = ({
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start center"],
+    offset: ["start end", "center center"],
   });
 
   const Icon = card.icon;
   const FloatingIcon = card.floatingIcon;
 
-  const y = useTransform(scrollYProgress, [0, 1], [140, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [220, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
-  const cardOpacity = useTransform(scrollYProgress, [0, 0.35, 1], [0, 1, 1]);
+  const cardOpacity = useTransform(scrollYProgress, [0, 0.28, 1], [0, 1, 1]);
 
   return (
     <div
       ref={ref}
       className="relative"
       style={{
-        minHeight: index < total - 1 ? "110vh" : "auto",
-        marginTop: index === 0 ? 0 : "-42vh",
+        minHeight: index < total - 1 ? "118vh" : "92vh",
+        marginTop: index === 0 ? 0 : "-62vh",
         zIndex: index + 1,
       }}
     >
