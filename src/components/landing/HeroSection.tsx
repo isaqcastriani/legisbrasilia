@@ -127,7 +127,6 @@ const HeroSection = () => {
               className="relative w-[280px] md:w-[340px] lg:w-[420px] drop-shadow-2xl"
               style={{ mixBlendMode: "lighten" }}
             />
-            />
           </motion.div>
 
           {/* RIGHT — Subtext */}
