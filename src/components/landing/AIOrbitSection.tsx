@@ -179,7 +179,7 @@ const AIOrbitSection = () => {
               </a>
             </div>
 
-            <div className="mt-4 min-h-[52px] max-w-sm">
+            <div className="relative z-30 mt-4 min-h-[52px] max-w-sm">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeModel.name}
