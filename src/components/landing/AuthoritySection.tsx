@@ -179,6 +179,7 @@ const ParallaxCard = ({
           </div>
         </div>
       </motion.div>
+      </div>
     </div>
   );
 };
