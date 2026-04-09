@@ -1,5 +1,6 @@
-import { type MouseEvent } from "react";
+import { type MouseEvent, useEffect, useState } from "react";
 import {
+  AnimatePresence,
   motion,
   useMotionTemplate,
   useMotionValue,
@@ -30,6 +31,7 @@ const aiModels = [
 ] as const;
 
 const orbitRadius = 235;
+const stepAngle = 360 / aiModels.length;
 const diskSizeMap = {
   sm: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24",
   md: "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28",
@@ -42,6 +44,10 @@ const logoSizeMap = {
 } as const;
 
 const AIOrbitSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHighlighting, setIsHighlighting] = useState(false);
+  const activeModel = aiModels[activeIndex];
+
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
@@ -58,6 +64,16 @@ const AIOrbitSection = () => {
   const pixelPlaneTransform = useMotionTemplate`perspective(1200px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translate3d(${driftX}px, ${driftY}px, 0px)`;
   const pixelGlowTransform = useMotionTemplate`translate3d(${driftX}px, ${driftY}px, 0px)`;
   const hoverMask = useMotionTemplate`radial-gradient(260px circle at ${revealX} ${revealY}, black 0%, rgba(0,0,0,0.94) 28%, transparent 74%)`;
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setIsHighlighting(true);
+      setActiveIndex((prev) => (prev + 1) % aiModels.length);
+      window.setTimeout(() => setIsHighlighting(false), 550);
+    }, 2000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -171,6 +187,27 @@ const AIOrbitSection = () => {
               Solicitar Acesso
               <ArrowRight className="w-4 h-4" />
             </a>
+
+            <div className="mt-4 min-h-[52px] max-w-sm">
+              <span className="block text-[10px] font-mono uppercase tracking-[0.18em] text-primary/70 mb-1">
+                IA em destaque agora
+              </span>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeModel.name}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-flex items-center gap-3 rounded-full border border-primary/20 bg-primary/10 px-4 py-2"
+                >
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/20 bg-background/60">
+                    <img src={activeModel.logo} alt={activeModel.name} className="h-4 w-4 object-contain" loading="lazy" />
+                  </span>
+                  <span className="text-sm font-semibold text-foreground">{activeModel.name}</span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
 
           <motion.div
@@ -207,9 +244,11 @@ const AIOrbitSection = () => {
                 />
               </svg>
 
-              <div
-                className="absolute inset-0 animate-[spin_60s_linear_infinite]"
+              <motion.div
+                className="absolute inset-0"
                 style={{ transformOrigin: "390px 300px" }}
+                animate={{ rotate: -(activeIndex * stepAngle) }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 {aiModels.map((model) => {
                   const rad = (model.angle * Math.PI) / 180;
@@ -222,7 +261,10 @@ const AIOrbitSection = () => {
                       className="absolute -translate-x-1/2 -translate-y-1/2"
                       style={{ left: x, top: y }}
                     >
-                      <div className="animate-[spin_60s_linear_infinite_reverse]">
+                      <motion.div
+                        animate={{ rotate: activeIndex * stepAngle }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      >
                         <div
                           className={`${diskSizeMap[model.size]} rounded-full border border-primary/30 backdrop-blur-md flex items-center justify-center`}
                           style={{
@@ -239,28 +281,38 @@ const AIOrbitSection = () => {
                             loading="lazy"
                           />
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
                   );
                 })}
-              </div>
+              </motion.div>
 
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="relative flex items-center justify-center">
-                  <div
-                    className="absolute -inset-10 rounded-full blur-3xl opacity-20"
+                  <motion.div
+                    className="absolute -inset-10 rounded-full blur-3xl"
+                    animate={{
+                      opacity: isHighlighting ? 0.42 : 0.2,
+                      scale: isHighlighting ? 1.14 : 1,
+                    }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                     style={{
                       background:
-                        "radial-gradient(circle, hsl(var(--primary) / 0.35) 0%, transparent 70%)",
+                        "radial-gradient(circle, hsl(var(--primary) / 0.45) 0%, hsl(var(--secondary) / 0.18) 45%, transparent 72%)",
                     }}
                   />
-                  <div
+                  <motion.div
                     className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border border-primary/30 flex items-center justify-center"
+                    animate={{
+                      scale: isHighlighting ? 1.06 : 1,
+                    }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                     style={{
                       background:
                         "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.05), hsl(var(--background) / 0.99) 74%)",
-                      boxShadow:
-                        "0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
+                      boxShadow: isHighlighting
+                        ? "0 0 0 1px hsl(var(--primary) / 0.26), 0 0 34px hsl(var(--primary) / 0.22), 0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)"
+                        : "0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
                     }}
                   >
                     <img
@@ -269,7 +321,7 @@ const AIOrbitSection = () => {
                       className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain brightness-0 invert"
                       loading="lazy"
                     />
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
