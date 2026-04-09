@@ -104,14 +104,14 @@ const SocialProofSection = () => {
                       </div>
                     </div>
                   </th>
-                  <th className="px-6 pt-6 pb-4 text-center w-[200px]">
+                  <th className="px-6 pt-6 pb-4 text-center w-[200px]" style={{ background: "transparent" }}>
                     <span className="font-heading text-lg font-bold text-muted-foreground">
                       IA Genérica
                     </span>
                     <br />
                     <span className="text-[13px] font-mono text-muted-foreground/60">ChatGPT/Gemini/etc</span>
                   </th>
-                  <th className="px-6 pt-6 pb-4 text-center w-[200px]">
+                  <th className="px-6 pt-6 pb-4 text-center w-[200px]" style={{ background: "transparent" }}>
                     <span className="font-heading text-lg font-bold text-muted-foreground">
                       Status Quo
                     </span>
