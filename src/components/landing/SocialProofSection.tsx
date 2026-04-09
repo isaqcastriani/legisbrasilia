@@ -86,7 +86,7 @@ const SocialProofSection = () => {
             <table className="w-full border-collapse min-w-[700px]">
               <thead>
                 <tr>
-                  <th className="w-[200px] px-6 pt-6 pb-4" />
+                  <th className="w-[200px] px-6 pt-6 pb-4" style={{ background: "hsl(var(--background))" }} />
                   <th
                     className="px-6 pt-6 pb-4 text-center w-[220px]"
                     style={{
@@ -104,14 +104,14 @@ const SocialProofSection = () => {
                       </div>
                     </div>
                   </th>
-                  <th className="px-6 pt-6 pb-4 text-center w-[200px]">
+                  <th className="px-6 pt-6 pb-4 text-center w-[200px]" style={{ background: "hsl(var(--background))" }}>
                     <span className="font-heading text-lg font-bold text-muted-foreground">
                       IA Genérica
                     </span>
                     <br />
                     <span className="text-[13px] font-mono text-muted-foreground/60">ChatGPT/Gemini/etc</span>
                   </th>
-                  <th className="px-6 pt-6 pb-4 text-center w-[200px]">
+                  <th className="px-6 pt-6 pb-4 text-center w-[200px]" style={{ background: "hsl(var(--background))" }}>
                     <span className="font-heading text-lg font-bold text-muted-foreground">
                       Status Quo
                     </span>
