@@ -178,7 +178,7 @@ const SpecialistsSection = () => {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
-            <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[380px] max-h-[480px] overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
+            <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[460px] max-h-[560px] overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
               {/* Left — Text content */}
               <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
                 <div>
