@@ -289,7 +289,7 @@ const AIOrbitSection = () => {
                     }}
                   />
                   <motion.div
-                    className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border border-primary/30 flex items-center justify-center"
+                    className="relative w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border border-primary/30 flex items-center justify-center"
                     animate={{
                       scale: isHighlighting ? 1.06 : 1,
                     }}
@@ -305,7 +305,7 @@ const AIOrbitSection = () => {
                     <img
                       src={logoLegis}
                       alt="LegisBrasil.IA"
-                      className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain brightness-0 invert"
+                      className="w-14 h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain brightness-0 invert"
                       loading="lazy"
                     />
                   </motion.div>
