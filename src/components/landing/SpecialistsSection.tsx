@@ -304,6 +304,7 @@ const SpecialistsSection = () => {
           </motion.div>
         </AnimatePresence>
         </div>
+        </div>
 
         {/* Transition phrase */}
         <motion.p
