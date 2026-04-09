@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import CtaButton from "./CtaButton";
 import heroAraraVideo from "@/assets/hero-arara-video.mp4.asset.json";
 import heroPanelMockup from "@/assets/hero-panel-mockup.png";
+import ushapeLeft from "@/assets/hero-ushape-left.jpg";
+import ushapeRight from "@/assets/hero-ushape-right.jpg";
 
 /* Subtle particle dots in background */
 const ParticleCanvas = () => {
@@ -155,46 +157,232 @@ const HeroSection = () => {
           <CtaButton>ENTRAR PARA A NOVA ERA JURÍDICA</CtaButton>
         </motion.div>
 
-        {/* Panel mockup below — with perspective tilt like the reference */}
+        {/* ====== PANEL SHOWCASE — U-shapes + Glass Card ====== */}
         <motion.div
-          initial={{ opacity: 0, y: 80, rotateX: 8 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mt-14 lg:mt-16 mx-auto max-w-[1100px]"
-          style={{ perspective: "1200px" }}
+          className="relative mt-14 lg:mt-20 mx-auto"
         >
-          {/* Glow behind panel */}
+          {/* Glow behind */}
           <div
-            className="absolute -top-10 left-1/2 -translate-x-1/2 w-[80%] h-[200px] rounded-full blur-[100px] opacity-10 pointer-events-none"
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[90%] h-[300px] rounded-full blur-[140px] opacity-[0.08] pointer-events-none"
             style={{ background: "hsl(var(--primary))" }}
           />
 
-          {/* Browser-style frame */}
-          <div className="relative rounded-2xl border border-border/30 overflow-hidden shadow-2xl" style={{ background: "hsl(var(--card) / 0.6)" }}>
-            {/* Top bar dots */}
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border/15">
-              <div className="w-2.5 h-2.5 rounded-full" style={{ background: "hsl(var(--destructive) / 0.5)" }} />
-              <div className="w-2.5 h-2.5 rounded-full" style={{ background: "hsl(var(--primary) / 0.4)" }} />
-              <div className="w-2.5 h-2.5 rounded-full" style={{ background: "hsl(var(--secondary) / 0.4)" }} />
-              <div className="ml-4 flex-1 h-6 rounded-lg max-w-xs" style={{ background: "hsl(var(--muted) / 0.3)" }} />
-            </div>
-            {/* Mockup image */}
-            <img
-              src={heroPanelMockup}
-              alt="Painel LegisBrasil.IA — Análise de Processo"
-              className="w-full h-auto"
-              width={1920}
-              height={1080}
-            />
-          </div>
+          {/* Container for U-shapes + card */}
+          <div className="relative flex items-end justify-center gap-0 overflow-visible">
+            {/* LEFT U-SHAPE */}
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block relative flex-shrink-0 -mr-6 z-0"
+              style={{ width: "280px" }}
+            >
+              <svg
+                viewBox="0 0 280 320"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-auto"
+              >
+                <defs>
+                  <clipPath id="u-clip-left">
+                    <path d="M0,0 L0,200 Q0,310 140,310 Q280,310 280,200 L280,0 L240,0 L240,200 Q240,270 140,270 Q40,270 40,200 L40,0 Z" />
+                  </clipPath>
+                </defs>
+                <image
+                  href={ushapeLeft}
+                  x="-60"
+                  y="-20"
+                  width="400"
+                  height="360"
+                  clipPath="url(#u-clip-left)"
+                  preserveAspectRatio="xMidYMid slice"
+                />
+                {/* Subtle border */}
+                <path
+                  d="M0,0 L0,200 Q0,310 140,310 Q280,310 280,200 L280,0 M40,0 L40,200 Q40,270 140,270 Q240,270 240,200 L240,0"
+                  stroke="hsl(213 30% 30%)"
+                  strokeWidth="1.5"
+                  fill="none"
+                  opacity="0.5"
+                />
+              </svg>
+            </motion.div>
 
-          {/* Fade to background at bottom */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-            style={{
-              background: `linear-gradient(180deg, transparent 0%, hsl(var(--background)) 100%)`,
-            }}
-          />
+            {/* CENTER — Glass Card with Panel UI */}
+            <div className="relative z-10 w-full max-w-[700px] lg:max-w-[680px]">
+              {/* Glass card */}
+              <div
+                className="relative rounded-3xl border overflow-hidden shadow-2xl"
+                style={{
+                  borderColor: "hsl(var(--border) / 0.25)",
+                  background: "hsl(var(--card) / 0.5)",
+                  boxShadow: "0 25px 80px -20px hsl(var(--background) / 0.8), 0 0 60px hsl(var(--primary) / 0.04)",
+                }}
+              >
+                {/* Frosted glass overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(var(--foreground) / 0.02) 0%, transparent 50%, hsl(var(--primary) / 0.02) 100%)",
+                  }}
+                />
+
+                {/* Top bar */}
+                <div className="flex items-center gap-2 px-5 py-3 border-b" style={{ borderColor: "hsl(var(--border) / 0.15)" }}>
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: "hsl(var(--destructive) / 0.6)" }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: "hsl(var(--primary) / 0.5)" }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: "hsl(var(--secondary) / 0.5)" }} />
+                  <div className="ml-3 flex items-center gap-2 text-[11px] text-muted-foreground/60">
+                    <span>LegisBrasil.IA</span>
+                    <span className="text-muted-foreground/30">/</span>
+                    <span>Análise de Processo</span>
+                  </div>
+                </div>
+
+                {/* Panel content mockup */}
+                <div className="flex">
+                  {/* Sidebar mini */}
+                  <div
+                    className="hidden sm:flex flex-col gap-3 px-3 py-4 border-r"
+                    style={{ borderColor: "hsl(var(--border) / 0.1)", width: "56px" }}
+                  >
+                    {["⚖️", "📄", "🔍", "🤖", "📊"].map((icon, i) => (
+                      <div
+                        key={i}
+                        className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs ${
+                          i === 0 ? "ring-1 ring-primary/30" : ""
+                        }`}
+                        style={{
+                          background: i === 0 ? "hsl(var(--primary) / 0.12)" : "transparent",
+                        }}
+                      >
+                        {icon}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Main content area */}
+                  <div className="flex-1 p-4 md:p-5 space-y-3">
+                    {/* Chat-like assistant message */}
+                    <div
+                      className="rounded-xl p-4 max-w-sm"
+                      style={{ background: "hsl(var(--primary) / 0.06)", border: "1px solid hsl(var(--primary) / 0.12)" }}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold" style={{ background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}>AI</div>
+                        <span className="text-xs font-semibold text-primary">Assistente Jurídico</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Processo analisado. Encontrei <span className="text-foreground font-medium">3 precedentes favoráveis</span> no STJ e <span className="text-foreground font-medium">2 teses aplicáveis</span>. A jurisprudência está alinhada.
+                      </p>
+                    </div>
+
+                    {/* Action card */}
+                    <div
+                      className="rounded-xl p-3 max-w-xs"
+                      style={{ background: "hsl(var(--muted) / 0.3)", border: "1px solid hsl(var(--border) / 0.15)" }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs">📋</span>
+                        <span className="text-xs font-medium text-foreground">Petição Gerada</span>
+                        <span className="ml-auto text-[10px] text-muted-foreground">Agora</span>
+                      </div>
+                    </div>
+
+                    {/* Input bar */}
+                    <div
+                      className="flex items-center gap-2 rounded-xl px-4 py-2.5 mt-3"
+                      style={{ background: "hsl(var(--muted) / 0.2)", border: "1px solid hsl(var(--border) / 0.12)" }}
+                    >
+                      <span className="text-xs text-muted-foreground/50 flex-1">Analise o recurso especial...</span>
+                      <div
+                        className="w-7 h-7 rounded-lg flex items-center justify-center"
+                        style={{ background: "hsl(var(--primary))" }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="text-primary-foreground">
+                          <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right sidebar — results panel */}
+                  <div
+                    className="hidden md:block p-4 border-l"
+                    style={{ borderColor: "hsl(var(--border) / 0.1)", width: "220px" }}
+                  >
+                    <p className="text-[10px] font-semibold text-muted-foreground/70 uppercase tracking-wider mb-3">Especialistas Ativos</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {[
+                        { label: "Analista", emoji: "🦅", color: "hsl(var(--secondary) / 0.15)" },
+                        { label: "Jurimetria", emoji: "🤖", color: "hsl(var(--primary) / 0.12)" },
+                        { label: "Estratégia", emoji: "🐆", color: "hsl(var(--secondary) / 0.12)" },
+                        { label: "Busca", emoji: "🦜", color: "hsl(var(--primary) / 0.15)" },
+                      ].map((s, i) => (
+                        <div
+                          key={i}
+                          className="rounded-xl p-2.5 text-center"
+                          style={{ background: s.color, border: "1px solid hsl(var(--border) / 0.1)" }}
+                        >
+                          <span className="text-lg block mb-1">{s.emoji}</span>
+                          <span className="text-[9px] font-medium text-muted-foreground">{s.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom fade */}
+              <div
+                className="absolute -bottom-1 left-0 right-0 h-20 pointer-events-none"
+                style={{
+                  background: `linear-gradient(180deg, transparent 0%, hsl(var(--background)) 100%)`,
+                }}
+              />
+            </div>
+
+            {/* RIGHT U-SHAPE */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block relative flex-shrink-0 -ml-6 z-0"
+              style={{ width: "280px" }}
+            >
+              <svg
+                viewBox="0 0 280 320"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-auto"
+              >
+                <defs>
+                  <clipPath id="u-clip-right">
+                    <path d="M0,0 L0,200 Q0,310 140,310 Q280,310 280,200 L280,0 L240,0 L240,200 Q240,270 140,270 Q40,270 40,200 L40,0 Z" />
+                  </clipPath>
+                </defs>
+                <image
+                  href={ushapeRight}
+                  x="-60"
+                  y="-20"
+                  width="400"
+                  height="360"
+                  clipPath="url(#u-clip-right)"
+                  preserveAspectRatio="xMidYMid slice"
+                />
+                <path
+                  d="M0,0 L0,200 Q0,310 140,310 Q280,310 280,200 L280,0 M40,0 L40,200 Q40,270 140,270 Q240,270 240,200 L240,0"
+                  stroke="hsl(213 30% 30%)"
+                  strokeWidth="1.5"
+                  fill="none"
+                  opacity="0.5"
+                />
+              </svg>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
