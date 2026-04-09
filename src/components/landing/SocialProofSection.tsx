@@ -82,7 +82,7 @@ const SocialProofSection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="overflow-x-auto p-0 overflow-hidden">
+          <div className="overflow-x-auto p-0 overflow-hidden rounded-2xl border border-white/[0.06]" style={{ background: "linear-gradient(145deg, hsl(213 50% 18%) 0%, hsl(213 55% 12%) 100%)", boxShadow: "0 20px 60px -15px hsl(213 60% 6% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 6% / 0.4)" }}>
             <table className="w-full border-collapse min-w-[700px]">
               <thead>
                 <tr>
