@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Scale } from "lucide-react";
 import SectionDivider from "./SectionDivider";
 import CtaButton from "./CtaButton";
 
@@ -16,7 +15,7 @@ const differentials = [
   },
   {
     title: "A IA que sabe calar.",
-    desc: "Diferente de ferramentas que preenchem lacunas com invenção, a LegisBrasil.IA possui mecanismos de validação que impedem a criação de leis, precedentes ou jurisprudência inexistentes. Se não encontra fundamento, não fabrica um.",
+    desc: "Diferente de ferramentas que preenchem lacunas com invenção, a LegisBrasil.IA possui mecanismos de validação que impedem a criação de leis, precedentes ou jurisprudência inexistentes.",
     result: "Zero alucinação jurídica. Cada citação acompanha link auditável para a fonte oficial.",
   },
   {
@@ -32,66 +31,74 @@ const AuthoritySection = () => {
       <SectionDivider />
 
       <section id="diferenciais" className="relative py-20 md:py-28">
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-          {/* Humble-style: Centered headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-6"
-          >
-            <h2 className="font-heading text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.08]">
-              A diferença entre "usar IA" e{" "}
-              <span className="text-gradient">confiar nela.</span>
-            </h2>
-          </motion.div>
-
-          {/* Founder card — Humble style */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="flex justify-center mb-16"
-          >
-            <div className="anti-card px-6 py-4 inline-flex items-center gap-4">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
+          {/* Humble split header */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-0 mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex gap-5 md:gap-7"
+            >
               <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "hsl(var(--primary) / 0.1)" }}
-              >
-                <Scale className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="font-heading font-bold text-foreground text-sm">Dr. Ali Mazloum</p>
-                <p className="text-xs text-muted-foreground">Desembargador Federal · Fundador</p>
-              </div>
-            </div>
-          </motion.div>
+                className="hidden lg:block w-[2px] flex-shrink-0 rounded-full mt-2"
+                style={{ background: "hsl(var(--primary) / 0.4)", height: "100px" }}
+              />
+              <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.08]">
+                A diferença entre
+                <br />
+                "usar IA" e confiar nela
+                <span className="text-primary">.</span>
+              </h2>
+            </motion.div>
 
-          {/* Humble-style: Feature cards as dark rounded cards stacked */}
-          <div className="space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex items-start lg:justify-end"
+            >
+              <div className="lg:max-w-[380px] lg:border-l lg:pl-8" style={{ borderColor: "hsl(var(--border) / 0.15)" }}>
+                <p className="font-heading text-[15px] md:text-base font-semibold text-foreground leading-snug mb-3">
+                  Calibrada por quem decide, não por quem programa.
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  <span className="text-primary font-medium">Dr. Ali Mazloum</span>, Desembargador Federal com mais de 30 anos de magistratura.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Feature cards — clean grid */}
+          <div className="grid md:grid-cols-2 gap-4">
             {differentials.map((d, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.6 }}
-                className="anti-card"
+                transition={{ delay: i * 0.06, duration: 0.5 }}
+                className="rounded-xl border p-6 md:p-8 transition-all duration-300 hover:border-primary/20"
+                style={{
+                  borderColor: "hsl(var(--border) / 0.12)",
+                  background: "hsl(var(--card) / 0.3)",
+                }}
               >
-                <div className="p-6 md:p-8">
-                  <h3 className="font-heading text-lg md:text-xl font-bold text-foreground mb-3">
-                    {d.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    {d.desc}
+                <h3 className="font-heading text-base md:text-lg font-bold text-foreground mb-3 leading-snug">
+                  {d.title}
+                </h3>
+                <p className="text-[13px] text-muted-foreground leading-relaxed mb-5">
+                  {d.desc}
+                </p>
+                <div
+                  className="flex items-start gap-3 rounded-lg p-3.5"
+                  style={{ background: "hsl(var(--primary) / 0.04)", border: "1px solid hsl(var(--primary) / 0.08)" }}
+                >
+                  <span className="font-mono text-[11px] text-primary font-semibold flex-shrink-0 mt-0.5">→</span>
+                  <p className="text-[13px] font-medium text-primary leading-relaxed">
+                    {d.result}
                   </p>
-                  <div className="flex items-start gap-3 rounded-xl p-4" style={{ background: "hsl(var(--primary) / 0.05)", border: "1px solid hsl(var(--primary) / 0.1)" }}>
-                    <span className="font-mono text-xs text-primary font-semibold flex-shrink-0 mt-0.5">→ E daí?</span>
-                    <p className="text-sm font-medium text-primary leading-relaxed">
-                      {d.result}
-                    </p>
-                  </div>
                 </div>
               </motion.div>
             ))}

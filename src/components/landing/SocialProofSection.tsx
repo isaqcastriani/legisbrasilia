@@ -4,18 +4,17 @@ import SectionDivider from "./SectionDivider";
 import CtaButton from "./CtaButton";
 
 const comparisonRows = [
-  { criteria: "Treinamento jurídico brasileiro" },
-  { criteria: "Validação por magistrados" },
-  { criteria: "Dados 100% no Brasil (LGPD)" },
-  { criteria: "Anti-alucinação com fontes" },
-  { criteria: "Links auditáveis" },
-  { criteria: "Curadoria de doutrina" },
-  { criteria: "Tempo até primeira resposta útil" },
-  { criteria: "Conformidade CNJ" },
+  "Treinamento jurídico brasileiro",
+  "Validação por magistrados",
+  "Dados 100% no Brasil (LGPD)",
+  "Anti-alucinação com fontes",
+  "Links auditáveis",
+  "Curadoria de doutrina",
+  "Conformidade CNJ",
 ];
 
 const metrics = [
-  { value: "+50", label: "Juristas Validadores", desc: "Juristas e magistrados validaram e refinaram o raciocínio da plataforma." },
+  { value: "+50", label: "Juristas Validadores", desc: "Juristas e magistrados validaram o raciocínio da plataforma." },
   { value: "98%", label: "Acurácia Técnica", desc: "Em conformidade com a legislação brasileira vigente." },
   { value: "100%", label: "Links Auditáveis", desc: "Das citações possuem links para fontes oficiais dos tribunais." },
 ];
@@ -26,115 +25,132 @@ const SocialProofSection = () => {
       <SectionDivider />
 
       <section id="validacao" className="relative py-20 md:py-28">
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-          {/* Centered headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="font-heading text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.08] mb-6">
-              Quem carrega o peso da decisão judicial já testou.{" "}
-              <span className="text-gradient">E aprovou.</span>
-            </h2>
-          </motion.div>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
+          {/* Humble split header */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-0 mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex gap-5 md:gap-7"
+            >
+              <div
+                className="hidden lg:block w-[2px] flex-shrink-0 rounded-full mt-2"
+                style={{ background: "hsl(var(--primary) / 0.4)", height: "100px" }}
+              />
+              <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.08]">
+                Quem carrega o peso
+                <br />
+                da decisão judicial já testou
+                <span className="text-primary">.</span>
+              </h2>
+            </motion.div>
 
-          {/* Quote card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex items-start lg:justify-end"
+            >
+              <div className="lg:max-w-[380px] lg:border-l lg:pl-8" style={{ borderColor: "hsl(var(--border) / 0.15)" }}>
+                <p className="font-heading text-[15px] md:text-base font-semibold text-foreground leading-snug mb-3">
+                  E aprovou.
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Validada por mais de 50 juristas e magistrados antes de chegar ao seu escritório.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Quote — Humble clean card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="anti-card max-w-3xl mx-auto mb-20"
+            className="rounded-xl border p-8 md:p-12 mb-12 max-w-[900px] mx-auto"
+            style={{ borderColor: "hsl(var(--border) / 0.12)", background: "hsl(var(--card) / 0.3)" }}
           >
-            <div className="p-8 md:p-12">
-              <Quote className="w-8 h-8 text-primary/20 mb-5" />
-              <blockquote className="text-lg md:text-xl font-heading font-medium text-foreground leading-relaxed">
-                "A advocacia e a magistratura não aceitam erros. Criamos a LegisBrasil para ser o padrão de integridade digital.{" "}
-                <span className="text-primary">Se a ferramenta diz, você pode assinar embaixo.</span>"
-              </blockquote>
-              <div className="mt-8 flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-primary"
-                  style={{ background: "hsl(var(--primary) / 0.1)" }}
-                >
-                  AM
-                </div>
-                <div>
-                  <p className="font-heading font-semibold text-foreground text-sm">Dr. Ali Mazloum</p>
-                  <p className="text-xs text-muted-foreground">
-                    Desembargador Federal · Fundador da LegisBrasil.IA
-                  </p>
-                </div>
+            <Quote className="w-7 h-7 text-primary/20 mb-5" />
+            <blockquote className="text-base md:text-xl font-heading font-medium text-foreground leading-relaxed mb-8">
+              "A advocacia e a magistratura não aceitam erros. Criamos a LegisBrasil para ser o padrão de integridade digital.{" "}
+              <span className="text-primary">Se a ferramenta diz, você pode assinar embaixo.</span>"
+            </blockquote>
+            <div className="flex items-center gap-3">
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-primary"
+                style={{ background: "hsl(var(--primary) / 0.08)" }}
+              >
+                AM
+              </div>
+              <div>
+                <p className="font-heading font-semibold text-foreground text-sm">Dr. Ali Mazloum</p>
+                <p className="text-xs text-muted-foreground">Desembargador Federal · Fundador da LegisBrasil.IA</p>
               </div>
             </div>
           </motion.div>
 
           {/* Metrics row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
             {metrics.map((m, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="anti-card p-6 text-center"
+                transition={{ delay: i * 0.08 }}
+                className="rounded-xl border p-6 text-center"
+                style={{ borderColor: "hsl(var(--border) / 0.1)", background: "hsl(var(--card) / 0.2)" }}
               >
                 <p className="font-heading text-3xl font-bold text-foreground">{m.value}</p>
-                <p className="text-xs font-semibold text-primary mt-1 tracking-wide uppercase">{m.label}</p>
+                <p className="text-[11px] font-semibold text-primary mt-1 tracking-wide uppercase font-mono">{m.label}</p>
                 <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">{m.desc}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Humble-style Comparison Table */}
+          {/* Comparison table */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-foreground text-center mb-8">
-              Por Que a LegisBrasil É uma Alternativa Mais{" "}
-              <span className="text-primary">Segura e Inteligente</span>
-            </h3>
-
-            {/* Table */}
-            <div className="rounded-2xl border overflow-hidden" style={{ borderColor: "hsl(var(--border) / 0.2)" }}>
-              {/* Header */}
+            <div
+              className="rounded-xl border overflow-hidden"
+              style={{ borderColor: "hsl(var(--border) / 0.12)" }}
+            >
+              {/* Table header */}
               <div
-                className="grid grid-cols-[1.5fr_1fr_1fr_1fr] text-xs font-semibold uppercase tracking-wider"
-                style={{ background: "hsl(var(--muted) / 0.3)" }}
+                className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] text-[11px] font-semibold uppercase tracking-wider"
+                style={{ background: "hsl(var(--muted) / 0.2)" }}
               >
-                <div className="px-5 py-4 text-muted-foreground/60"></div>
-                <div className="px-5 py-4 text-center">
+                <div className="px-5 py-3.5" />
+                <div className="px-3 py-3.5 text-center">
                   <span className="inline-flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    <span className="text-primary font-bold">LegisBrasil</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span className="text-primary font-bold font-mono">Legis</span>
                   </span>
                 </div>
-                <div className="px-5 py-4 text-center text-muted-foreground/60">IA Genérica</div>
-                <div className="px-5 py-4 text-center text-muted-foreground/60">Status Quo</div>
+                <div className="px-3 py-3.5 text-center text-muted-foreground/40 font-mono">IA Gen.</div>
+                <div className="px-3 py-3.5 text-center text-muted-foreground/40 font-mono">Manual</div>
               </div>
 
-              {/* Rows */}
               {comparisonRows.map((row, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-[1.5fr_1fr_1fr_1fr] border-t"
-                  style={{ borderColor: "hsl(var(--border) / 0.1)" }}
+                  className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] border-t"
+                  style={{ borderColor: "hsl(var(--border) / 0.06)" }}
                 >
-                  <div className="px-5 py-4 text-sm text-foreground font-medium">{row.criteria}</div>
-                  <div className="px-5 py-4 flex justify-center" style={{ background: "hsl(var(--primary) / 0.04)" }}>
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  <div className="px-5 py-3.5 text-[13px] text-foreground/80">{row}</div>
+                  <div className="px-3 py-3.5 flex justify-center" style={{ background: "hsl(var(--primary) / 0.03)" }}>
+                    <CheckCircle2 className="w-4 h-4 text-primary" />
                   </div>
-                  <div className="px-5 py-4 flex justify-center">
-                    <X className="w-5 h-5 text-muted-foreground/30" />
+                  <div className="px-3 py-3.5 flex justify-center">
+                    <X className="w-4 h-4 text-muted-foreground/20" />
                   </div>
-                  <div className="px-5 py-4 flex justify-center">
-                    <X className="w-5 h-5 text-muted-foreground/30" />
+                  <div className="px-3 py-3.5 flex justify-center">
+                    <X className="w-4 h-4 text-muted-foreground/20" />
                   </div>
                 </div>
               ))}
