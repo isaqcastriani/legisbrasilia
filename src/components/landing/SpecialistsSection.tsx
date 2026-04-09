@@ -177,7 +177,7 @@ const SpecialistsSection = () => {
               }} />
               <div className="absolute inset-0 rounded-b-2xl pointer-events-none border border-white/[0.06]" />
               
-              <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[480px] rounded-b-2xl overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
+              <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[380px] max-h-[480px] rounded-b-2xl overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
               {/* Left — Text content */}
               <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
                 <div>
