@@ -131,8 +131,18 @@ const SpecialistsSection = () => {
           </h2>
         </motion.div>
 
-        {/* Outer card wrapping tabs + content */}
-        <div className="rounded-2xl border border-border/20 overflow-hidden" style={{ background: "hsl(var(--card) / 0.5)" }}>
+        {/* Outer blurred border container */}
+        <div className="relative rounded-3xl p-[2px]" style={{
+          background: "linear-gradient(145deg, hsl(var(--primary) / 0.25), hsl(var(--secondary) / 0.15), hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.2))",
+        }}>
+          {/* Blur glow behind */}
+          <div className="absolute -inset-3 rounded-[2rem] pointer-events-none" style={{
+            background: "linear-gradient(145deg, hsl(var(--primary) / 0.12), hsl(var(--secondary) / 0.08), hsl(var(--primary) / 0.06))",
+            filter: "blur(30px)",
+          }} />
+          
+          {/* Inner card */}
+          <div className="relative rounded-[22px] border border-white/[0.04] overflow-hidden" style={{ background: "hsl(var(--card) / 0.85)" }}>
           {/* Numbered tabs — Kode Mono */}
           <div className="flex items-center border-b border-border/20">
             {specialists.map((s, i) => (
