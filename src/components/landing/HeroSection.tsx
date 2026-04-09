@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Clock, AlertTriangle } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import CtaButton from "./CtaButton";
 import heroMacaw from "@/assets/hero-macaw.png";
 
@@ -18,56 +18,18 @@ const HeroSection = () => {
             transition={{ duration: 0.7 }}
             className="space-y-8"
           >
-            {/* Richard: Awareness Level 4 — "Por que nós, por que agora" */}
-            {/* Loss aversion headline — cost of inaction */}
             <h1 className="font-heading text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight text-foreground">
-              Cada Hora Manual é{" "}
+              A Única IA Jurídica{" "}
               <br className="hidden md:block" />
-              Uma Hora{" "}
-              <span className="text-gradient">Perdida</span>
+              100% Brasileira e{" "}
+              <span className="text-gradient">Validada por Especialistas</span>
             </h1>
 
-            {/* Richard: Contextualizar dor — não vender feature, vender custo da inação */}
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Enquanto você revisa 200 páginas manualmente, a IA jurídica brasileira faz em <span className="text-foreground font-medium">3 minutos</span> — com precisão validada por magistrados federais.
+              Dominamos todo o ciclo jurídico, da transcrição da prova à peça final, através da única inteligência artificial treinada exclusivamente com o raciocínio e a burocracia dos tribunais brasileiros.
             </p>
 
-            {/* Richard: Anchoring numérica — números grandes ao lado de esforço mínimo */}
-            <div className="flex items-center gap-6 text-sm">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: "hsl(var(--destructive) / 0.08)" }}>
-                <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
-                <span className="text-destructive/80">Sem IA: ~8h por processo</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: "hsl(var(--primary) / 0.08)" }}>
-                <Clock className="w-3.5 h-3.5 text-primary" />
-                <span className="text-primary">Com LEGIS: 3 min</span>
-              </div>
-            </div>
-
-            <CtaButton>TESTAR COM MEU PROCESSO REAL</CtaButton>
-
-            {/* Richard: North Star Metric = largest. Round numbers. */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="flex items-center gap-12 pt-2"
-            >
-              <div>
-                <p className="font-heading text-4xl font-bold text-primary">98%</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Precisão</p>
-              </div>
-              <div className="w-px h-8" style={{ background: "hsl(var(--border) / 0.4)" }} />
-              <div>
-                <p className="font-heading text-4xl font-bold text-foreground">+50</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Juristas</p>
-              </div>
-              <div className="w-px h-8" style={{ background: "hsl(var(--border) / 0.4)" }} />
-              <div>
-                <p className="font-heading text-4xl font-bold text-foreground">100%</p>
-                <p className="text-xs text-muted-foreground mt-0.5">LGPD</p>
-              </div>
-            </motion.div>
+            <CtaButton>ENTRAR PARA A NOVA ERA JURÍDICA</CtaButton>
           </motion.div>
 
           <motion.div

@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote, Users, Target, ShieldCheck, Link2 } from "lucide-react";
 import CtaButton from "./CtaButton";
 
-/*
- * Richard: Proof stack para nível 4 — cases, demonstração, objeções.
- * Richard: "Faça para humanos" — celebrar, tom humano, não frio.
- * Richard: Hierarchy — quote é o centro, seals são subordinados.
- * Richard: Arredonda tudo — números limpos, sem vírgula.
- */
+const seals = [
+  { icon: Users, value: "+50", label: "Juristas Validadores", desc: "Validada por mais de 50 juristas e magistrados que testaram e refinaram o raciocínio jurídico da plataforma." },
+  { icon: Target, value: "98%", label: "Precisão Certificada", desc: "Acurácia técnica em conformidade com a legislação brasileira vigente." },
+  { icon: ShieldCheck, value: "LGPD", label: "Compliance Nativo", desc: "Arquitetura desenvolvida sob os rigorosos padrões da LGPD e diretrizes do CNJ." },
+  { icon: Link2, value: "100%", label: "Rastreabilidade", desc: "Todas as citações possuem links auditáveis para fontes oficiais dos tribunais." },
+];
 
 const SocialProofSection = () => {
   return (
@@ -17,23 +17,23 @@ const SocialProofSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight mb-4">
-            Quem Valida Não É{" "}
-            <span className="text-gradient">Marketing</span>
+            Onde a Autoridade encontra a{" "}
+            <span className="text-gradient">Integridade Digital.</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            São desembargadores, procuradores e juristas com décadas de tribunal.
+            A LegisBrasil.IA não é apenas testada; ela é auditada e aprovada por quem carrega a responsabilidade da decisão judicial no Brasil.
           </p>
         </motion.div>
 
-        {/* Richard: Quote card — Resend email-card style with window chrome */}
+        {/* Quote card */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto mb-16 rounded-2xl border border-border/30 overflow-hidden"
+          className="max-w-3xl mx-auto mb-20 rounded-2xl border border-border/30 overflow-hidden"
           style={{ background: "hsl(var(--card) / 0.6)" }}
         >
           <div className="flex items-center gap-1.5 px-5 py-3 border-b border-border/20">
@@ -53,46 +53,39 @@ const SocialProofSection = () => {
               </div>
               <div>
                 <p className="font-heading font-semibold text-foreground text-sm">Dr. Ali Mazloum</p>
-                <p className="text-xs text-muted-foreground">Desembargador Federal · Fundador</p>
+                <p className="text-xs text-muted-foreground">Desembargador Federal · Fundador da LegisBrasil.IA</p>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Richard: Anchoring numérica — números grandes criam percepção de valor */}
-        <div className="grid grid-cols-3 gap-4 max-w-xl mx-auto mb-14">
-          {[
-            { value: "+50", label: "Juristas validadores" },
-            { value: "98%", label: "Precisão certificada" },
-            { value: "0", label: "Dados fora do Brasil" },
-          ].map((s, i) => (
+        {/* Seals / Badges */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-4xl mx-auto">
+          {seals.map((s, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="text-center py-6"
+              className="text-center p-6 rounded-2xl border border-border/20 hover:border-primary/20 transition-all"
+              style={{ background: "hsl(var(--card) / 0.3)" }}
             >
-              <p className={`font-heading text-3xl font-bold ${i === 2 ? "text-primary" : "text-foreground"}`}>
-                {s.value}
-              </p>
-              <p className="text-xs text-muted-foreground mt-1.5">{s.label}</p>
+              <s.icon className="w-6 h-6 text-primary mx-auto mb-3" />
+              <p className="font-heading text-2xl font-bold text-foreground">{s.value}</p>
+              <p className="text-xs font-medium text-primary mt-1">{s.label}</p>
+              <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Richard: "E daí?" — objeção handling inline */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center space-y-6"
+          className="flex justify-center mt-14"
         >
-          <p className="text-sm text-muted-foreground italic">
-            "E se a IA errar?" — Toda resposta vem com link para a fonte oficial. Se não tem fonte, não entrega.
-          </p>
-          <CtaButton>VER A PRECISÃO NA PRÁTICA</CtaButton>
+          <CtaButton>ENTRAR PARA A ERA DA INTELIGÊNCIA SEGURA</CtaButton>
         </motion.div>
       </div>
     </section>
