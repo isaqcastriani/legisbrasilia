@@ -76,19 +76,19 @@ const ParallaxCard = ({
   const Icon = card.icon;
   const FloatingIcon = card.floatingIcon;
 
-  // Cards slide up from below and scale slightly
-  const y = useTransform(scrollYProgress, [0, 1], [120, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  // Cards slide up from below
+  const y = useTransform(scrollYProgress, [0, 1], [200, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
 
   return (
     <div
       ref={ref}
       className="sticky"
       style={{
-        top: `${100 + index * 30}px`,
+        top: `${80 + index * 20}px`,
         zIndex: index + 1,
-        marginTop: index === 0 ? 0 : "-60px",
+        marginBottom: index < total - 1 ? "60vh" : 0,
       }}
     >
       <motion.div
