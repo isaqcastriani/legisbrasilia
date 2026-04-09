@@ -27,15 +27,6 @@ const HeroSection = () => {
             transition={{ duration: 0.7 }}
             className="space-y-8"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.15 }}
-              className="badge-glow"
-            >
-              <Shield className="w-4 h-4" />
-              <span>Primeira IA jurídica 100% Brasileira</span>
-            </motion.div>
 
             {/* Cernel/Console-inspired large headline */}
             <h1 className="font-heading text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight text-foreground">
