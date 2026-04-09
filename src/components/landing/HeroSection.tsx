@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import imgArara from "@/assets/macaw.png";
+import { lazy, Suspense } from "react";
+
+const PixelGlobe = lazy(() => import("./PixelGlobe"));
 
 const HeroSection = () => {
   return (
-    <section className="relative pt-[60px] dot-grid">
-      {/* Gradient overlays */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--primary) / 0.04) 0%, transparent 60%),
-                        radial-gradient(ellipse 40% 40% at 80% 20%, hsl(var(--secondary) / 0.03) 0%, transparent 50%)`,
-        }}
-      />
+    <section className="relative pt-[60px]">
+      {/* 3D Pixel Globe Background */}
+      <Suspense fallback={null}>
+        <PixelGlobe />
+      </Suspense>
 
       <div className="relative z-10 max-w-[1240px] mx-auto px-5 md:px-8">
         {/* Hero content — centered layout inspired by Mitra/AlphaHouse */}
