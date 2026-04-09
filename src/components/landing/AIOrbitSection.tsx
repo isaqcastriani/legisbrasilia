@@ -1,4 +1,11 @@
-import { motion } from "framer-motion";
+import { type MouseEvent } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 import logoLegis from "@/assets/logo-legis.png";
@@ -35,16 +42,97 @@ const logoSizeMap = {
 } as const;
 
 const AIOrbitSection = () => {
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+
+  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 22, mass: 0.35 });
+  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 22, mass: 0.35 });
+
+  const tiltX = useTransform(smoothY, [0, 1], [5, -5]);
+  const tiltY = useTransform(smoothX, [0, 1], [-7, 7]);
+  const driftX = useTransform(smoothX, [0, 1], [-18, 18]);
+  const driftY = useTransform(smoothY, [0, 1], [-14, 14]);
+  const revealX = useTransform(smoothX, (value) => `${value * 100}%`);
+  const revealY = useTransform(smoothY, (value) => `${value * 100}%`);
+
+  const pixelPlaneTransform = useMotionTemplate`perspective(1200px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translate3d(${driftX}px, ${driftY}px, 0px)`;
+  const pixelGlowTransform = useMotionTemplate`translate3d(${driftX}px, ${driftY}px, 0px)`;
+  const hoverMask = useMotionTemplate`radial-gradient(260px circle at ${revealX} ${revealY}, black 0%, rgba(0,0,0,0.94) 28%, transparent 74%)`;
+
+  const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const nextX = (event.clientX - rect.left) / rect.width;
+    const nextY = (event.clientY - rect.top) / rect.height;
+
+    mouseX.set(Math.min(1, Math.max(0, nextX)));
+    mouseY.set(Math.min(1, Math.max(0, nextY)));
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0.5);
+    mouseY.set(0.5);
+  };
+
   return (
-    <section className="relative overflow-hidden py-20 md:py-32">
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at center, hsl(var(--primary)) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
+    <section
+      className="relative overflow-hidden py-20 md:py-32"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at center, hsl(var(--primary)) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+
+        <motion.div
+          className="absolute left-1/2 top-1/2 hidden h-[72%] w-[84%] -translate-x-1/2 -translate-y-1/2 rounded-[42px] lg:block"
+          style={{
+            transform: pixelPlaneTransform,
+            backgroundImage:
+              "radial-gradient(circle, hsl(var(--primary) / 0.22) 0 1.2px, transparent 1.8px), radial-gradient(circle, hsl(var(--secondary) / 0.18) 0 1px, transparent 1.6px)",
+            backgroundSize: "18px 18px, 24px 24px",
+            backgroundPosition: "0 0, 9px 9px",
+            opacity: 0.22,
+            border: "1px solid hsl(var(--primary) / 0.08)",
+            boxShadow: "inset 0 1px 0 hsl(var(--foreground) / 0.05)",
+            WebkitMaskImage:
+              "radial-gradient(circle at center, black 24%, rgba(0,0,0,0.9) 50%, transparent 80%)",
+            maskImage:
+              "radial-gradient(circle at center, black 24%, rgba(0,0,0,0.9) 50%, transparent 80%)",
+          }}
+        />
+
+        <motion.div
+          className="absolute left-1/2 top-1/2 hidden h-[72%] w-[84%] -translate-x-1/2 -translate-y-1/2 rounded-[42px] lg:block"
+          style={{
+            transform: pixelGlowTransform,
+            backgroundImage:
+              "radial-gradient(circle, hsl(var(--primary) / 0.42) 0 1.4px, transparent 2px), radial-gradient(circle, hsl(var(--secondary) / 0.32) 0 1.1px, transparent 1.7px)",
+            backgroundSize: "18px 18px, 24px 24px",
+            backgroundPosition: "0 0, 9px 9px",
+            opacity: 0.55,
+            WebkitMaskImage: hoverMask,
+            maskImage: hoverMask,
+          }}
+        />
+
+        <motion.div
+          className="absolute left-1/2 top-1/2 hidden h-[320px] w-[320px] rounded-full blur-3xl lg:block"
+          style={{
+            transform: pixelGlowTransform,
+            x: driftX,
+            y: driftY,
+            background:
+              "radial-gradient(circle, hsl(var(--primary) / 0.12) 0%, hsl(var(--secondary) / 0.08) 35%, transparent 72%)",
+            opacity: 0.45,
+          }}
+        />
+      </div>
 
       <div className="max-w-[1240px] mx-auto px-5 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-12 lg:gap-0 items-center">
@@ -65,7 +153,7 @@ const AIOrbitSection = () => {
             </h2>
 
             <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-4">
-              Você não precisa de 10 assinaturas separadas.{' '}
+              Você não precisa de 10 assinaturas separadas.{" "}
               <span className="text-foreground font-semibold">
                 Você só precisa da LegisBrasil.
               </span>
@@ -93,12 +181,11 @@ const AIOrbitSection = () => {
             className="relative flex items-center justify-center lg:-ml-24 xl:-ml-32"
           >
             <div className="relative w-[360px] h-[360px] md:w-[520px] md:h-[520px] lg:w-[680px] lg:h-[620px]">
-              <div
-                className="absolute inset-[12%] rounded-[3rem] border border-border/20"
-                style={{ boxShadow: "0 30px 80px -40px hsl(var(--foreground) / 0.12)" }}
-              />
-
-              <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 680 620" aria-hidden="true">
+              <svg
+                className="absolute inset-0 w-full h-full opacity-30"
+                viewBox="0 0 680 620"
+                aria-hidden="true"
+              >
                 <ellipse
                   cx="390"
                   cy="300"
@@ -120,7 +207,10 @@ const AIOrbitSection = () => {
                 />
               </svg>
 
-              <div className="absolute inset-0 animate-[spin_60s_linear_infinite]" style={{ transformOrigin: "390px 300px" }}>
+              <div
+                className="absolute inset-0 animate-[spin_60s_linear_infinite]"
+                style={{ transformOrigin: "390px 300px" }}
+              >
                 {aiModels.map((model) => {
                   const rad = (model.angle * Math.PI) / 180;
                   const x = 390 + orbitRadius * Math.cos(rad);
