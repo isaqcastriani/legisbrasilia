@@ -131,46 +131,43 @@ const SpecialistsSection = () => {
           </h2>
         </motion.div>
 
-        {/* Numbered tabs — Kode Mono */}
-        <div className="flex items-center gap-0 mb-0 overflow-x-auto scrollbar-hide">
-          {specialists.map((s, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIdx(i)}
-              className={`relative flex items-center gap-2 px-5 py-3 font-mono text-[11px] md:text-[13px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 border-b-2 ${
-                i === activeIdx
-                  ? "border-primary text-foreground"
-                  : "border-transparent text-muted-foreground/50 hover:text-muted-foreground"
-              }`}
-            >
-              <span
-                className={`inline-flex items-center justify-center w-5 h-5 rounded text-[10px] font-bold border transition-colors duration-300 ${
+        {/* Outer card wrapping tabs + content */}
+        <div className="rounded-2xl border border-border/20 overflow-hidden" style={{ background: "hsl(var(--card) / 0.5)" }}>
+          {/* Numbered tabs — Kode Mono */}
+          <div className="flex items-center gap-0 overflow-x-auto scrollbar-hide border-b border-border/20 px-2">
+            {specialists.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIdx(i)}
+                className={`relative flex items-center gap-2 px-5 py-4 font-mono text-[11px] md:text-[13px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 border-b-2 -mb-px ${
                   i === activeIdx
-                    ? "border-primary text-primary"
-                    : "border-muted-foreground/20 text-muted-foreground/40"
+                    ? "border-primary text-foreground"
+                    : "border-transparent text-muted-foreground/50 hover:text-muted-foreground"
                 }`}
               >
-                {i + 1}
-              </span>
-              {s.tab}
-            </button>
-          ))}
-        </div>
+                <span
+                  className={`inline-flex items-center justify-center w-5 h-5 rounded text-[10px] font-bold border transition-colors duration-300 ${
+                    i === activeIdx
+                      ? "border-primary text-primary"
+                      : "border-muted-foreground/20 text-muted-foreground/40"
+                  }`}
+                >
+                  {i + 1}
+                </span>
+                {s.tab}
+              </button>
+            ))}
+          </div>
 
-        {/* Divider line under tabs */}
-        <div className="w-full h-px bg-border/30 mb-0" />
-
-        {/* Content card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIdx}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="rounded-b-2xl border border-t-0 border-border/20 overflow-hidden"
-            style={{ background: "hsl(var(--card) / 0.5)" }}
-          >
+          {/* Content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIdx}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            >
             <div className="grid md:grid-cols-[1fr_1.4fr] min-h-[480px]">
               {/* Left — Text content */}
               <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
