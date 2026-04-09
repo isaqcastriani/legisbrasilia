@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Scale, Shield, Eye, Lock, MessageSquare, FileCheck, Search } from "lucide-react";
-import PixelDivider from "./PixelDivider";
+import TechArrow from "./TechArrow";
 
 import bgAuth1 from "@/assets/bg-authority-1.jpg";
 import bgAuth2 from "@/assets/bg-authority-2.jpg";
@@ -94,12 +94,12 @@ const TechConnector = () => (
 const AuthoritySection = () => {
   return (
     <section id="diferenciais" className="relative">
-      {/* Pixelated top divider */}
-      <PixelDivider />
+      {/* Tech arrow divider */}
+      <TechArrow />
 
       {/* Section bg */}
       <div
-        className="relative py-20 md:py-28"
+        className="relative py-12 md:py-16"
         style={{ background: "hsl(213 55% 8%)" }}
       >
         <div className="max-w-[1240px] mx-auto px-5 md:px-8">
@@ -108,7 +108,7 @@ const AuthoritySection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-10"
           >
             <span className="section-label mb-5 block">Diferenciais</span>
             <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.06]">
@@ -271,8 +271,6 @@ const AuthoritySection = () => {
         </div>
       </div>
 
-      {/* Pixelated bottom divider */}
-      <PixelDivider flip />
     </section>
   );
 };
