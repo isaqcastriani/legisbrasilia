@@ -66,19 +66,32 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-4 pb-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4 pb-8"
         >
-          {/* Left card — Problem statement */}
-          <div className="bento-card p-7 md:p-9 flex flex-col justify-between min-h-[280px]">
-            <div>
+          {/* Left card — Problem statement with 3D depth */}
+          <div
+            className="relative rounded-2xl p-7 md:p-9 flex flex-col justify-between min-h-[300px] overflow-hidden border border-white/[0.06]"
+            style={{
+              background: "linear-gradient(145deg, hsl(213 50% 18%) 0%, hsl(213 55% 12%) 100%)",
+              boxShadow: "0 20px 60px -15px hsl(213 60% 6% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 6% / 0.4)",
+            }}
+          >
+            {/* Subtle gradient orb */}
+            <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none opacity-30"
+              style={{ background: "radial-gradient(circle, hsl(var(--secondary) / 0.4) 0%, transparent 70%)" }}
+            />
+            <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full pointer-events-none opacity-20"
+              style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%)" }}
+            />
+            <div className="relative z-10">
               <p className="font-heading text-lg md:text-xl font-bold text-foreground leading-snug mb-3">
                 Ferramentas genéricas inventam leis que não existem.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                <span className="text-primary font-medium">Dominamos todo o ciclo jurídico</span>, da transcrição da prova à peça final.
+                <span className="text-secondary font-medium">Dominamos todo o ciclo jurídico</span>, da transcrição da prova à peça final.
               </p>
             </div>
-            <div className="mt-6">
+            <div className="relative z-10 mt-6">
               <a
                 href="#contato"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
@@ -88,40 +101,33 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Center — Arara character */}
-          <div className="bento-card flex items-center justify-center p-6 relative overflow-hidden w-full lg:w-[300px]">
-            <div
-              className="absolute inset-0 opacity-20 pointer-events-none"
-              style={{
-                background: `radial-gradient(circle at center, hsl(var(--secondary) / 0.3) 0%, transparent 70%)`,
-              }}
-            />
-            <img
-              src={imgArara}
-              alt="Arara Azul"
-              className="relative w-[180px] md:w-[220px] drop-shadow-2xl object-contain"
-            />
-          </div>
-
-          {/* Right card — Product mockup */}
+          {/* Right card — Product mockup with 3D depth */}
           <div
-            className="bento-card overflow-hidden"
+            className="relative rounded-2xl overflow-hidden border border-white/[0.06]"
+            style={{
+              background: "linear-gradient(160deg, hsl(220 45% 16%) 0%, hsl(210 50% 10%) 100%)",
+              boxShadow: "0 20px 60px -15px hsl(213 60% 6% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 6% / 0.4)",
+            }}
           >
+            {/* Subtle gradient orb */}
+            <div className="absolute top-10 right-10 w-40 h-40 rounded-full pointer-events-none opacity-20"
+              style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.4) 0%, transparent 70%)" }}
+            />
             {/* Browser chrome */}
             <div
-              className="flex items-center gap-2 px-4 py-2.5 border-b"
-              style={{ borderColor: "hsl(var(--border) / 0.08)", background: "hsl(var(--muted) / 0.2)" }}
+              className="flex items-center gap-2 px-4 py-2.5 border-b relative z-10"
+              style={{ borderColor: "hsl(0 0% 100% / 0.04)", background: "hsl(0 0% 100% / 0.02)" }}
             >
-              <div className="w-2 h-2 rounded-full" style={{ background: "hsl(var(--destructive) / 0.4)" }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: "hsl(var(--primary) / 0.35)" }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: "hsl(var(--secondary) / 0.35)" }} />
+              <div className="w-2 h-2 rounded-full" style={{ background: "hsl(var(--destructive) / 0.5)" }} />
+              <div className="w-2 h-2 rounded-full" style={{ background: "hsl(var(--primary) / 0.45)" }} />
+              <div className="w-2 h-2 rounded-full" style={{ background: "hsl(var(--secondary) / 0.45)" }} />
               <span className="ml-2 text-[10px] text-muted-foreground/40 font-mono">LegisBrasil.IA</span>
             </div>
             {/* Content */}
-            <div className="p-5 space-y-3">
+            <div className="p-5 space-y-3 relative z-10">
               <div
                 className="rounded-lg p-3.5"
-                style={{ background: "hsl(var(--primary) / 0.04)", border: "1px solid hsl(var(--primary) / 0.08)" }}
+                style={{ background: "hsl(var(--primary) / 0.06)", border: "1px solid hsl(var(--primary) / 0.1)" }}
               >
                 <div className="flex items-center gap-2 mb-1.5">
                   <div className="w-4 h-4 rounded-full flex items-center justify-center text-[6px] font-bold" style={{ background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}>AI</div>
@@ -133,7 +139,7 @@ const HeroSection = () => {
               </div>
               <div
                 className="rounded-lg p-2.5 flex items-center gap-2"
-                style={{ background: "hsl(var(--muted) / 0.15)", border: "1px solid hsl(var(--border) / 0.06)" }}
+                style={{ background: "hsl(0 0% 100% / 0.03)", border: "1px solid hsl(0 0% 100% / 0.04)" }}
               >
                 <span className="text-[10px]">📋</span>
                 <span className="text-[10px] font-medium text-foreground">Petição Gerada</span>
@@ -141,7 +147,7 @@ const HeroSection = () => {
               </div>
               <div
                 className="flex items-center gap-2 rounded-lg px-3 py-2"
-                style={{ background: "hsl(var(--muted) / 0.1)", border: "1px solid hsl(var(--border) / 0.06)" }}
+                style={{ background: "hsl(0 0% 100% / 0.02)", border: "1px solid hsl(0 0% 100% / 0.04)" }}
               >
                 <span className="text-[10px] text-muted-foreground/30 flex-1">Analise o recurso...</span>
                 <div className="w-5 h-5 rounded flex items-center justify-center" style={{ background: "hsl(var(--primary))" }}>
