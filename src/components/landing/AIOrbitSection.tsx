@@ -260,7 +260,7 @@ const AIOrbitSection = () => {
                           <img
                             src={model.logo}
                             alt={model.name}
-                            className={`${logoSize} object-contain`}
+                            className={`${logoSize} object-contain rounded-full`}
                             loading="lazy"
                           />
                         </div>
