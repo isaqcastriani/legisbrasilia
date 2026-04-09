@@ -150,17 +150,17 @@ const AIOrbitSection = () => {
             transition={{ duration: 0.6 }}
             className="relative z-20"
           >
-            <div className="absolute -inset-x-8 top-[35%] -bottom-4 rounded-3xl pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 30%, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.7) 50%, transparent 85%)", filter: "blur(20px)" }} />
-            <span className="inline-flex items-center gap-2 text-[11px] font-mono font-semibold tracking-widest uppercase text-primary mb-5">
+            <div className="absolute -inset-x-12 -inset-y-6 rounded-3xl pointer-events-none z-10" style={{ background: "radial-gradient(ellipse at 50% 50%, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.8) 45%, transparent 80%)", filter: "blur(24px)" }} />
+            <span className="relative z-20 inline-flex items-center gap-2 text-[11px] font-mono font-semibold tracking-widest uppercase text-primary mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Integrações
             </span>
 
-            <h2 className="font-heading text-[1.9rem] md:text-[2.8rem] lg:text-[4rem] font-bold text-foreground leading-[0.98] mb-5 max-w-[11ch]">
+            <h2 className="relative z-20 font-heading text-[1.9rem] md:text-[2.8rem] lg:text-[4rem] font-bold text-foreground leading-[0.98] mb-5 max-w-[11ch]">
               Curadoria de Inteligência Global
             </h2>
 
-            <div className="relative z-30">
+            <div className="relative z-20">
               <p className="relative text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-4" style={{ textShadow: "0 0 20px hsl(213 60% 11%), 0 0 40px hsl(213 60% 11%), 0 0 60px hsl(213 60% 11%)" }}>
                 Você não precisa de 10 assinaturas separadas.{" "}
                 <span className="text-foreground font-semibold">
