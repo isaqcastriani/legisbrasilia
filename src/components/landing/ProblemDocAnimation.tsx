@@ -100,8 +100,6 @@ const ProblemDocAnimation = () => {
           background: "hsl(213 50% 6%)",
           boxShadow:
             "0 40px 80px -30px hsl(213 60% 3% / 0.9), 0 0 60px -20px hsl(var(--primary) / 0.08), inset 0 1px 0 hsl(0 0% 100% / 0.04)",
-          transform: "perspective(1200px) rotateY(-2deg) rotateX(2deg)",
-          transformStyle: "preserve-3d",
         }}
       >
         {/* Window chrome */}
