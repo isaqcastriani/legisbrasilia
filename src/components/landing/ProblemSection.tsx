@@ -73,7 +73,7 @@ const ProblemSection = () => {
         </div>
 
         {/* 3D Document Animation */}
-        <div className="mb-12 md:mb-16 max-w-[780px] mx-auto">
+        <div className="mb-12 md:mb-16 w-full">
           <ProblemDocAnimation />
         </div>
 
