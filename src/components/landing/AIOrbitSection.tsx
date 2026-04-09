@@ -36,7 +36,7 @@ const logoSizeMap = {
 
 const AIOrbitSection = () => {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
+    <section className="relative overflow-hidden py-20 md:py-32">
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -47,7 +47,7 @@ const AIOrbitSection = () => {
       />
 
       <div className="max-w-[1240px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-12 lg:gap-0 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-0 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -64,5 +64,5 @@ const AIOrbitSection = () => {
               Curadoria de Inteligência Global
             </h2>
 
-            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-5">
+            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-4">
               Você não precisa de 10 assinaturas separadas.{
