@@ -30,10 +30,10 @@ const aiModels = [
   { name: "Llama 4", logo: llama, size: "lg", angle: 142 },
 ] as const;
 
-const orbitRadius = 220;
+const orbitRadius = 280;
 const stepAngle = 360 / aiModels.length;
-const diskSize = "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28";
-const logoSize = "w-9 h-9 md:w-11 md:h-11";
+const diskSize = "w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44";
+const logoSize = "w-12 h-12 md:w-16 md:h-16";
 
 const AIOrbitSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -159,22 +159,24 @@ const AIOrbitSection = () => {
               Curadoria de Inteligência Global
             </h2>
 
-            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-4">
-              Você não precisa de 10 assinaturas separadas.{" "}
-              <span className="text-foreground font-semibold">
-                Você só precisa da LegisBrasil.
-              </span>
-            </p>
+            <div className="relative z-30">
+              <p className="relative text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-4" style={{ textShadow: "0 0 20px hsl(213 60% 11%), 0 0 40px hsl(213 60% 11%), 0 0 60px hsl(213 60% 11%)" }}>
+                Você não precisa de 10 assinaturas separadas.{" "}
+                <span className="text-foreground font-semibold">
+                  Você só precisa da LegisBrasil.
+                </span>
+              </p>
 
-            <div className="mb-8" />
+              <div className="mb-8" />
 
-            <a
-              href="#contato"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-heading font-semibold text-primary-foreground cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all"
-            >
-              Solicitar Acesso
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              <a
+                href="#contato"
+                className="relative inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-heading font-semibold text-primary-foreground cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all"
+              >
+                Solicitar Acesso
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
 
             <div className="mt-4 min-h-[52px] max-w-sm">
               <AnimatePresence mode="wait">
@@ -198,7 +200,7 @@ const AIOrbitSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative flex items-center justify-center lg:-ml-24 xl:-ml-32"
+            className="relative flex items-center justify-center lg:-ml-48 xl:-ml-56"
           >
             <div className="relative w-[360px] h-[360px] md:w-[520px] md:h-[520px] lg:w-[680px] lg:h-[620px]">
               <svg
