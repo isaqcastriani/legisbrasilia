@@ -50,7 +50,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-muted-foreground text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto mb-10"
           >
-            Dominamos todo o ciclo jurídico, da transcrição da prova à peça final, através da única inteligência artificial treinada exclusivamente com o raciocínio dos tribunais brasileiros.
+            <span className="text-secondary font-medium">Dominamos todo o ciclo jurídico</span>, da transcrição da prova à peça final, através da única inteligência artificial treinada exclusivamente com o raciocínio dos tribunais brasileiros.
           </motion.p>
 
           {/* CTA — centered pill */}
