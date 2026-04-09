@@ -190,12 +190,26 @@ const ContactFormSection = () => {
                   Junte-se aos profissionais que escolheram trocar volume de trabalho mecânico por precisão validada.
                 </p>
               </div>
-              <p
-                className="text-[12px] leading-relaxed"
-                style={{ color: "hsl(var(--primary-foreground) / 0.5)" }}
-              >
-                Sem cartão de crédito. Sem compromisso. Com a segurança de quem leva o Direito a sério.
-              </p>
+
+              <div className="relative pt-14">
+                <p
+                  className="text-[14px] md:text-[16px] leading-relaxed max-w-[26rem] font-medium pr-20"
+                  style={{ color: "hsl(var(--primary-foreground) / 0.72)" }}
+                >
+                  Sem cartão de crédito. Sem compromisso. Com a segurança de quem leva o Direito a sério.
+                </p>
+
+                <div className="absolute right-0 bottom-1 hidden md:flex items-center" aria-hidden="true">
+                  <div className="flex flex-col gap-3 mr-3 opacity-35">
+                    <span className="block h-px w-20 animate-[pulse_3.2s_ease-in-out_infinite]" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--primary-foreground) / 0.22) 100%)" }} />
+                    <span className="block h-px w-12 animate-[pulse_2.8s_ease-in-out_infinite]" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--primary-foreground) / 0.18) 100%)" }} />
+                  </div>
+                  <div className="relative flex items-center justify-center w-7 h-7 rounded-full border" style={{ borderColor: "hsl(var(--primary-foreground) / 0.45)", background: "hsl(var(--primary-foreground) / 0.05)" }}>
+                    <div className="absolute inset-0 rounded-full animate-ping" style={{ background: "hsl(var(--primary-foreground) / 0.10)" }} />
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: "hsl(var(--primary-foreground))" }} />
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right — Form card with 3D effect */}
