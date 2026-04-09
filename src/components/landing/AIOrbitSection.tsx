@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 import logoLegis from "@/assets/logo-legis.png";
-import gpt5 from "@/assets/ai-logos/gpt5.png";
-import claude from "@/assets/ai-logos/claude.png";
-import gemini from "@/assets/ai-logos/gemini.png";
-import perplexity from "@/assets/ai-logos/perplexity.png";
-import mistral from "@/assets/ai-logos/mistral.png";
-import deepseek from "@/assets/ai-logos/deepseek.png";
-import llama from "@/assets/ai-logos/llama.png";
-import sabia from "@/assets/ai-logos/sabia.png";
+import gpt5 from "@/assets/ai-logos/openai-upload.png";
+import claude from "@/assets/ai-logos/claude-upload.png";
+import gemini from "@/assets/ai-logos/gemini-upload.png";
+import perplexity from "@/assets/ai-logos/perplexity-upload.png";
+import mistral from "@/assets/ai-logos/mistral-upload.png";
+import deepseek from "@/assets/ai-logos/deepseek-upload.png";
+import llama from "@/assets/ai-logos/meta-upload.png";
+import sabia from "@/assets/ai-logos/sabia-upload.png";
 
 const aiModels = [
   { name: "GPT-5", logo: gpt5, size: "sm", angle: -148 },
