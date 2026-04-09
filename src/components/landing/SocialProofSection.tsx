@@ -74,96 +74,109 @@ const SocialProofSection = () => {
           </p>
         </motion.div>
 
-        {/* Comparison Table — Humble Factory style */}
+        {/* Comparison Table — Humble style */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="overflow-x-auto">
+          <div
+            className="overflow-x-auto rounded-2xl border"
+            style={{
+              borderColor: "hsl(var(--border) / 0.1)",
+              background: "hsl(213 40% 96%)",
+            }}
+          >
             <table className="w-full border-collapse min-w-[700px]">
-              {/* Table Header */}
+              {/* Header */}
               <thead>
                 <tr>
-                  <th className="w-[180px]" />
+                  <th className="w-[200px]" />
                   <th
-                    className="px-5 py-5 text-left"
+                    className="px-6 pt-6 pb-4 text-center w-[220px]"
                     style={{
-                      background: "hsl(var(--primary) / 0.08)",
-                      borderTopLeftRadius: "16px",
-                      borderTopRightRadius: "16px",
+                      background: "hsl(var(--primary))",
+                      borderTopLeftRadius: "12px",
+                      borderTopRightRadius: "12px",
                     }}
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-col items-center gap-2">
                       <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center"
-                        style={{ background: "hsl(var(--primary))" }}
+                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                        style={{ background: "hsl(0 0% 100% / 0.2)" }}
                       >
-                        <span className="text-primary-foreground text-xs font-bold">LB</span>
+                        <span className="text-primary-foreground text-sm font-bold">LB</span>
                       </div>
                     </div>
                   </th>
-                  <th className="px-5 py-5 text-center">
-                    <span className="font-heading text-sm font-bold text-foreground">
+                  <th className="px-6 pt-6 pb-4 text-center w-[200px]">
+                    <span className="font-heading text-sm font-bold" style={{ color: "hsl(213 20% 25%)" }}>
                       IA Genérica
                     </span>
                     <br />
-                    <span className="text-[10px] text-muted-foreground/50 font-mono">ChatGPT/Gemini/etc</span>
+                    <span className="text-[10px] font-mono" style={{ color: "hsl(213 15% 50%)" }}>ChatGPT/Gemini/etc</span>
                   </th>
-                  <th className="px-5 py-5 text-center">
-                    <span className="font-heading text-sm font-bold text-foreground">
+                  <th className="px-6 pt-6 pb-4 text-center w-[200px]">
+                    <span className="font-heading text-sm font-bold" style={{ color: "hsl(213 20% 25%)" }}>
                       Status Quo
                     </span>
                     <br />
-                    <span className="text-[10px] text-muted-foreground/50 font-mono">(Pesquisa Manual)</span>
+                    <span className="text-[10px] font-mono" style={{ color: "hsl(213 15% 50%)" }}>(Pesquisa Manual)</span>
                   </th>
                 </tr>
               </thead>
 
-              {/* Table Body */}
+              {/* Body */}
               <tbody>
-                {comparisonData.map((row, i) => (
-                  <tr
-                    key={i}
-                    className="border-t"
-                    style={{ borderColor: "hsl(var(--border) / 0.08)" }}
-                  >
-                    {/* Feature name */}
-                    <td className="px-4 py-4 text-[13px] font-medium text-foreground/70 align-top">
-                      {row.feature}
-                    </td>
-
-                    {/* Legis column — highlighted */}
-                    <td
-                      className="px-5 py-4 align-top"
+                {comparisonData.map((row, i) => {
+                  const isLast = i === comparisonData.length - 1;
+                  return (
+                    <tr
+                      key={i}
                       style={{
-                        background: "hsl(var(--primary) / 0.08)",
-                        ...(i === comparisonData.length - 1
-                          ? { borderBottomLeftRadius: "16px", borderBottomRightRadius: "16px" }
-                          : {}),
+                        borderTop: "1px solid hsl(213 30% 88%)",
                       }}
                     >
-                      <span className="text-[12px] font-semibold text-primary leading-relaxed">
-                        {row.legis}
-                      </span>
-                    </td>
+                      {/* Feature name */}
+                      <td
+                        className="px-6 py-5 text-[13px] font-medium align-top"
+                        style={{ color: "hsl(213 20% 30%)" }}
+                      >
+                        {row.feature}
+                      </td>
 
-                    {/* IA Gen column */}
-                    <td className="px-5 py-4 text-center align-top">
-                      <span className="text-[12px] text-muted-foreground/50 leading-relaxed">
-                        {row.iaGen}
-                      </span>
-                    </td>
+                      {/* LegisBrasil column — highlighted */}
+                      <td
+                        className="px-6 py-5 align-top"
+                        style={{
+                          background: "hsl(var(--primary))",
+                          ...(isLast
+                            ? { borderBottomLeftRadius: "12px", borderBottomRightRadius: "12px" }
+                            : {}),
+                        }}
+                      >
+                        <span className="text-[12px] font-bold text-primary-foreground leading-relaxed">
+                          {row.legis}
+                        </span>
+                      </td>
 
-                    {/* Manual column */}
-                    <td className="px-5 py-4 text-center align-top">
-                      <span className="text-[12px] text-muted-foreground/50 leading-relaxed">
-                        {row.manual}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                      {/* IA Gen column */}
+                      <td className="px-6 py-5 text-center align-top">
+                        <span className="text-[12px] leading-relaxed" style={{ color: "hsl(213 15% 50%)" }}>
+                          {row.iaGen}
+                        </span>
+                      </td>
+
+                      {/* Manual column */}
+                      <td className="px-6 py-5 text-center align-top">
+                        <span className="text-[12px] leading-relaxed" style={{ color: "hsl(213 15% 50%)" }}>
+                          {row.manual}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
