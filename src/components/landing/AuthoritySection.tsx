@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Scale, Shield, Eye, Lock, MessageSquare, FileCheck, Search } from "lucide-react";
 
 import bgAuth1 from "@/assets/bg-authority-1.jpg";
