@@ -1,8 +1,7 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 
-const COLS = 60;
-const ROWS = 6;
-const CELL_SIZE = 100 / COLS; // percentage width
+const COLS = 80;
+const ROWS = 8;
 
 const PixelDivider = ({ flip = false }: { flip?: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -15,7 +14,6 @@ const PixelDivider = ({ flip = false }: { flip?: boolean }) => {
     const onScroll = () => {
       const rect = el.getBoundingClientRect();
       const viewH = window.innerHeight;
-      // Start revealing when element enters viewport, complete when it's centered
       const raw = 1 - (rect.top - viewH * 0.7) / (viewH * 0.5);
       setProgress(Math.max(0, Math.min(1, raw)));
     };
@@ -25,25 +23,31 @@ const PixelDivider = ({ flip = false }: { flip?: boolean }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Pre-compute thresholds for each cell (wave pattern)
-  const cells = [];
-  for (let row = 0; row < ROWS; row++) {
-    for (let col = 0; col < COLS; col++) {
-      // Normalize position. Row 0 = top (fills first when not flipped)
-      const normalizedRow = flip ? (ROWS - 1 - row) : row;
-      // Wave pattern based on column
-      const wave = Math.sin(col * 0.35) * 0.8 + Math.cos(col * 0.6) * 0.5;
-      // Threshold: lower = fills earlier. Top rows + wave peaks fill first
-      const threshold = (normalizedRow / ROWS) + (wave * 0.15) + (Math.random() * 0.05);
-      cells.push({ row, col, threshold });
+  const cells = useMemo(() => {
+    // Simple seeded pseudo-random for stable values
+    const seed = (n: number) => {
+      let x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+      return x - Math.floor(x);
+    };
+
+    const result = [];
+    for (let row = 0; row < ROWS; row++) {
+      for (let col = 0; col < COLS; col++) {
+        const normalizedRow = flip ? (ROWS - 1 - row) : row;
+        const wave = Math.sin(col * 0.35) * 0.8 + Math.cos(col * 0.6) * 0.5;
+        const rnd = seed(row * COLS + col) * 0.05;
+        const threshold = (normalizedRow / ROWS) + (wave * 0.15) + rnd;
+        result.push({ row, col, threshold });
+      }
     }
-  }
+    return result;
+  }, [flip]);
 
   return (
     <div
       ref={ref}
       className={`w-full overflow-hidden relative z-10 ${flip ? "rotate-180" : ""}`}
-      style={{ height: `${ROWS * 16}px`, marginTop: flip ? 0 : "-1px", marginBottom: flip ? "-1px" : 0 }}
+      style={{ height: `${ROWS * 14}px`, marginTop: flip ? 0 : "-1px", marginBottom: flip ? "-1px" : 0 }}
     >
       <div
         className="grid w-full h-full"
@@ -59,7 +63,7 @@ const PixelDivider = ({ flip = false }: { flip?: boolean }) => {
               key={idx}
               style={{
                 background: filled
-                  ? "hsl(213 55% 8%)"
+                  ? "hsl(var(--background))"
                   : "transparent",
                 transition: "background 0.15s ease",
               }}
