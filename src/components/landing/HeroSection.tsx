@@ -106,7 +106,7 @@ const HeroSection = () => {
             </h1>
           </motion.div>
 
-          {/* CENTER — Arara cibernética animada */}
+          {/* CENTER — Arara cibernética VIDEO */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -118,21 +118,15 @@ const HeroSection = () => {
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[120px] opacity-15 pointer-events-none"
               style={{ background: "hsl(var(--secondary))" }}
             />
-            <motion.img
-              src={heroArara}
-              alt="Arara-Azul cibernética — LegisBrasil.IA"
+            <video
+              src={heroAraraVideo.url}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="relative w-[280px] md:w-[340px] lg:w-[420px] drop-shadow-2xl"
-              width={1024}
-              height={1024}
-              animate={{
-                y: [0, -12, 0],
-                rotateZ: [0, 1, -1, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              style={{ mixBlendMode: "lighten" }}
+            />
             />
           </motion.div>
 
