@@ -2,9 +2,9 @@ import { useRef, useMemo, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
-const GLOBE_RADIUS = 2.8;
+const GLOBE_RADIUS = 2.0;
 const PARTICLE_COUNT = 8000;
-const PIXEL_SIZE = 0.04;
+const PIXEL_SIZE = 0.035;
 
 // Generate points on a sphere with land-mass-like density patterns
 function generateGlobePoints(count: number, radius: number) {
@@ -182,7 +182,7 @@ function Particles() {
         size={PIXEL_SIZE}
         sizeAttenuation
         transparent
-        opacity={0.85}
+        opacity={0.45}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
