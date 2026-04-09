@@ -1,8 +1,9 @@
 const SectionDivider = () => (
-  <div className="flex flex-col items-center py-8 md:py-12">
-    <div className="w-[3px] h-[3px] rounded-full bg-primary/50" />
-    <div className="w-px h-10 md:h-16" style={{ background: "hsl(var(--border) / 0.15)" }} />
-    <div className="w-[3px] h-[3px] rounded-full bg-primary/50" />
+  <div className="max-w-[1240px] mx-auto px-5 md:px-8">
+    <div
+      className="w-full h-px"
+      style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--border) / 0.15) 20%, hsl(var(--border) / 0.15) 80%, transparent 100%)" }}
+    />
   </div>
 );
 
