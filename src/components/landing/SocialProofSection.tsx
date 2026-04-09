@@ -134,6 +134,9 @@ const SocialProofSection = () => {
                         className="px-6 py-5 align-top"
                         style={{
                           background: "hsl(var(--primary))",
+                          ...(i === 0
+                            ? { borderTopLeftRadius: "12px", borderTopRightRadius: "12px" }
+                            : {}),
                           ...(isLast
                             ? { borderBottomLeftRadius: "12px", borderBottomRightRadius: "12px" }
                             : {}),
