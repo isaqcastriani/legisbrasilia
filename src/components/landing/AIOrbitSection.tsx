@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
 import logoLegis from "@/assets/logo-legis.png";
 import gpt5 from "@/assets/ai-logos/gpt5.png";
 import claude from "@/assets/ai-logos/claude.png";
@@ -10,22 +12,31 @@ import llama from "@/assets/ai-logos/llama.png";
 import sabia from "@/assets/ai-logos/sabia.png";
 
 const aiModels = [
-  { name: "GPT-5", company: "OpenAI", logo: gpt5 },
-  { name: "Claude 4", company: "Anthropic", logo: claude },
-  { name: "Gemini 3", company: "Google", logo: gemini },
-  { name: "Perplexity", company: "Perplexity AI", logo: perplexity },
-  { name: "Sabiá-2", company: "Maritaca AI", logo: sabia },
-  { name: "Mistral", company: "Mistral AI", logo: mistral },
-  { name: "DeepSeek", company: "DeepSeek", logo: deepseek },
-  { name: "Llama 4", company: "Meta", logo: llama },
-];
+  { name: "GPT-5", logo: gpt5, size: "sm", angle: -148 },
+  { name: "Claude 4", logo: claude, size: "sm", angle: -110 },
+  { name: "Gemini 3", logo: gemini, size: "sm", angle: -72 },
+  { name: "Perplexity", logo: perplexity, size: "md", angle: -28 },
+  { name: "Sabiá-2", logo: sabia, size: "sm", angle: 14 },
+  { name: "Mistral", logo: mistral, size: "sm", angle: 58 },
+  { name: "DeepSeek", logo: deepseek, size: "md", angle: 102 },
+  { name: "Llama 4", logo: llama, size: "lg", angle: 142 },
+] as const;
+
+const orbitRadius = 235;
+const diskSizeMap = {
+  sm: "w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24",
+  md: "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28",
+  lg: "w-24 h-24 md:w-28 md:h-28 lg:w-36 lg:h-36",
+} as const;
+const logoSizeMap = {
+  sm: "w-8 h-8 md:w-10 md:h-10",
+  md: "w-10 h-10 md:w-12 md:h-12",
+  lg: "w-12 h-12 md:w-16 md:h-16",
+} as const;
 
 const AIOrbitSection = () => {
-  const orbitRadius = 260;
-
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
-      {/* Subtle radial grid background */}
+    <section className="relative overflow-hidden py-20 md:py-32">
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -36,154 +47,140 @@ const AIOrbitSection = () => {
       />
 
       <div className="max-w-[1240px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-8 items-center">
-          {/* Left — Copy */}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-12 lg:gap-0 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="relative z-20"
           >
             <span className="inline-flex items-center gap-2 text-[11px] font-mono font-semibold tracking-widest uppercase text-primary mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Integrações
             </span>
-            <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.06] mb-5">
+
+            <h2 className="font-heading text-[1.9rem] md:text-[2.8rem] lg:text-[4rem] font-bold text-foreground leading-[0.98] mb-5 max-w-[11ch]">
               Curadoria de Inteligência Global
             </h2>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md mb-8">
-              Você não precisa de 10 assinaturas separadas.{" "}
+
+            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-4">
+              Você não precisa de 10 assinaturas separadas.{' '}
               <span className="text-foreground font-semibold">
                 Você só precisa da LegisBrasil.
               </span>
             </p>
-            <p className="text-muted-foreground/60 text-xs leading-relaxed max-w-sm">
-              Combinamos os melhores modelos de IA do mundo — GPT-5, Claude, Gemini, Llama e mais — em uma única plataforma treinada para o Direito brasileiro.
+
+            <p className="text-muted-foreground/70 text-xs md:text-sm leading-relaxed max-w-md mb-8">
+              Os melhores modelos de IA trabalham juntos em uma única camada jurídica,
+              com curadoria para o contexto brasileiro.
             </p>
+
+            <a
+              href="#contato"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-heading font-semibold text-primary-foreground cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all"
+            >
+              Solicitar Acesso
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
 
-          {/* Right — Orbital wheel */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex items-center justify-center"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="relative flex items-center justify-center lg:-ml-24 xl:-ml-32"
           >
-            <div className="relative w-[340px] h-[340px] md:w-[580px] md:h-[580px]">
-              {/* Orbit rings */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 580 580">
-                <circle
-                  cx="290"
-                  cy="290"
-                  r={orbitRadius}
+            <div className="relative w-[360px] h-[360px] md:w-[520px] md:h-[520px] lg:w-[680px] lg:h-[620px]">
+              <div
+                className="absolute inset-[12%] rounded-[3rem] border border-border/20"
+                style={{ boxShadow: "0 30px 80px -40px hsl(var(--foreground) / 0.12)" }}
+              />
+
+              <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 680 620" aria-hidden="true">
+                <ellipse
+                  cx="390"
+                  cy="300"
+                  rx="255"
+                  ry="220"
                   fill="none"
-                  stroke="hsl(var(--border))"
+                  stroke="hsl(var(--border) / 0.18)"
                   strokeWidth="1"
-                  opacity="0.15"
                 />
-                <circle
-                  cx="290"
-                  cy="290"
-                  r={orbitRadius * 0.6}
+                <ellipse
+                  cx="390"
+                  cy="300"
+                  rx="180"
+                  ry="150"
                   fill="none"
-                  stroke="hsl(var(--border))"
-                  strokeWidth="0.5"
-                  opacity="0.08"
-                  strokeDasharray="4 8"
+                  stroke="hsl(var(--border) / 0.12)"
+                  strokeWidth="1"
+                  strokeDasharray="5 8"
                 />
-                {/* Cross lines */}
-                <line x1="290" y1={290 - orbitRadius - 20} x2="290" y2={290 + orbitRadius + 20} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.06" />
-                <line x1={290 - orbitRadius - 20} y1="290" x2={290 + orbitRadius + 20} y2="290" stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.06" />
               </svg>
 
-              {/* Spinning orbit container */}
-              <div
-                className="absolute inset-0 animate-[spin_60s_linear_infinite]"
-                style={{ transformOrigin: "center center" }}
-              >
-                {aiModels.map((model, i) => {
-                  const angle = (i / aiModels.length) * 360;
-                  const rad = (angle * Math.PI) / 180;
-                  const cx = 50 + (orbitRadius / 580) * 100 * Math.cos(rad);
-                  const cy = 50 + (orbitRadius / 580) * 100 * Math.sin(rad);
+              <div className="absolute inset-0 animate-[spin_60s_linear_infinite]" style={{ transformOrigin: "390px 300px" }}>
+                {aiModels.map((model) => {
+                  const rad = (model.angle * Math.PI) / 180;
+                  const x = 390 + orbitRadius * Math.cos(rad);
+                  const y = 300 + 220 * Math.sin(rad);
 
                   return (
                     <div
                       key={model.name}
                       className="absolute -translate-x-1/2 -translate-y-1/2"
-                      style={{
-                        left: `${cx}%`,
-                        top: `${cy}%`,
-                      }}
+                      style={{ left: x, top: y }}
                     >
-                      {/* Counter-rotate to keep icons upright */}
-                      <div className="animate-[spin_60s_linear_infinite_reverse] flex flex-col items-center">
+                      <div className="animate-[spin_60s_linear_infinite_reverse]">
                         <div
-                          className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center border border-white/[0.06] shadow-lg"
+                          className={`${diskSizeMap[model.size]} rounded-full border border-border/25 backdrop-blur-md flex items-center justify-center`}
                           style={{
                             background:
-                              "linear-gradient(145deg, hsl(213 50% 15%) 0%, hsl(213 55% 10%) 100%)",
+                              "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.08), hsl(var(--background) / 0.96) 70%)",
+                            boxShadow:
+                              "0 30px 60px -30px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
                           }}
                         >
                           <img
                             src={model.logo}
                             alt={model.name}
-                            className="w-7 h-7 md:w-9 md:h-9 object-contain"
+                            className={`${logoSizeMap[model.size]} object-contain`}
                             loading="lazy"
-                            width={36}
-                            height={36}
                           />
                         </div>
-                        <span className="mt-1.5 text-[9px] md:text-[11px] font-semibold text-foreground whitespace-nowrap">
-                          {model.name}
-                        </span>
-                        <span className="text-[8px] md:text-[9px] text-muted-foreground/50 whitespace-nowrap">
-                          {model.company}
-                        </span>
                       </div>
                     </div>
                   );
                 })}
               </div>
 
-              {/* Center — LegisBrasil logo */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="relative">
-                  {/* Glow */}
+                <div className="relative flex flex-col items-center gap-4">
                   <div
-                    className="absolute -inset-6 rounded-3xl blur-2xl opacity-30"
+                    className="absolute -inset-10 rounded-full blur-3xl opacity-20"
                     style={{
                       background:
-                        "radial-gradient(circle, hsl(var(--primary) / 0.5) 0%, transparent 70%)",
+                        "radial-gradient(circle, hsl(var(--primary) / 0.35) 0%, transparent 70%)",
                     }}
                   />
                   <div
-                    className="relative w-20 h-20 md:w-28 md:h-28 rounded-2xl md:rounded-3xl flex items-center justify-center border-2 shadow-2xl"
+                    className="relative w-24 h-24 md:w-28 md:h-28 rounded-full border border-border/25 flex items-center justify-center"
                     style={{
-                      borderColor: "hsl(var(--primary) / 0.4)",
                       background:
-                        "linear-gradient(145deg, hsl(213 50% 14%) 0%, hsl(213 55% 8%) 100%)",
+                        "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.08), hsl(var(--background) / 0.98) 72%)",
                       boxShadow:
-                        "0 0 40px hsl(var(--primary) / 0.15), 0 20px 60px -15px hsl(213 60% 6% / 0.8)",
+                        "0 30px 60px -30px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
                     }}
                   >
                     <img
                       src={logoLegis}
                       alt="LegisBrasil.IA"
-                      className="w-12 h-12 md:w-16 md:h-16 object-contain"
+                      className="w-12 h-12 md:w-14 md:h-14 object-contain"
                       loading="lazy"
-                      width={64}
-                      height={64}
                     />
                   </div>
-                  <span
-                    className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] md:text-xs font-semibold whitespace-nowrap px-3 py-1 rounded-full"
-                    style={{
-                      background: "hsl(var(--primary) / 0.15)",
-                      color: "hsl(var(--primary))",
-                    }}
-                  >
+                  <span className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] md:text-xs font-mono text-primary">
                     LegisBrasil.IA
                   </span>
                 </div>
