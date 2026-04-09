@@ -35,7 +35,7 @@ const Navbar = () => {
           <a href="#contato" className="px-5 py-2.5 rounded-full border border-primary/40 text-primary text-sm font-medium hover:bg-primary/10 transition-colors">
             Solicitar Acesso
           </a>
-          <a href="#" className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
+          <a href="#" className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all">
             Entrar
           </a>
         </div>
