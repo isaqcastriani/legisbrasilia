@@ -30,10 +30,10 @@ const aiModels = [
   { name: "Llama 4", logo: llama },
 ];
 
-const orbitRadius = 240;
+const orbitRadius = 310;
 const stepAngle = 360 / aiModels.length;
-const diskSize = "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28";
-const logoSize = "w-9 h-9 md:w-11 md:h-11";
+const diskSize = "w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32";
+const logoSize = "w-11 h-11 md:w-13 md:h-13";
 
 const AIOrbitSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -203,26 +203,26 @@ const AIOrbitSection = () => {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="relative flex items-center justify-center lg:-ml-[28rem] xl:-ml-[32rem]"
           >
-            <div className="relative w-[360px] h-[360px] md:w-[520px] md:h-[520px] lg:w-[680px] lg:h-[620px]">
+            <div className="relative w-[420px] h-[420px] md:w-[620px] md:h-[620px] lg:w-[820px] lg:h-[820px]">
               <svg
                 className="absolute inset-0 w-full h-full opacity-30"
-                viewBox="0 0 680 620"
+                viewBox="0 0 820 820"
                 aria-hidden="true"
               >
                 <ellipse
-                  cx="340"
-                  cy="300"
-                  rx="240"
-                  ry="240"
+                  cx="410"
+                  cy="410"
+                  rx="310"
+                  ry="310"
                   fill="none"
                   stroke="hsl(var(--border) / 0.18)"
                   strokeWidth="1"
                 />
                 <ellipse
-                  cx="340"
-                  cy="300"
-                  rx="170"
-                  ry="170"
+                  cx="410"
+                  cy="410"
+                  rx="210"
+                  ry="210"
                   fill="none"
                   stroke="hsl(var(--border) / 0.12)"
                   strokeWidth="1"
@@ -232,15 +232,15 @@ const AIOrbitSection = () => {
 
               <motion.div
                 className="absolute inset-0"
-                style={{ transformOrigin: "340px 300px" }}
+                style={{ transformOrigin: "410px 410px" }}
                 animate={{ rotate: -(activeIndex * stepAngle) }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 {aiModels.map((model, i) => {
                   const angle = (i * 360) / aiModels.length;
                   const rad = (angle * Math.PI) / 180;
-                  const x = 340 + orbitRadius * Math.cos(rad);
-                  const y = 300 + orbitRadius * Math.sin(rad);
+                  const x = 410 + orbitRadius * Math.cos(rad);
+                  const y = 410 + orbitRadius * Math.sin(rad);
 
                   return (
                     <div
@@ -289,7 +289,7 @@ const AIOrbitSection = () => {
                     }}
                   />
                   <motion.div
-                    className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border border-primary/30 flex items-center justify-center"
+                    className="relative w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border border-primary/30 flex items-center justify-center"
                     animate={{
                       scale: isHighlighting ? 1.06 : 1,
                     }}
@@ -305,7 +305,7 @@ const AIOrbitSection = () => {
                     <img
                       src={logoLegis}
                       alt="LegisBrasil.IA"
-                      className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain brightness-0 invert"
+                      className="w-14 h-14 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain brightness-0 invert"
                       loading="lazy"
                     />
                   </motion.div>
