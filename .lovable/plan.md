@@ -1,17 +1,22 @@
 
 
-## Problem
+## Redesign Comparison Table to Match Reference Style
 
-The PixelDivider is broken because the `cells` array (with random thresholds) is recomputed on every render. Since `Math.random()` produces new values each time, cells flicker randomly instead of smoothly pixelating. The thresholds need to be stable across renders.
+The reference image shows a clean comparison table with:
+- **No background color on header row** — column titles sit on white/light bg, only the brand column has a colored background
+- **Feature names column (left)** — no color fill, just bold text on neutral bg
+- **Brand column (LegisBrasil)** — colored background (primary/accent) with contrasting text on every row including header
+- **Other columns** — plain neutral background, gray text, centered
+- **Row separators** — subtle horizontal lines between rows
+- **Overall table bg** — light/neutral, not the current blue-tinted bg
 
-## Plan
+### Changes to `SocialProofSection.tsx`
 
-**File: `src/components/landing/PixelDivider.tsx`**
-
-1. Wrap the `cells` computation in `useMemo` (dependent on `flip`) so thresholds are computed once and stay stable across scroll-triggered re-renders.
-2. Use a seeded pseudo-random approach (or just `useMemo`) to keep `Math.random()` values consistent.
-3. Increase grid size slightly (more cols/rows) for a more dramatic pixelation effect.
-4. Ensure the scroll progress formula works bidirectionally — pixels fill when scrolling down, unfill when scrolling up.
-
-This single change should fix the divider so it smoothly pixelates in/out as you scroll.
+1. **Table container**: Change background from blue-tinted `hsl(213 40% 96%)` to a dark card style matching the site's dark theme (e.g., `hsl(213 50% 14%)` or use `bento-card` styling)
+2. **Header row**: Remove colored background from non-LegisBrasil headers. Keep them plain with just text. LegisBrasil header keeps the primary color background with logo/icon
+3. **Feature column (left cells)**: No background color, just white/foreground text, left-aligned, font-medium
+4. **LegisBrasil column**: Keep primary color background on all rows (header + body), with dark text
+5. **Other columns (IA Genérica, Status Quo)**: Plain background, muted text, centered
+6. **Row borders**: Subtle border between rows using `border` color at low opacity
+7. **Adapt colors** to the dark theme: table bg uses card color, text uses foreground/muted-foreground, LegisBrasil column uses the lime primary
 
