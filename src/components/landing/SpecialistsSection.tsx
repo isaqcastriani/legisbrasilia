@@ -290,6 +290,7 @@ const SpecialistsSection = () => {
                 </motion.div>
               </div>
             </div>
+            </div>
           </motion.div>
         </AnimatePresence>
         </div>
