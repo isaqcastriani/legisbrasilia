@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import CtaButton from "./CtaButton";
-import heroArara from "@/assets/hero-arara-cyber.png";
+import heroAraraVideo from "@/assets/hero-arara-video.mp4.asset.json";
 import heroPanelMockup from "@/assets/hero-panel-mockup.png";
 
 /* Subtle particle dots in background */
