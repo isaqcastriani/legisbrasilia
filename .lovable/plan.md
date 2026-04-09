@@ -1,30 +1,27 @@
 
 
-## Improve PixelGlobe: Scattered Particles, Visible Grid, Fluid Mouse Effect
+## Plan: Shift orbit cluster to the left, overlapping the text column
 
-### What changes
+Currently the grid is `[0.88fr_1.12fr]` with the orbit on the right column and negative left margin pulling it slightly left. The reference image shows the circle cluster centered more to the left of the viewport, with some circles sitting directly behind/below the text content.
 
-1. **Scattered ambient particles** — Add ~500 extra particles floating loosely around the globe (not on the sphere surface), creating a "dust in space" effect with very small sizes and low opacity, drifting slowly.
+### Changes to `src/components/landing/AIOrbitSection.tsx`
 
-2. **More visible background grid** — The grid overlay in `HeroSection.tsx` currently uses `opacity-[0.12]`. Increase to `opacity-[0.25]` and boost the line color opacity from `0.4` to `0.6` so the squared grid is clearly visible.
+1. **Reverse the grid column order** — put the orbit container first (left) and the text second (right), OR keep the same order but shift the orbit container much further left using positioning instead of grid placement.
 
-3. **Mouse hover: fluid attraction instead of push** — Currently the mouse pushes particles away (repulsion). Change to an **attraction/clustering** effect: particles near the cursor get pulled slightly toward it, bunching together to create a liquid-fluid density increase. Remove the push/displacement logic and replace with a gentle pull toward the mouse position, making pixels cluster together where the cursor is.
+   Simpler approach: keep the two-column grid but **swap columns to `[1.12fr_0.88fr]`** and place the orbit in the first column, text in the second. Actually, looking at the reference more carefully, the text is on the left and circles spread from center-right bleeding into the left — the current layout direction is correct, we just need to pull the orbit much further left.
 
-### Technical details
+2. **Increase the negative left margin** on the orbit container from `lg:-ml-48 xl:-ml-56` to something like `lg:-ml-[28rem] xl:-ml-[32rem]` so the orbit center lands roughly in the middle of the text column, with circles wrapping behind/below the text.
 
-**`src/components/landing/PixelGlobe.tsx`**
+3. **Lower the z-index** of the orbit container (keep it at `z-10` or default) and **raise the text z-index** to `z-20` (already set) so text stays on top.
 
-- **Scattered particles**: In `generateGlobePoints`, add ~500 particles placed randomly in a sphere of radius ~3.5 (outside globe radius 2.0) with very small sizes and dim teal/lime colors. They float as ambient dust.
-- **Mouse interaction** (lines 135-152): Replace the push logic:
-  - Instead of `pushStrength = influence * influence * 2.0` pushing **away**, use a **pull** toward `mouseWorld` position
-  - `pullStrength = influence * influence * 0.4` — gentle attraction
-  - Target position moves slightly toward mouse world coords instead of away
-  - Keep the wave for organic fluid feel but reduce amplitude
-  - This makes particles cluster/condense near cursor = "liquid fluid showing more pixels together"
-- **Increase opacity** from `0.45` to `0.6` on the `pointsMaterial` for better visibility
+4. **Shift the SVG ellipses and orbit center** — change `cx` from `390` to ~`340` (center of the viewBox) so the orbit is centered within its own container, which is now overlapping the left side.
 
-**`src/components/landing/HeroSection.tsx`**
+5. **Ensure text shadow protection** remains on the paragraph and button area (already in place with `textShadow` and `z-30`).
 
-- Line 12: Change `opacity-[0.12]` → `opacity-[0.25]`
-- Line 14: Change `hsl(var(--primary) / 0.4)` → `hsl(var(--primary) / 0.6)` for both gradient lines
+### Summary of key edits
+
+- `lg:-ml-48 xl:-ml-56` → `lg:-ml-[28rem] xl:-ml-[32rem]` on orbit wrapper
+- SVG ellipse `cx` from `390` → `340`, orbit `transformOrigin` updated to match
+- Orbit model positions recalculated with new center x
+- Text column keeps `z-20`/`z-30` for readability
 
