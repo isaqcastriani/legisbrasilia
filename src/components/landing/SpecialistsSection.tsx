@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 import CtaButton from "./CtaButton";
 
 import imgAguia from "@/assets/specialist-aguia.png";
@@ -50,147 +50,125 @@ const specialists = [
 ];
 
 const SpecialistsSection = () => {
-  const [idx, setIdx] = useState(0);
-  const next = () => setIdx((p) => (p + 1) % specialists.length);
-  const prev = () => setIdx((p) => (p - 1 + specialists.length) % specialists.length);
-
-  const getVisible = () => {
-    if (typeof window === "undefined") return 3;
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
-  };
-
-  const count = getVisible();
-  const items = Array.from({ length: count }, (_, i) => ({
-    ...specialists[(idx + i) % specialists.length],
-    key: (idx + i) % specialists.length,
-  }));
+  const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <section id="especialistas" className="relative section-spacing overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `linear-gradient(180deg, hsl(var(--background)) 0%, hsl(213 50% 13%) 30%, hsl(213 45% 14%) 70%, hsl(var(--background)) 100%)`,
-        }}
-      />
-      <div className="absolute inset-0 grid-lines-dense pointer-events-none" />
+    <>
+      <SectionDivider />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-        {/* Section label */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="section-label mb-5"
-        >
-          <span className="text-secondary">🤖</span>
-          <span>A Virada</span>
-        </motion.div>
+      <section id="especialistas" className="relative py-20 md:py-28">
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+          {/* Humble-style centered heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="font-heading text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.08] mb-4">
+              Não é um chatbot com toga.
+              <br />
+              <span className="text-gradient">É a sua equipe de elite digital.</span>
+            </h2>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              A LegisBrasil.IA funciona como um escritório inteiro comprimido em especialistas que trabalham integrados, cada um dominando uma etapa do ciclo jurídico que nenhum profissional sozinho dá conta de cobrir com a mesma velocidade.
+            </p>
+          </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] max-w-3xl mb-4"
-        >
-          Não é um chatbot com toga.
-          <br />
-          <span className="text-gradient">É a sua equipe de elite digital.</span>
-        </motion.h2>
+          {/* Humble-style dark card with tabs + content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="anti-card overflow-hidden"
+          >
+            {/* Tab row — Humble numbered tabs */}
+            <div className="flex flex-wrap border-b" style={{ borderColor: "hsl(var(--border) / 0.15)" }}>
+              {specialists.map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIdx(i)}
+                  className={`flex items-center gap-2.5 px-5 py-4 text-sm font-medium transition-colors border-b-2 ${
+                    i === activeIdx
+                      ? "text-primary border-primary"
+                      : "text-muted-foreground border-transparent hover:text-foreground"
+                  }`}
+                >
+                  <span className="font-heading text-xs font-bold opacity-50">{i + 1}</span>
+                  <span className="hidden sm:inline">{s.name}</span>
+                </button>
+              ))}
+            </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-5 leading-relaxed"
-        >
-          A LegisBrasil.IA funciona como um escritório inteiro comprimido em especialistas que trabalham integrados, cada um dominando uma etapa do ciclo jurídico que nenhum profissional sozinho dá conta de cobrir com a mesma velocidade.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15 }}
-          className="text-foreground font-medium text-sm md:text-base mb-14"
-        >
-          Sozinho, cada especialista poupa horas. Juntos, eles mudam a lógica do seu escritório.
-        </motion.p>
-
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <AnimatePresence mode="popLayout">
-            {items.map((s) => (
+            {/* Content area */}
+            <AnimatePresence mode="wait">
               <motion.div
-                key={s.key}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="anti-card group"
+                key={activeIdx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="grid md:grid-cols-[1fr_1.2fr] gap-0"
               >
-                <div className="relative h-52 overflow-hidden">
+                {/* Left — Image */}
+                <div className="relative h-64 md:h-[400px] overflow-hidden">
                   <img
-                    src={s.img}
-                    alt={s.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    src={specialists[activeIdx].img}
+                    alt={specialists[activeIdx].name}
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     width={512}
                     height={512}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80 hidden md:block" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent md:hidden" />
                 </div>
-                <div className="p-6 space-y-3">
-                  <div className="badge-glow w-fit text-xs">{s.role}</div>
-                  <h3 className="font-heading text-lg font-bold text-foreground">{s.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+
+                {/* Right — Info */}
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <div className="badge-glow w-fit text-xs mb-4">{specialists[activeIdx].role}</div>
+                  <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
+                    {specialists[activeIdx].name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    {specialists[activeIdx].desc}
+                  </p>
+
+                  {/* Dot navigation */}
+                  <div className="flex gap-1.5">
+                    {specialists.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveIdx(i)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === activeIdx ? "bg-primary w-6" : "bg-border/40 w-1.5"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+            </AnimatePresence>
+          </motion.div>
 
-        {/* Navigation */}
-        <div className="flex items-center justify-center gap-4 mt-10">
-          <button
-            onClick={prev}
-            className="w-10 h-10 rounded-full border border-border/30 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
+          {/* Transition phrase */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center text-foreground font-heading font-medium text-base md:text-lg mt-12 mb-10"
           >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          <div className="flex gap-1.5">
-            {specialists.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIdx(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === idx ? "bg-primary w-6" : "bg-border/40 w-1.5"
-                }`}
-              />
-            ))}
+            Sozinho, cada especialista poupa horas. <span className="text-primary">Juntos, eles mudam a lógica do seu escritório.</span>
+          </motion.p>
+
+          <div className="flex justify-center">
+            <CtaButton>CONTRATAR MINHA EQUIPE DE ELITE</CtaButton>
           </div>
-          <button
-            onClick={next}
-            className="w-10 h-10 rounded-full border border-border/30 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center mt-14"
-        >
-          <CtaButton>CONTRATAR MINHA EQUIPE DE ELITE</CtaButton>
-        </motion.div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
