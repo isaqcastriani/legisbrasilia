@@ -218,7 +218,7 @@ const AIOrbitSection = () => {
                   strokeWidth="1"
                 />
                 <ellipse
-                  cx="390"
+                  cx="340"
                   cy="300"
                   rx="180"
                   ry="150"
@@ -231,14 +231,14 @@ const AIOrbitSection = () => {
 
               <motion.div
                 className="absolute inset-0"
-                style={{ transformOrigin: "390px 300px" }}
+                style={{ transformOrigin: "340px 300px" }}
                 animate={{ rotate: -(activeIndex * stepAngle) }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 {aiModels.map((model, i) => {
                   const angle = (i * 360) / aiModels.length;
                   const rad = (angle * Math.PI) / 180;
-                  const x = 390 + orbitRadius * Math.cos(rad);
+                  const x = 340 + orbitRadius * Math.cos(rad);
                   const y = 300 + orbitRadius * 0.78 * Math.sin(rad);
 
                   return (
