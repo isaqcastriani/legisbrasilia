@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { Quote, CheckCircle2, X } from "lucide-react";
-import SectionDivider from "./SectionDivider";
-import CtaButton from "./CtaButton";
 
 const comparisonRows = [
   "Treinamento jurídico brasileiro",
@@ -14,69 +12,46 @@ const comparisonRows = [
 ];
 
 const metrics = [
-  { value: "+50", label: "Juristas Validadores", desc: "Juristas e magistrados validaram o raciocínio da plataforma." },
-  { value: "98%", label: "Acurácia Técnica", desc: "Em conformidade com a legislação brasileira vigente." },
-  { value: "100%", label: "Links Auditáveis", desc: "Das citações possuem links para fontes oficiais dos tribunais." },
+  { value: "+50", label: "Juristas", desc: "Validaram o raciocínio da plataforma." },
+  { value: "98%", label: "Acurácia", desc: "Conformidade com legislação vigente." },
+  { value: "100%", label: "Auditável", desc: "Citações com links para fontes oficiais." },
 ];
 
 const SocialProofSection = () => {
   return (
-    <>
-      <SectionDivider />
+    <section id="validacao" className="relative py-24 md:py-32">
+      <div className="max-w-[1240px] mx-auto px-5 md:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <span className="section-label mb-5 block">Validação</span>
+          <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.06]">
+            Quem carrega o peso da decisão
+            <br />
+            judicial já testou. <span className="text-gradient">E aprovou.</span>
+          </h2>
+        </motion.div>
 
-      <section id="validacao" className="relative py-20 md:py-28">
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
-          {/* Humble split header */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-0 mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex gap-5 md:gap-7"
-            >
-              <div
-                className="hidden lg:block w-[2px] flex-shrink-0 rounded-full mt-2"
-                style={{ background: "hsl(var(--primary) / 0.4)", height: "100px" }}
-              />
-              <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.08]">
-                Quem carrega o peso
-                <br />
-                da decisão judicial já testou
-                <span className="text-primary">.</span>
-              </h2>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="flex items-start lg:justify-end"
-            >
-              <div className="lg:max-w-[380px] lg:border-l lg:pl-8" style={{ borderColor: "hsl(var(--border) / 0.15)" }}>
-                <p className="font-heading text-[15px] md:text-base font-semibold text-foreground leading-snug mb-3">
-                  E aprovou.
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Validada por mais de 50 juristas e magistrados antes de chegar ao seu escritório.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Quote — Humble clean card */}
+        {/* Bento layout: Quote + Metrics */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-4 mb-12">
+          {/* Quote card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-xl border p-8 md:p-12 mb-12 max-w-[900px] mx-auto"
-            style={{ borderColor: "hsl(var(--border) / 0.12)", background: "hsl(var(--card) / 0.3)" }}
+            className="bento-card p-8 md:p-10 flex flex-col justify-between"
           >
-            <Quote className="w-7 h-7 text-primary/20 mb-5" />
-            <blockquote className="text-base md:text-xl font-heading font-medium text-foreground leading-relaxed mb-8">
-              "A advocacia e a magistratura não aceitam erros. Criamos a LegisBrasil para ser o padrão de integridade digital.{" "}
-              <span className="text-primary">Se a ferramenta diz, você pode assinar embaixo.</span>"
-            </blockquote>
+            <div>
+              <Quote className="w-8 h-8 text-primary/15 mb-5" />
+              <blockquote className="text-base md:text-lg font-heading font-medium text-foreground leading-relaxed mb-8">
+                "A advocacia e a magistratura não aceitam erros. Criamos a LegisBrasil para ser o padrão de integridade digital.{" "}
+                <span className="text-primary">Se a ferramenta diz, você pode assinar embaixo.</span>"
+              </blockquote>
+            </div>
             <div className="flex items-center gap-3">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-primary"
@@ -86,13 +61,13 @@ const SocialProofSection = () => {
               </div>
               <div>
                 <p className="font-heading font-semibold text-foreground text-sm">Dr. Ali Mazloum</p>
-                <p className="text-xs text-muted-foreground">Desembargador Federal · Fundador da LegisBrasil.IA</p>
+                <p className="text-[11px] text-muted-foreground">Desembargador Federal · Fundador</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Metrics row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
+          {/* Metrics stack */}
+          <div className="grid grid-cols-1 gap-4">
             {metrics.map((m, i) => (
               <motion.div
                 key={i}
@@ -100,74 +75,64 @@ const SocialProofSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-xl border p-6 text-center"
-                style={{ borderColor: "hsl(var(--border) / 0.1)", background: "hsl(var(--card) / 0.2)" }}
+                className="bento-card p-6 flex items-center gap-5"
               >
-                <p className="font-heading text-3xl font-bold text-foreground">{m.value}</p>
-                <p className="text-[11px] font-semibold text-primary mt-1 tracking-wide uppercase font-mono">{m.label}</p>
-                <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">{m.desc}</p>
+                <span className="font-heading text-3xl md:text-4xl font-extrabold text-foreground leading-none">
+                  {m.value}
+                </span>
+                <div>
+                  <p className="text-[11px] font-semibold text-primary tracking-wide uppercase font-mono">{m.label}</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">{m.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
-
-          {/* Comparison table */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div
-              className="rounded-xl border overflow-hidden"
-              style={{ borderColor: "hsl(var(--border) / 0.12)" }}
-            >
-              {/* Table header */}
-              <div
-                className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] text-[11px] font-semibold uppercase tracking-wider"
-                style={{ background: "hsl(var(--muted) / 0.2)" }}
-              >
-                <div className="px-5 py-3.5" />
-                <div className="px-3 py-3.5 text-center">
-                  <span className="inline-flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span className="text-primary font-bold font-mono">Legis</span>
-                  </span>
-                </div>
-                <div className="px-3 py-3.5 text-center text-muted-foreground/40 font-mono">IA Gen.</div>
-                <div className="px-3 py-3.5 text-center text-muted-foreground/40 font-mono">Manual</div>
-              </div>
-
-              {comparisonRows.map((row, i) => (
-                <div
-                  key={i}
-                  className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] border-t"
-                  style={{ borderColor: "hsl(var(--border) / 0.06)" }}
-                >
-                  <div className="px-5 py-3.5 text-[13px] text-foreground/80">{row}</div>
-                  <div className="px-3 py-3.5 flex justify-center" style={{ background: "hsl(var(--primary) / 0.03)" }}>
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
-                  </div>
-                  <div className="px-3 py-3.5 flex justify-center">
-                    <X className="w-4 h-4 text-muted-foreground/20" />
-                  </div>
-                  <div className="px-3 py-3.5 flex justify-center">
-                    <X className="w-4 h-4 text-muted-foreground/20" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex justify-center mt-14"
-          >
-            <CtaButton>ENTRAR PARA A ERA DA INTELIGÊNCIA SEGURA</CtaButton>
-          </motion.div>
         </div>
-      </section>
-    </>
+
+        {/* Comparison table */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bento-card overflow-hidden"
+        >
+          {/* Header */}
+          <div
+            className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] text-[10px] font-semibold uppercase tracking-wider"
+            style={{ background: "hsl(var(--muted) / 0.2)" }}
+          >
+            <div className="px-5 py-3.5" />
+            <div className="px-3 py-3.5 text-center">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="text-primary font-bold font-mono">Legis</span>
+              </span>
+            </div>
+            <div className="px-3 py-3.5 text-center text-muted-foreground/35 font-mono">IA Gen.</div>
+            <div className="px-3 py-3.5 text-center text-muted-foreground/35 font-mono">Manual</div>
+          </div>
+
+          {comparisonRows.map((row, i) => (
+            <div
+              key={i}
+              className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] border-t"
+              style={{ borderColor: "hsl(var(--border) / 0.06)" }}
+            >
+              <div className="px-5 py-3 text-[12px] text-foreground/80">{row}</div>
+              <div className="px-3 py-3 flex justify-center" style={{ background: "hsl(var(--primary) / 0.02)" }}>
+                <CheckCircle2 className="w-4 h-4 text-primary" />
+              </div>
+              <div className="px-3 py-3 flex justify-center">
+                <X className="w-4 h-4 text-muted-foreground/15" />
+              </div>
+              <div className="px-3 py-3 flex justify-center">
+                <X className="w-4 h-4 text-muted-foreground/15" />
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

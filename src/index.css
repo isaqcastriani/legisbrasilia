@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Geist:wght@400;500;600;700&family=Kode+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700&family=Kode+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -62,13 +62,12 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Bricolage Grotesque', 'Space Grotesk', sans-serif;
-    letter-spacing: -0.05em;
-    line-height: 1.1;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
   }
 }
 
 @layer components {
-  /* Text gradient — Humble uses orange, we use lime→teal */
   .text-gradient {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(
@@ -76,11 +75,6 @@
       hsl(var(--primary)) 0%,
       hsl(var(--secondary)) 100%
     );
-  }
-
-  /* Section spacing — generous like Humble */
-  .section-spacing {
-    @apply py-24 md:py-32 lg:py-40;
   }
 
   /* 3D CTA Button */
@@ -107,46 +101,46 @@
       inset 0 1px 2px hsl(68 89% 30% / 0.3);
   }
 
-  /* Humble-style badge glow */
-  .badge-glow {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium;
-    background: hsl(var(--primary) / 0.06);
-    border-color: hsl(var(--primary) / 0.25);
-    color: hsl(var(--primary));
+  /* Bento card — inspired by Ease Health */
+  .bento-card {
+    @apply rounded-2xl overflow-hidden transition-all duration-300;
+    border: 1px solid hsl(var(--border) / 0.12);
+    background: hsl(var(--card) / 0.4);
+  }
+  .bento-card:hover {
+    border-color: hsl(var(--border) / 0.25);
+    background: hsl(var(--card) / 0.55);
   }
 
-  /* Humble-style section label — monospace */
+  /* Accent card — inspired by Ease Health CTA block */
+  .accent-card {
+    @apply rounded-2xl overflow-hidden;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* Section label — monospace */
   .section-label {
     @apply inline-flex items-center gap-2 text-sm font-medium tracking-wide;
     font-family: 'Kode Mono', monospace;
     color: hsl(var(--primary));
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
-  /* Humble-style dark card */
-  .anti-card {
-    @apply rounded-2xl border overflow-hidden transition-all duration-300;
-    border-color: hsl(var(--border) / 0.3);
-    background: hsl(var(--card) / 0.5);
-  }
-  .anti-card:hover {
-    border-color: hsl(var(--border) / 0.5);
-    background: hsl(var(--card) / 0.7);
+  /* Badge pill — inspired by AlphaHouse */
+  .badge-pill {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium;
+    background: hsl(var(--primary) / 0.08);
+    border: 1px solid hsl(var(--primary) / 0.15);
+    color: hsl(var(--primary));
   }
 
-  /* Humble-style horizontal divider */
-  .anti-divider {
-    @apply w-full border-0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--border) / 0.4) 20%,
-      hsl(var(--border) / 0.4) 80%,
-      transparent 100%
-    );
+  /* Dot grid background — inspired by Resend */
+  .dot-grid {
+    background-image: radial-gradient(circle, hsl(var(--border) / 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
   /* Glass card */
@@ -182,11 +176,11 @@
   }
 
   @keyframes reveal-up {
-    0% { opacity: 0; transform: translateY(60px); }
+    0% { opacity: 0; transform: translateY(40px); }
     100% { opacity: 1; transform: translateY(0); }
   }
 
   .animate-reveal-up {
-    animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
