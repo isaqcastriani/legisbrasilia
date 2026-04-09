@@ -1,28 +1,16 @@
 
 
-## Replace PixelDivider with Animated Tech Arrow + Reduce Section Gap
+## Add 3D Depth to Authority Section Card Containers
 
-### What changes
+### Changes
 
-1. **New component: `TechArrow.tsx`** — A vertical SVG arrow with a sleek, technological design and a glowing light that animates from the tail to the tip. The arrow shape will be clean and geometric (like a circuit-board aesthetic), and a CSS `@keyframes` animation will move a gradient glow from bottom to top in a continuous loop.
+**File: `src/components/landing/AuthoritySection.tsx`** (line ~132-135)
 
-2. **Replace PixelDivider in `AuthoritySection.tsx`** — Remove `<PixelDivider />` (top) and `<PixelDivider flip />` (bottom). Place the new `<TechArrow />` between the SpecialistsSection and the AuthoritySection content (as a transition element between sections).
+Add a 3D-style `box-shadow` to the outer card container (`motion.div`) — similar to the `cta-3d` approach but using the dark blue palette instead of lime. This creates a raised/elevated look with a bottom shadow "ledge":
 
-3. **Reduce gap in AuthoritySection** — Lower the `py-20 md:py-28` padding on the section's inner container and reduce card spacing (`mb-16` header margin, connector `py-6 md:py-10`) to tighten the section.
+- Add `box-shadow` with a solid bottom edge (~4px) in a darker blue tone (`hsl(213 50% 5%)`) plus a softer ambient shadow beneath
+- Keep the existing `border border-white/[0.08]` for the subtle edge highlight on top/sides
+- The 3D effect: solid dark bottom edge + diffused glow = card looks like it's raised off the page
 
-### Technical details
-
-**`src/components/landing/TechArrow.tsx`**
-- SVG arrow: A vertical line with a sharp chevron/arrowhead at the top, styled with `stroke` using `hsl(var(--primary))` (lime) and subtle border glow.
-- Animated glow: A `<linearGradient>` that shifts via CSS animation (`@keyframes glowTravel`) from the base of the arrow to the tip, creating a light beam traveling upward.
-- Height ~120px, centered, with a subtle radial glow at the arrowhead.
-
-**`src/components/landing/AuthoritySection.tsx`**
-- Remove `PixelDivider` imports and usages.
-- Add `<TechArrow />` before the section content.
-- Reduce `py-20 md:py-28` → `py-12 md:py-16`.
-- Reduce header `mb-16` → `mb-10`.
-
-**`src/pages/Index.tsx`**
-- Optionally place `<TechArrow />` between sections if the arrow should sit outside the AuthoritySection.
+This applies to each of the 3 main card wrappers in the `cards.map()`.
 
