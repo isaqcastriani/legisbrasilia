@@ -17,7 +17,7 @@ const Index = () => {
       <ProblemSection />
       <PixelDivider flip />
       <SpecialistsSection />
-      <PixelDivider flip color="hsl(213 55% 8%)" />
+      <PixelDivider color="hsl(213 55% 8%)" />
       <AuthoritySection />
       <PixelDivider flip />
       <SocialProofSection />
