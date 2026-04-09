@@ -100,16 +100,8 @@ const ParallaxCard = ({
             boxShadow: `0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7), 0 ${8 + index * 4}px ${30 + index * 10}px -8px hsl(213 60% 3% / 0.6)`,
             scale,
             opacity,
-        }}
-        {...(index === 0
-          ? {
-              initial: { opacity: 0, y: 30 },
-              whileInView: { opacity: 1, y: 0 },
-              viewport: { once: true },
-              transition: { duration: 0.5 },
-            }
-          : {})}
-      >
+          }}
+        >
         <div className="grid md:grid-cols-[1fr_1.3fr] gap-4 md:gap-[30px] min-h-[440px]">
           {/* Left — Text card */}
           <div
