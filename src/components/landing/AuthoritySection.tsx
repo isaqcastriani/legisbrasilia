@@ -70,33 +70,36 @@ const ParallaxCard = ({
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start start"],
+    offset: ["start end", "end start"],
   });
 
   const Icon = card.icon;
   const FloatingIcon = card.floatingIcon;
 
-  // Cards slide up from below
-  const y = useTransform(scrollYProgress, [0, 1], [200, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.4, 1], [0.9, 1, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 1, 1]);
 
   return (
     <div
       ref={ref}
-      className="sticky"
       style={{
-        top: `${80 + index * 20}px`,
-        zIndex: index + 1,
-        marginBottom: index < total - 1 ? "60vh" : 0,
+        height: index < total - 1 ? "110vh" : "auto",
       }}
     >
-      <motion.div
-        className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
+      <div
+        className="sticky"
         style={{
-          background: "hsl(213 45% 9%)",
-          boxShadow: `0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7), 0 ${8 + index * 4}px ${30 + index * 10}px -8px hsl(213 60% 3% / 0.6)`,
-          ...(index > 0 ? { y, scale, opacity } : {}),
+          top: `${80 + index * 24}px`,
+          zIndex: index + 1,
+        }}
+      >
+        <motion.div
+          className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
+          style={{
+            background: "hsl(213 45% 9%)",
+            boxShadow: `0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7), 0 ${8 + index * 4}px ${30 + index * 10}px -8px hsl(213 60% 3% / 0.6)`,
+            scale,
+            opacity,
         }}
         {...(index === 0
           ? {
