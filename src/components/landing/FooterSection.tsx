@@ -148,7 +148,7 @@ const FooterSection = () => {
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-base hover:shadow-[0_0_30px_hsl(68_89%_45%/0.4)] transition-all mt-2"
+                    className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-base cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all mt-2"
                   >
                     Solicitar Acesso
                     <ArrowRight className="w-5 h-5" />
