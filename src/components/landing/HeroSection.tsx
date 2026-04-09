@@ -99,7 +99,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Center — Arara video */}
+          {/* Center — Arara character */}
           <div className="bento-card flex items-center justify-center p-6 relative overflow-hidden w-full lg:w-[300px]">
             <div
               className="absolute inset-0 opacity-20 pointer-events-none"
@@ -107,14 +107,10 @@ const HeroSection = () => {
                 background: `radial-gradient(circle at center, hsl(var(--secondary) / 0.3) 0%, transparent 70%)`,
               }}
             />
-            <video
-              src={heroAraraVideo.url}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="relative w-[180px] md:w-[220px] drop-shadow-2xl"
-              style={{ mixBlendMode: "lighten" }}
+            <img
+              src={imgArara}
+              alt="Arara Azul"
+              className="relative w-[180px] md:w-[220px] drop-shadow-2xl object-contain"
             />
           </div>
 
