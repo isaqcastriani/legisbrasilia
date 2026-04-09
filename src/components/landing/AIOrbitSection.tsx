@@ -209,7 +209,7 @@ const AIOrbitSection = () => {
                 aria-hidden="true"
               >
                 <ellipse
-                  cx="390"
+                  cx="340"
                   cy="300"
                   rx="255"
                   ry="220"
