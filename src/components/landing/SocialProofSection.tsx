@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import logoLegis from "@/assets/logo-legis.png";
 
 const comparisonData = [
   {
@@ -96,10 +97,10 @@ const SocialProofSection = () => {
                   >
                     <div className="flex flex-col items-center gap-2">
                       <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                        className="w-10 h-10 rounded-xl flex items-center justify-center p-1.5"
                         style={{ background: "hsl(0 0% 0% / 0.15)" }}
                       >
-                        <span className="text-primary-foreground text-sm font-bold">LB</span>
+                        <img src={logoLegis} alt="LegisBrasil" className="w-full h-full object-contain" />
                       </div>
                     </div>
                   </th>
