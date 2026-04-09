@@ -212,8 +212,8 @@ const AIOrbitSection = () => {
                 <ellipse
                   cx="340"
                   cy="300"
-                  rx="255"
-                  ry="220"
+                  rx="240"
+                  ry="240"
                   fill="none"
                   stroke="hsl(var(--border) / 0.18)"
                   strokeWidth="1"
@@ -221,8 +221,8 @@ const AIOrbitSection = () => {
                 <ellipse
                   cx="340"
                   cy="300"
-                  rx="180"
-                  ry="150"
+                  rx="170"
+                  ry="170"
                   fill="none"
                   stroke="hsl(var(--border) / 0.12)"
                   strokeWidth="1"
@@ -240,7 +240,7 @@ const AIOrbitSection = () => {
                   const angle = (i * 360) / aiModels.length;
                   const rad = (angle * Math.PI) / 180;
                   const x = 340 + orbitRadius * Math.cos(rad);
-                  const y = 300 + orbitRadius * 0.78 * Math.sin(rad);
+                  const y = 300 + orbitRadius * Math.sin(rad);
 
                   return (
                     <div
