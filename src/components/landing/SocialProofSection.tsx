@@ -175,7 +175,11 @@ const SocialProofSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bento-card p-8 md:p-10 flex flex-col justify-between"
+            className="rounded-2xl border border-white/[0.08] p-8 md:p-10 flex flex-col justify-between"
+            style={{
+              background: "hsl(213 45% 9%)",
+              boxShadow: "0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7)",
+            }}
           >
             <div>
               <Quote className="w-8 h-8 text-primary/15 mb-5" />
@@ -207,7 +211,11 @@ const SocialProofSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bento-card p-6 flex items-center gap-5"
+                className="rounded-2xl border border-white/[0.08] p-6 flex items-center gap-5"
+                style={{
+                  background: "hsl(213 45% 9%)",
+                  boxShadow: "0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7)",
+                }}
               >
                 <span className="font-heading text-3xl md:text-4xl font-extrabold text-foreground leading-none">
                   {m.value}
