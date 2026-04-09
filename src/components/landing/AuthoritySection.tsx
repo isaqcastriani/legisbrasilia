@@ -85,15 +85,15 @@ const ParallaxCard = ({
       ref={ref}
       className="relative"
       style={{
-        minHeight: index < total - 1 ? "118vh" : "92vh",
-        marginTop: index === 0 ? 0 : "-62vh",
+        minHeight: index < total - 1 ? "140vh" : "92vh",
+        marginTop: index === 0 ? 0 : "-70vh",
         zIndex: index + 1,
       }}
     >
       <div
         className="sticky"
         style={{
-          top: "88px",
+          top: `${88 + index * 8}px`,
           zIndex: index + 1,
         }}
       >
