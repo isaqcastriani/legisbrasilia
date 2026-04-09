@@ -264,7 +264,7 @@ const AuthoritySection = () => {
                 </motion.div>
 
                 {/* Dot divider between cards */}
-                {i < cards.length - 1 && <DotDivider />}
+                {i < cards.length - 1 && <TechConnector />}
               </div>
             );
           })}
