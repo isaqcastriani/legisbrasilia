@@ -186,7 +186,7 @@ const AIOrbitSection = () => {
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="inline-flex items-center gap-3 px-1 py-1"
                 >
-                  <img src={activeModel.logo} alt={activeModel.name} className="h-6 w-6 object-contain" loading="lazy" />
+                  <img src={activeModel.logo} alt={activeModel.name} className="h-6 w-6 object-contain rounded-full" loading="lazy" />
                   <span className="text-sm font-semibold text-foreground">{activeModel.name}</span>
                 </motion.div>
               </AnimatePresence>
@@ -260,7 +260,7 @@ const AIOrbitSection = () => {
                           <img
                             src={model.logo}
                             alt={model.name}
-                            className={`${logoSize} object-contain`}
+                            className={`${logoSize} object-contain rounded-full`}
                             loading="lazy"
                           />
                         </div>
