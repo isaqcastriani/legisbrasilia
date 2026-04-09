@@ -103,15 +103,19 @@ const AuthoritySection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="rounded-2xl border border-white/[0.06] overflow-hidden"
+                  className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
                   style={{
-                    background: "hsl(213 50% 11%)",
-                    boxShadow: "0 8px 40px -12px hsl(213 60% 4% / 0.6)",
+                    background: "hsl(213 45% 9%)",
                   }}
                 >
-                  <div className="grid md:grid-cols-[1fr_1.3fr] min-h-[380px]">
-                    {/* Left — Text */}
-                    <div className="p-7 md:p-10 flex flex-col justify-between relative">
+                  <div className="grid md:grid-cols-[1fr_1.3fr] gap-4 md:gap-[30px] min-h-[380px]">
+                    {/* Left — Text card */}
+                    <div
+                      className="rounded-xl p-7 md:p-8 flex flex-col justify-between relative border border-white/[0.04]"
+                      style={{
+                        background: "hsl(213 50% 12%)",
+                      }}
+                    >
                       {/* Icon */}
                       <div>
                         <div
@@ -154,8 +158,8 @@ const AuthoritySection = () => {
                       </div>
                     </div>
 
-                    {/* Right — Image + floating UI */}
-                    <div className="relative overflow-hidden min-h-[260px] md:min-h-0">
+                    {/* Right — Image card */}
+                    <div className="relative overflow-hidden min-h-[260px] md:min-h-0 rounded-xl border border-white/[0.04]">
                       <img
                         src={card.bg}
                         alt=""
