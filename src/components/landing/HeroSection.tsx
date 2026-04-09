@@ -7,6 +7,23 @@ const PixelGlobe = lazy(() => import("./PixelGlobe"));
 const HeroSection = () => {
   return (
     <section className="relative pt-[60px]">
+      {/* Grid lines background */}
+      <div
+        className="absolute inset-0 pointer-events-none z-0 opacity-[0.06]"
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--primary) / 0.4) 1px, transparent 1px),
+                            linear-gradient(90deg, hsl(var(--primary) / 0.4) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+      {/* Fade out grid at bottom */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: "linear-gradient(180deg, transparent 0%, hsl(var(--background)) 85%)",
+        }}
+      />
+
       {/* 3D Pixel Globe Background */}
       <Suspense fallback={null}>
         <PixelGlobe />
