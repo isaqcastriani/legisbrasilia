@@ -8,6 +8,7 @@ import FooterSection from "@/components/landing/FooterSection";
 import SectionDivider from "@/components/landing/SectionDivider";
 import WaveDivider from "@/components/landing/WaveDivider";
 import AIOrbitSection from "@/components/landing/AIOrbitSection";
+import IntegrationsSection from "@/components/landing/IntegrationsSection";
 
 const Index = () => {
   return (
@@ -22,6 +23,8 @@ const Index = () => {
       <AuthoritySection />
       <WaveDivider flip />
       <AIOrbitSection />
+      <WaveDivider />
+      <IntegrationsSection />
       <WaveDivider />
       <SocialProofSection />
       <WaveDivider />
