@@ -116,9 +116,8 @@ const AIOrbitSection = () => {
         />
 
         <motion.div
-          className="absolute left-1/2 top-1/2 hidden h-[72%] w-[84%] -translate-x-1/2 -translate-y-1/2 rounded-[42px] lg:block"
+          className="absolute inset-0 hidden lg:block"
           style={{
-            transform: pixelGlowTransform,
             backgroundImage:
               "radial-gradient(circle, hsl(var(--primary) / 0.42) 0 1.4px, transparent 2px), radial-gradient(circle, hsl(var(--secondary) / 0.32) 0 1.1px, transparent 1.7px)",
             backgroundSize: "18px 18px, 24px 24px",
