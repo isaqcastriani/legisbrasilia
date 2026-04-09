@@ -16,9 +16,7 @@ const Index = () => {
       <ProblemSection />
       <SectionDivider />
       <SpecialistsSection />
-      <SectionDivider />
       <AuthoritySection />
-      <SectionDivider />
       <SocialProofSection />
       <SectionDivider />
       <FooterSection />
