@@ -7,144 +7,130 @@ const specialists = [
   {
     name: "Super Analista",
     animal: "Águia",
-    description: "Examina processos na íntegra, identifica pontos jurídicos cruciais e extrai o núcleo decisório de grandes volumes documentais em segundos.",
-    color: "from-amber-500/20 to-transparent",
+    desc: "Examina processos na íntegra e extrai o núcleo decisório em segundos.",
+    gradient: "from-amber-500/10 via-transparent to-transparent",
   },
   {
     name: "Análise Multimodal",
     animal: "Golfinho",
-    description: "Assiste a vídeos e ouve áudios de audiências gravadas, transcrevendo e indexando o conteúdo para transformar horas de gravação em estratégia.",
-    color: "from-cyan-500/20 to-transparent",
+    desc: "Transcreve e indexa áudio e vídeo de audiências gravadas.",
+    gradient: "from-cyan-500/10 via-transparent to-transparent",
   },
   {
-    name: "Juiz Robô (Jurimetria)",
+    name: "Jurimetria",
     animal: "Robô",
-    description: "Aplica inteligência de dados para identificar tendências de tribunais e prever probabilidades de êxito com base no cenário nacional.",
-    color: "from-violet-500/20 to-transparent",
+    desc: "Identifica tendências de tribunais e prevê probabilidades de êxito.",
+    gradient: "from-violet-500/10 via-transparent to-transparent",
   },
   {
-    name: "O Estrategista",
+    name: "Estrategista",
     animal: "Pantera",
-    description: "Utiliza jurimetria e dados técnicos para sugerir caminhos jurídicos, indicando as medidas mais eficazes para cada situação concreta.",
-    color: "from-emerald-500/20 to-transparent",
+    desc: "Sugere caminhos jurídicos baseado em dados e jurimetria.",
+    gradient: "from-emerald-500/10 via-transparent to-transparent",
   },
   {
-    name: "Detector de Mentiras",
+    name: "Detector",
     animal: "Fila Brasileiro",
-    description: "Identifica inconsistências factuais, contradições cronológicas e falácias argumentativas em depoimentos e documentos.",
-    color: "from-red-500/20 to-transparent",
+    desc: "Encontra contradições e falácias em depoimentos e documentos.",
+    gradient: "from-red-500/10 via-transparent to-transparent",
   },
   {
-    name: "Buscador de Jurisprudência",
+    name: "Jurisprudência",
     animal: "Arara Azul",
-    description: "Localiza precedentes alinhados ao caso com links auditáveis e fontes oficiais, eliminando o risco de citações falsas.",
-    color: "from-blue-500/20 to-transparent",
+    desc: "Localiza precedentes com links auditáveis e fontes oficiais.",
+    gradient: "from-blue-500/10 via-transparent to-transparent",
   },
 ];
 
 const SpecialistsSection = () => {
-  const [current, setCurrent] = useState(0);
+  const [idx, setIdx] = useState(0);
+  const next = () => setIdx((p) => (p + 1) % specialists.length);
+  const prev = () => setIdx((p) => (p - 1 + specialists.length) % specialists.length);
 
-  const next = () => setCurrent((p) => (p + 1) % specialists.length);
-  const prev = () => setCurrent((p) => (p - 1 + specialists.length) % specialists.length);
-
-  // Show 3 on lg, 2 on md, 1 on sm
-  const getVisibleCount = () => {
+  const getVisible = () => {
     if (typeof window === "undefined") return 3;
     if (window.innerWidth >= 1024) return 3;
     if (window.innerWidth >= 768) return 2;
     return 1;
   };
 
-  const visibleCount = getVisibleCount();
-  const visibleSpecs = [];
-  for (let i = 0; i < visibleCount; i++) {
-    visibleSpecs.push(specialists[(current + i) % specialists.length]);
-  }
+  const count = getVisible();
+  const items = Array.from({ length: count }, (_, i) => specialists[(idx + i) % specialists.length]);
 
   return (
     <section id="especialistas" className="section-spacing relative">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Resend-inspired centered header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-16"
         >
-          <div className="badge-glow mb-6 mx-auto w-fit">✦ Especialistas</div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
-            Pare de trabalhar sozinho.{" "}
-            <span className="text-gradient">Ative sua Equipe de Especialistas.</span>
+          <div className="badge-glow mb-5 mx-auto w-fit">✦ Especialistas</div>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight mb-4">
+            Ative sua Equipe de{" "}
+            <span className="text-gradient">Especialistas</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Muito mais que um software. Uma equipe digital de apoio onde diferentes especialistas trabalham integrados para cada caso.
+          <p className="text-muted-foreground text-lg">
+            Cada especialista resolve uma etapa diferente do ciclo jurídico.
           </p>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <AnimatePresence mode="popLayout">
-              {visibleSpecs.map((spec) => (
-                <motion.div
-                  key={spec.name}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.35 }}
-                  className="glass-card overflow-hidden group"
-                >
-                  {/* Colored top gradient */}
-                  <div className={`h-32 bg-gradient-to-b ${spec.color} flex items-center justify-center`}>
-                    <span className="font-heading text-5xl font-bold text-foreground/10 group-hover:text-foreground/20 transition-colors">
-                      {spec.animal.charAt(0)}
-                    </span>
-                  </div>
-                  <div className="p-6 space-y-3">
-                    <div className="badge-glow text-xs w-fit">{spec.name}</div>
-                    <h3 className="font-heading text-xl font-bold text-foreground">{spec.animal}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{spec.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <AnimatePresence mode="popLayout">
+            {items.map((s) => (
+              <motion.div
+                key={s.name}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-2xl border border-border/30 overflow-hidden group"
+                style={{ background: "hsl(var(--card) / 0.5)" }}
+              >
+                <div className={`h-28 bg-gradient-to-br ${s.gradient} flex items-end px-6 pb-4`}>
+                  <span className="font-heading text-6xl font-bold text-foreground/[0.06] group-hover:text-foreground/[0.12] transition-colors leading-none">
+                    {s.animal.charAt(0)}
+                  </span>
+                </div>
+                <div className="p-6 space-y-3">
+                  <span className="text-[11px] uppercase tracking-widest text-primary font-medium">{s.name}</span>
+                  <h3 className="font-heading text-lg font-bold text-foreground">{s.animal}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
 
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-10">
-            <button
-              onClick={prev}
-              className="w-12 h-12 rounded-full border border-border/60 flex items-center justify-center text-foreground hover:bg-muted hover:border-primary/40 transition-all"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="flex gap-2">
-              {specialists.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    i === current ? "bg-primary w-6" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                  }`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={next}
-              className="w-12 h-12 rounded-full border border-border/60 flex items-center justify-center text-foreground hover:bg-muted hover:border-primary/40 transition-all"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+        {/* Navigation — minimal like Resend */}
+        <div className="flex items-center justify-center gap-3 mt-10">
+          <button onClick={prev} className="w-10 h-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all">
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <div className="flex gap-1.5">
+            {specialists.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIdx(i)}
+                className={`h-1.5 rounded-full transition-all ${i === idx ? "bg-primary w-6" : "bg-border w-1.5"}`}
+              />
+            ))}
           </div>
+          <button onClick={next} className="w-10 h-10 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all">
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="flex justify-center mt-12"
         >
-          <CtaButton>CONTRATAR MINHA EQUIPE DE ELITE</CtaButton>
+          <CtaButton>CONTRATAR MINHA EQUIPE</CtaButton>
         </motion.div>
       </div>
     </section>

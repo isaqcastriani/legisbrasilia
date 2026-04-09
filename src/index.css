@@ -36,7 +36,6 @@
 
     --radius: 0.75rem;
 
-    /* Custom tokens */
     --glow-primary: 68 89% 45%;
     --glow-secondary: 178 95% 32%;
     --surface-glass: 213 50% 14%;
@@ -67,24 +66,25 @@
 }
 
 @layer components {
+  /* Glass card - Resend-inspired subtle borders */
   .glass-card {
-    @apply rounded-2xl border border-border/50;
+    @apply rounded-2xl border border-border/40;
     background: linear-gradient(
-      146deg,
-      hsl(var(--surface-glass) / 0.6) 0%,
+      160deg,
+      hsl(var(--surface-glass) / 0.7) 0%,
       hsl(var(--surface-glass) / 0.3) 100%
     );
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
   }
 
   .glow-primary {
-    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.2),
-                0 0 60px hsl(var(--glow-primary) / 0.1);
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.15),
+                0 0 60px hsl(var(--glow-primary) / 0.08);
   }
 
   .glow-secondary {
-    box-shadow: 0 0 20px hsl(var(--glow-secondary) / 0.2),
-                0 0 60px hsl(var(--glow-secondary) / 0.1);
+    box-shadow: 0 0 20px hsl(var(--glow-secondary) / 0.15),
+                0 0 60px hsl(var(--glow-secondary) / 0.08);
   }
 
   .text-gradient {
@@ -97,38 +97,54 @@
   }
 
   .section-spacing {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-24 md:py-32 lg:py-40;
   }
 
+  /* 3D CTA Button */
   .cta-3d {
     box-shadow:
       0 4px 0 0 hsl(68 89% 32%),
-      0 6px 12px hsl(68 89% 45% / 0.3),
-      0 12px 30px hsl(68 89% 45% / 0.15),
-      inset 0 1px 0 hsl(68 89% 60% / 0.4);
+      0 6px 12px hsl(68 89% 45% / 0.25),
+      0 12px 30px hsl(68 89% 45% / 0.12),
+      inset 0 1px 0 hsl(68 89% 60% / 0.3);
   }
 
   .cta-3d:hover {
     box-shadow:
       0 2px 0 0 hsl(68 89% 32%),
-      0 4px 8px hsl(68 89% 45% / 0.35),
-      0 8px 24px hsl(68 89% 45% / 0.2),
-      inset 0 1px 0 hsl(68 89% 60% / 0.4);
+      0 4px 8px hsl(68 89% 45% / 0.3),
+      0 8px 24px hsl(68 89% 45% / 0.15),
+      inset 0 1px 0 hsl(68 89% 60% / 0.3);
   }
 
   .cta-3d:active {
     box-shadow:
       0 1px 0 0 hsl(68 89% 32%),
-      0 2px 4px hsl(68 89% 45% / 0.3),
+      0 2px 4px hsl(68 89% 45% / 0.25),
       inset 0 1px 2px hsl(68 89% 30% / 0.3);
   }
 
   .badge-glow {
     @apply inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium;
-    background: hsl(var(--primary) / 0.08);
-    border-color: hsl(var(--primary) / 0.4);
+    background: hsl(var(--primary) / 0.06);
+    border-color: hsl(var(--primary) / 0.25);
     color: hsl(var(--primary));
-    box-shadow: 0 0 12px hsl(var(--primary) / 0.25);
+  }
+
+  /* Resend-inspired dot grid */
+  .dot-grid {
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--muted-foreground) / 0.12) 1px,
+      transparent 1px
+    );
+    background-size: 32px 32px;
+  }
+
+  /* Biuro-inspired section container */
+  .section-container {
+    @apply rounded-3xl overflow-hidden relative;
+    background: linear-gradient(180deg, hsl(var(--card) / 0.8) 0%, hsl(var(--background)) 100%);
   }
 }
 
@@ -150,5 +166,15 @@
   .animate-shimmer {
     background-size: 200% 100%;
     animation: shimmer 3s linear infinite;
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
   }
 }

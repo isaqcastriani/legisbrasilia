@@ -3,94 +3,70 @@ import { Scale, Globe, Lock, Brain, Link2 } from "lucide-react";
 import CtaButton from "./CtaButton";
 
 const pillars = [
-  {
-    icon: Scale,
-    title: "Curadoria de Magistrados Federais",
-    description: "Idealizada por um Desembargador Federal com mais de 30 anos de magistratura.",
-  },
-  {
-    icon: Globe,
-    title: "Soberania Digital e Dados Nacionais",
-    description: "Treinada exclusivamente com modelos, doutrina e jurisprudência brasileira.",
-  },
-  {
-    icon: Lock,
-    title: "Compliance e Segurança Nativa",
-    description: "Operação em total conformidade com a LGPD e diretrizes normativas do CNJ.",
-  },
-  {
-    icon: Brain,
-    title: "Inteligência que Sabe Quando Não Falar",
-    description: "Mecanismos de validação que impedem a criação de leis ou precedentes inexistentes.",
-  },
-  {
-    icon: Link2,
-    title: "Rastreabilidade Total",
-    description: "Cada citação acompanha links auditáveis para fontes oficiais.",
-  },
+  { icon: Scale, title: "Curadoria de Magistrados", desc: "30+ anos de magistratura federal." },
+  { icon: Globe, title: "Soberania Digital", desc: "Treinada 100% com doutrina brasileira." },
+  { icon: Lock, title: "LGPD & CNJ Nativo", desc: "Dados nunca saem do Brasil." },
+  { icon: Brain, title: "Anti-Alucinação", desc: "Impede leis ou precedentes falsos." },
+  { icon: Link2, title: "Rastreabilidade", desc: "Links auditáveis para cada citação." },
 ];
 
 const AuthoritySection = () => {
   return (
     <section id="diferenciais" className="section-spacing relative">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Full-width rounded container like Alpha House sections */}
-        <div className="rounded-3xl overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%)" }}>
+        {/* Biuro-inspired full-width container */}
+        <div className="section-container">
           <div className="p-8 md:p-14 lg:p-20">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
-              {/* Left - Headline + authority card */}
+              {/* Left — Cernel-style left-aligned */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-8"
+                className="space-y-7"
               >
-                <div className="badge-glow w-fit">✦ Autoridade Técnica</div>
-                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                  A Tecnologia Validada pela{" "}
-                  <span className="text-gradient">Elite do Direito Brasileiro</span>
+                <div className="badge-glow w-fit">✦ Autoridade</div>
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight">
+                  Validada pela{" "}
+                  <span className="text-gradient">Elite do Direito</span>
                 </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Não confie sua reputação a algoritmos genéricos e estrangeiros. Utilize a única infraestrutura jurídica desenvolvida por quem conhece o rigor dos tribunais.
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  A única infraestrutura jurídica desenvolvida por quem conhece o rigor dos tribunais e a responsabilidade de uma decisão.
                 </p>
 
-                {/* Authority card like Agência Get quote block */}
-                <div className="glass-card p-6 flex items-center gap-5 border-primary/20">
-                  <div className="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center glow-primary" style={{ background: "hsl(var(--primary) / 0.12)" }}>
-                    <Scale className="w-8 h-8 text-primary" />
+                {/* Authority card */}
+                <div className="flex items-center gap-4 p-5 rounded-2xl border border-primary/15" style={{ background: "hsl(var(--primary) / 0.04)" }}>
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(var(--primary) / 0.1)" }}>
+                    <Scale className="w-7 h-7 text-primary" />
                   </div>
                   <div>
-                    <p className="font-heading font-bold text-foreground text-lg">Dr. Ali Mazloum</p>
-                    <p className="text-sm text-muted-foreground">Desembargador Federal e Fundador da LegisBrasil.IA</p>
+                    <p className="font-heading font-bold text-foreground">Dr. Ali Mazloum</p>
+                    <p className="text-sm text-muted-foreground">Desembargador Federal · Fundador</p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Right - Pillar list */}
+              {/* Right — Pillars */}
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="space-y-4"
+                transition={{ delay: 0.15 }}
+                className="space-y-3"
               >
-                {pillars.map((pillar, i) => (
+                {pillars.map((p, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.08 }}
-                    whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                    className="flex gap-4 p-5 rounded-2xl border border-border/30 hover:border-primary/30 hover:bg-card/50 transition-all group cursor-default"
+                    transition={{ delay: i * 0.06 }}
+                    className="flex gap-4 p-4 rounded-xl border border-transparent hover:border-border/40 transition-all group cursor-default"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "hsl(var(--primary) / 0.1)" }}>
-                      <pillar.icon className="w-5 h-5 text-primary" />
-                    </div>
+                    <p.icon className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                     <div>
-                      <h3 className="font-heading font-semibold text-foreground mb-1 text-sm">{pillar.title}</h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{pillar.description}</p>
+                      <h3 className="font-heading text-sm font-semibold text-foreground">{p.title}</h3>
+                      <p className="text-xs text-muted-foreground mt-0.5">{p.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -98,8 +74,8 @@ const AuthoritySection = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="flex justify-center mt-14"
             >
