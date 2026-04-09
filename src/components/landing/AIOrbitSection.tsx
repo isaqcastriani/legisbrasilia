@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+
 import logoLegis from "@/assets/logo-legis.png";
 import gpt5 from "@/assets/ai-logos/gpt5.png";
 import claude from "@/assets/ai-logos/claude.png";
@@ -58,8 +59,10 @@ const AIOrbitSection = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Integrações
             </span>
+
             <h2 className="font-heading text-[1.9rem] md:text-[2.8rem] lg:text-[4rem] font-bold text-foreground leading-[0.98] mb-5 max-w-[11ch]">
               Curadoria de Inteligência Global
             </h2>
-            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-8">
+
+            <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-5">
               Você não precisa de 10 assinaturas separadas.{
