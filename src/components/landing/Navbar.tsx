@@ -26,9 +26,7 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "border-b border-border/15"
-          : "border-b border-transparent"
+        scrolled ? "border-b border-border/15" : "border-b border-transparent"
       }`}
       style={{
         backdropFilter: scrolled ? "blur(24px)" : "blur(12px)",
@@ -37,9 +35,9 @@ const Navbar = () => {
           : "hsl(var(--background) / 0.4)",
       }}
     >
-      <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-16">
+      <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-14">
         <a href="#" className="flex items-center gap-2">
-          <img src={logo} alt="LegisBrasil.IA" className="h-7 w-auto" />
+          <img src={logo} alt="LegisBrasil.IA" className="h-6 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -47,7 +45,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 font-body"
             >
               {link.label}
             </a>
@@ -55,17 +53,15 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="#" className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Entrar
-          </a>
           <a
             href="#contato"
-            className="px-5 py-2 rounded-full bg-primary text-primary-foreground text-[13px] font-semibold cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all"
+            className="px-5 py-2 rounded-full bg-primary text-primary-foreground text-[13px] font-semibold cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all font-body"
           >
             Solicitar Acesso
           </a>
         </div>
 
+        {/* Humble-style hamburger — simple lines */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 text-foreground"
