@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Zap } from "lucide-react";
 import logo from "@/assets/logo-white.png";
+
+/*
+ * Richard: Awareness Level 5 — "Troque X por Y em Z dias, sem risco"
+ * Richard: Reduzir fricção final — garantias, facilidade, zero risco.
+ * Richard: Efeito Zeigarnik — form curto para criar loop incompleto.
+ * Richard: Loss aversion CTA — urgência sem ser spam.
+ */
 
 const professions = [
   "Advogado(a)", "Magistrado(a)", "Procurador(a)",
   "Defensor(a) Público(a)", "Estudante de Direito", "Outro",
-];
-
-const benefits = [
-  "Acesso imediato a todos os especialistas IA",
-  "Validação real por magistrados federais",
-  "100% LGPD e CNJ compliant",
-  "Cancelamento a qualquer momento",
 ];
 
 const FooterSection = () => {
@@ -22,7 +22,6 @@ const FooterSection = () => {
   return (
     <section id="contato" className="section-spacing relative">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Biuro-style rounded container */}
         <div className="section-container">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[200px] opacity-10" style={{ background: "hsl(var(--primary))" }} />
 
@@ -35,16 +34,21 @@ const FooterSection = () => {
                 viewport={{ once: true }}
                 className="space-y-7"
               >
-                <div className="badge-glow w-fit">✦ Comece Agora</div>
+                {/* Richard: Awareness 5 — risco zero, fricção mínima */}
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight">
-                  Eleve seu Escritório para a{" "}
-                  <span className="text-gradient">Era da Inteligência</span>
+                  Teste Com Seu{" "}
+                  <span className="text-gradient">Processo Real</span>
+                  <br />
+                  <span className="text-muted-foreground text-2xl md:text-3xl">Sem risco. Sem cartão.</span>
                 </h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Junte-se aos profissionais que priorizam técnica, segurança e soberania digital.
-                </p>
+
+                {/* Richard: Reduzir ansiedade — garantias claras */}
                 <ul className="space-y-3">
-                  {benefits.map((b, i) => (
+                  {[
+                    { icon: Zap, text: "Resultado em 3 minutos, não em 3 dias" },
+                    { icon: CheckCircle2, text: "Validado por +50 magistrados e juristas" },
+                    { icon: Clock, text: "Sem contrato. Cancele quando quiser" },
+                  ].map((b, i) => (
                     <motion.li
                       key={i}
                       initial={{ opacity: 0, x: -8 }}
@@ -53,11 +57,16 @@ const FooterSection = () => {
                       transition={{ delay: i * 0.08 }}
                       className="flex items-center gap-3"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{b}</span>
+                      <b.icon className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">{b.text}</span>
                     </motion.li>
                   ))}
                 </ul>
+
+                {/* Richard: Reforço positivo humano */}
+                <p className="text-xs text-muted-foreground/50 italic">
+                  "O medo de IA errar é válido. Por isso cada resposta tem link para a fonte. Se não tem fonte, não entrega." — Dr. Mazloum
+                </p>
               </motion.div>
 
               {/* Right form */}
@@ -70,7 +79,7 @@ const FooterSection = () => {
               >
                 <h3 className="font-heading text-xl font-bold text-primary text-center mb-1">Solicitar Acesso</h3>
                 <p className="text-center text-sm text-muted-foreground mb-7">
-                  Ative sua infraestrutura jurídica
+                  Leva menos de 30 segundos
                 </p>
 
                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -114,9 +123,14 @@ const FooterSection = () => {
                   </label>
 
                   <button type="submit" className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-sm cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all">
-                    Solicitar Acesso
+                    Solicitar Acesso Gratuito
                     <ArrowRight className="w-4 h-4" />
                   </button>
+
+                  {/* Richard: Micro-copy para reduzir ansiedade */}
+                  <p className="text-center text-[11px] text-muted-foreground/40">
+                    Sem cartão de crédito · Sem contrato · Cancele quando quiser
+                  </p>
                 </form>
               </motion.div>
             </div>

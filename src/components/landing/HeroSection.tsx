@@ -1,23 +1,14 @@
 import { motion } from "framer-motion";
-import { Shield, ArrowDown } from "lucide-react";
+import { ArrowDown, Clock, AlertTriangle } from "lucide-react";
 import CtaButton from "./CtaButton";
 import heroMacaw from "@/assets/hero-macaw.png";
-
-const stats = [
-  { value: "+50", label: "Juristas" },
-  { value: "98%", label: "Precisão" },
-  { value: "100%", label: "LGPD" },
-];
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Resend-inspired dot grid background */}
-      <div className="absolute inset-0 dot-grid opacity-40" />
-
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full blur-[160px] opacity-25" style={{ background: "hsl(var(--primary))" }} />
-      <div className="absolute bottom-1/4 -right-40 w-[400px] h-[400px] rounded-full blur-[140px] opacity-15" style={{ background: "hsl(var(--secondary))" }} />
+      <div className="absolute inset-0 dot-grid opacity-30" />
+      <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full blur-[160px] opacity-20" style={{ background: "hsl(var(--primary))" }} />
+      <div className="absolute bottom-1/4 -right-40 w-[400px] h-[400px] rounded-full blur-[140px] opacity-10" style={{ background: "hsl(var(--secondary))" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -27,38 +18,58 @@ const HeroSection = () => {
             transition={{ duration: 0.7 }}
             className="space-y-8"
           >
-
-            {/* Cernel/Console-inspired large headline */}
+            {/* Richard: Awareness Level 4 — "Por que nós, por que agora" */}
+            {/* Loss aversion headline — cost of inaction */}
             <h1 className="font-heading text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight text-foreground">
-              A Única IA Jurídica{" "}
+              Cada Hora Manual é{" "}
               <br className="hidden md:block" />
-              100% Brasileira e{" "}
-              <span className="text-gradient">Validada por Especialistas</span>
+              Uma Hora{" "}
+              <span className="text-gradient">Perdida</span>
             </h1>
 
+            {/* Richard: Contextualizar dor — não vender feature, vender custo da inação */}
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Dominamos todo o ciclo jurídico — da transcrição da prova à peça final — com a única IA treinada nos tribunais brasileiros.
+              Enquanto você revisa 200 páginas manualmente, a IA jurídica brasileira faz em <span className="text-foreground font-medium">3 minutos</span> — com precisão validada por magistrados federais.
             </p>
 
-            <CtaButton>ENTRAR PARA A NOVA ERA JURÍDICA</CtaButton>
+            {/* Richard: Anchoring numérica — números grandes ao lado de esforço mínimo */}
+            <div className="flex items-center gap-6 text-sm">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: "hsl(var(--destructive) / 0.08)" }}>
+                <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
+                <span className="text-destructive/80">Sem IA: ~8h por processo</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: "hsl(var(--primary) / 0.08)" }}>
+                <Clock className="w-3.5 h-3.5 text-primary" />
+                <span className="text-primary">Com LEGIS: 3 min</span>
+              </div>
+            </div>
 
-            {/* Stats row — Richard: round numbers, reduce cognitive load */}
+            <CtaButton>TESTAR COM MEU PROCESSO REAL</CtaButton>
+
+            {/* Richard: North Star Metric = largest. Round numbers. */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="flex items-center gap-10 pt-2"
+              className="flex items-center gap-12 pt-2"
             >
-              {stats.map((s, i) => (
-                <div key={i}>
-                  <p className="font-heading text-3xl font-bold text-primary">{s.value}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{s.label}</p>
-                </div>
-              ))}
+              <div>
+                <p className="font-heading text-4xl font-bold text-primary">98%</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Precisão</p>
+              </div>
+              <div className="w-px h-8" style={{ background: "hsl(var(--border) / 0.4)" }} />
+              <div>
+                <p className="font-heading text-4xl font-bold text-foreground">+50</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Juristas</p>
+              </div>
+              <div className="w-px h-8" style={{ background: "hsl(var(--border) / 0.4)" }} />
+              <div>
+                <p className="font-heading text-4xl font-bold text-foreground">100%</p>
+                <p className="text-xs text-muted-foreground mt-0.5">LGPD</p>
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Macaw with Biuro-style overlap */}
           <motion.div
             initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -78,7 +89,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
