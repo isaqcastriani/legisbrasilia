@@ -220,10 +220,11 @@ const ContactFormSection = () => {
                     placeholder="Nome completo"
                     value={form.name}
                     onChange={(e) => set("name", e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
+                    className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all"
                     style={{
-                      borderColor: "hsl(var(--border) / 0.12)",
-                      background: "hsl(213 50% 8%)",
+                      borderColor: "hsl(var(--border) / 0.15)",
+                      background: "linear-gradient(145deg, hsl(213 50% 10%) 0%, hsl(213 55% 7%) 100%)",
+                      boxShadow: "inset 0 2px 4px hsl(213 60% 4% / 0.6), inset 0 1px 2px hsl(213 60% 3% / 0.4), 0 1px 0 hsl(0 0% 100% / 0.03)",
                     }}
                   />
                   <input
@@ -231,10 +232,11 @@ const ContactFormSection = () => {
                     placeholder="Email profissional"
                     value={form.email}
                     onChange={(e) => set("email", e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
+                    className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all"
                     style={{
-                      borderColor: "hsl(var(--border) / 0.12)",
-                      background: "hsl(213 50% 8%)",
+                      borderColor: "hsl(var(--border) / 0.15)",
+                      background: "linear-gradient(145deg, hsl(213 50% 10%) 0%, hsl(213 55% 7%) 100%)",
+                      boxShadow: "inset 0 2px 4px hsl(213 60% 4% / 0.6), inset 0 1px 2px hsl(213 60% 3% / 0.4), 0 1px 0 hsl(0 0% 100% / 0.03)",
                     }}
                   />
                   <div className="grid grid-cols-2 gap-3">
@@ -243,19 +245,21 @@ const ContactFormSection = () => {
                       placeholder="Telefone"
                       value={form.phone}
                       onChange={(e) => set("phone", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
+                      className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all"
                       style={{
-                        borderColor: "hsl(var(--border) / 0.12)",
-                        background: "hsl(213 50% 8%)",
+                        borderColor: "hsl(var(--border) / 0.15)",
+                        background: "linear-gradient(145deg, hsl(213 50% 10%) 0%, hsl(213 55% 7%) 100%)",
+                        boxShadow: "inset 0 2px 4px hsl(213 60% 4% / 0.6), inset 0 1px 2px hsl(213 60% 3% / 0.4), 0 1px 0 hsl(0 0% 100% / 0.03)",
                       }}
                     />
                     <select
                       value={form.profession}
                       onChange={(e) => set("profession", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition appearance-none"
+                      className="w-full px-4 py-3 rounded-xl border text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition-all appearance-none"
                       style={{
-                        borderColor: "hsl(var(--border) / 0.12)",
-                        background: "hsl(213 50% 8%)",
+                        borderColor: "hsl(var(--border) / 0.15)",
+                        background: "linear-gradient(145deg, hsl(213 50% 10%) 0%, hsl(213 55% 7%) 100%)",
+                        boxShadow: "inset 0 2px 4px hsl(213 60% 4% / 0.6), inset 0 1px 2px hsl(213 60% 3% / 0.4), 0 1px 0 hsl(0 0% 100% / 0.03)",
                       }}
                     >
                       <option value="">Profissão</option>
