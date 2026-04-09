@@ -70,43 +70,41 @@ const ParallaxCard = ({
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start start"],
+    offset: ["start end", "start center"],
   });
 
   const Icon = card.icon;
   const FloatingIcon = card.floatingIcon;
 
-  // Cards slide up from below
-  const y = useTransform(scrollYProgress, [0, 1], [200, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [140, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
+  const cardOpacity = useTransform(scrollYProgress, [0, 0.35, 1], [0, 1, 1]);
 
   return (
     <div
       ref={ref}
-      className="sticky"
+      className="relative"
       style={{
-        top: `${80 + index * 20}px`,
+        minHeight: index < total - 1 ? "110vh" : "auto",
+        marginTop: index === 0 ? 0 : "-42vh",
         zIndex: index + 1,
-        marginBottom: index < total - 1 ? "60vh" : 0,
       }}
     >
-      <motion.div
-        className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
+      <div
+        className="sticky"
         style={{
-          background: "hsl(213 45% 9%)",
-          boxShadow: `0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7), 0 ${8 + index * 4}px ${30 + index * 10}px -8px hsl(213 60% 3% / 0.6)`,
-          ...(index > 0 ? { y, scale, opacity } : {}),
+          top: "88px",
+          zIndex: index + 1,
         }}
-        {...(index === 0
-          ? {
-              initial: { opacity: 0, y: 30 },
-              whileInView: { opacity: 1, y: 0 },
-              viewport: { once: true },
-              transition: { duration: 0.5 },
-            }
-          : {})}
       >
+        <motion.div
+          className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
+          style={{
+            background: "hsl(213 45% 9%)",
+            boxShadow: `0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7), 0 ${8 + index * 4}px ${30 + index * 10}px -8px hsl(213 60% 3% / 0.6)`,
+            ...(index > 0 ? { y, scale, opacity: cardOpacity } : {}),
+          }}
+        >
         <div className="grid md:grid-cols-[1fr_1.3fr] gap-4 md:gap-[30px] min-h-[440px]">
           {/* Left — Text card */}
           <div
@@ -176,6 +174,7 @@ const ParallaxCard = ({
           </div>
         </div>
       </motion.div>
+      </div>
     </div>
   );
 };

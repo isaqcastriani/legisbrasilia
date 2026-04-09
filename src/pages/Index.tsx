@@ -11,7 +11,7 @@ import AIOrbitSection from "@/components/landing/AIOrbitSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground" style={{ overflowClipMargin: "content-box", overflowX: "clip" }}>
       
       <HeroSection />
       <WaveDivider />
