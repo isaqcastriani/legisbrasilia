@@ -54,7 +54,7 @@ const metrics = [
 
 const SocialProofSection = () => {
   return (
-    <section id="validacao" className="relative py-24 md:py-32">
+    <section id="validacao" className="relative pt-0 pb-24 md:pb-32 -mt-16 md:-mt-24 relative z-10">
       <div className="max-w-[1240px] mx-auto px-5 md:px-8">
         {/* Header */}
         <motion.div
