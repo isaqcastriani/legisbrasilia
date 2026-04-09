@@ -89,10 +89,16 @@ const SocialProofSection = () => {
                   <th className="w-[200px] px-6 pt-6 pb-4" />
                   <th
                     className="px-6 pt-6 pb-4 text-center w-[220px]"
+                    style={{
+                      background: "hsl(var(--primary))",
+                      borderTopLeftRadius: "12px",
+                      borderTopRightRadius: "12px",
+                    }}
                   >
                     <div className="flex flex-col items-center gap-2">
                       <div
                         className="w-10 h-10 rounded-xl flex items-center justify-center p-1.5"
+                        style={{ background: "hsl(0 0% 0% / 0.15)" }}
                       >
                         <img src={logoLegis} alt="LegisBrasil" className="w-full h-full object-contain" />
                       </div>
