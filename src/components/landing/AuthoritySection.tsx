@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, Scale } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import CtaButton from "./CtaButton";
 
-const pillars = [
+const differentials = [
   {
-    title: "Curadoria de Magistrados Federais",
-    desc: "Idealizada por um Desembargador Federal com mais de 30 anos de magistratura, garantindo que a IA opere sob a lógica real do sistema de justiça nacional.",
+    title: "Curadoria de quem julga, não de quem programa.",
+    desc: "Idealizada por Dr. Ali Mazloum, Desembargador Federal com mais de 30 anos de magistratura. A IA não foi calibrada por engenheiros tentando adivinhar o que um juiz pensa. Foi calibrada por quem decide.",
+    result: "Cada resposta segue a lógica real dos tribunais, não a lógica provável de um modelo estatístico.",
   },
   {
-    title: "Soberania Digital e Dados Nacionais",
-    desc: "Treinada exclusivamente com modelos, doutrina e jurisprudência brasileira. Sua inteligência entende a burocracia e o raciocínio jurídico do país, sem ruídos de tradução.",
+    title: "Soberania digital que não é slogan.",
+    desc: "Treinada exclusivamente com doutrina, legislação e jurisprudência brasileira. Sem ruídos de tradução, sem modelos importados tentando encaixar o sistema romano-germânico em precedentes de common law.",
+    result: "Quando a ferramenta cita uma súmula, ela existe. Quando referencia um artigo, ele está vigente.",
   },
   {
-    title: "Compliance e Segurança Nativa",
-    desc: "Operação em total conformidade com a LGPD (Lei nº 13.709/2018) e as diretrizes normativas do CNJ. Seus dados nunca saem de solo nacional.",
+    title: "A IA que sabe calar.",
+    desc: "Diferente de ferramentas que preenchem lacunas com invenção, a LegisBrasil.IA possui mecanismos de validação que impedem a criação de leis, precedentes ou jurisprudência inexistentes. Se não encontra fundamento, não fabrica um.",
+    result: "Zero alucinação jurídica. Cada citação acompanha link auditável para a fonte oficial.",
   },
   {
-    title: "Inteligência que Sabe Quando Não Falar",
-    desc: "Diferente de IAs que alucinam, nossa infraestrutura possui mecanismos de validação que impedem a criação de leis ou precedentes inexistentes. Se a ferramenta diz, você pode assinar embaixo.",
-  },
-  {
-    title: "Rastreabilidade Total",
-    desc: "Cada citação gerada acompanha links auditáveis para fontes oficiais, permitindo a conferência imediata e segura da fundamentação jurídica.",
+    title: "LGPD não é checkbox, é arquitetura.",
+    desc: "Operação em total conformidade com a LGPD e as diretrizes normativas do CNJ. Seus dados e os dados dos seus clientes nunca saem de solo nacional.",
+    result: "Você não precisa de um parecer de compliance para usar a ferramenta. O compliance já é a ferramenta.",
   },
 ];
 
@@ -39,89 +39,62 @@ const AuthoritySection = () => {
           className="section-label mb-5"
         >
           <span className="text-primary">🛡️</span>
-          <span>Diferenciais</span>
+          <span>Por Que Nós</span>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          {/* Left column */}
-          <div>
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] mb-6"
-            >
-              A Tecnologia Validada pela Elite do Direito Brasileiro.
-            </motion.h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] max-w-3xl mb-6"
+        >
+          A diferença entre "usar IA" e{" "}
+          <span className="text-gradient">confiar nela.</span>
+        </motion.h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-base md:text-lg leading-relaxed mb-10"
-            >
-              Não confie sua reputação a algoritmos genéricos e estrangeiros. Utilize a única infraestrutura jurídica desenvolvida por quem conhece o rigor dos tribunais e a responsabilidade de uma decisão.
-            </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-16 leading-relaxed"
+        >
+          Não confie sua reputação a algoritmos genéricos e estrangeiros. Utilize a única infraestrutura jurídica desenvolvida por quem conhece o rigor dos tribunais e a responsabilidade de uma decisão.
+        </motion.p>
 
-            {/* Authority card */}
+        {/* Differentials */}
+        <div className="space-y-6">
+          {differentials.map((d, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="anti-card p-6 flex items-center gap-5"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="anti-card p-6 md:p-8"
             >
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "hsl(var(--primary) / 0.1)" }}
-              >
-                <Scale className="w-7 h-7 text-primary" />
-              </div>
-              <div>
-                <p className="font-heading font-bold text-foreground">Dr. Ali Mazloum</p>
-                <p className="text-sm text-muted-foreground">
-                  Desembargador Federal · Fundador
+              <h3 className="font-heading text-lg md:text-xl font-bold text-foreground mb-3">
+                {d.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                {d.desc}
+              </p>
+              <div className="flex items-start gap-2">
+                <ArrowRight className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                <p className="text-sm font-medium text-primary">
+                  E daí? {d.result}
                 </p>
               </div>
             </motion.div>
-          </div>
-
-          {/* Right column — Checklist pillars */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="space-y-1"
-          >
-            {pillars.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 + i * 0.07, duration: 0.5 }}
-                className="flex gap-4 p-5 rounded-xl hover:bg-card/30 transition-colors group cursor-default"
-              >
-                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <div>
-                  <h3 className="font-heading text-sm font-semibold text-foreground mb-1">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          ))}
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex justify-center mt-20"
+          className="flex justify-center mt-16"
         >
           <CtaButton>ENTRAR PARA A ELITE JURÍDICA</CtaButton>
         </motion.div>

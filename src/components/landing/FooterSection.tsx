@@ -27,7 +27,6 @@ const FooterSection = () => {
     <section id="contato" className="relative section-spacing">
       <div className="absolute inset-0 grid-lines pointer-events-none" />
 
-      {/* Gradient glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-[200px] opacity-[0.06] pointer-events-none"
         style={{ background: "hsl(var(--primary))" }}
@@ -42,7 +41,7 @@ const FooterSection = () => {
           className="section-label mb-5"
         >
           <span className="text-primary">🚀</span>
-          <span>Comece agora</span>
+          <span>CTA Final</span>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -55,8 +54,8 @@ const FooterSection = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="font-heading text-3xl md:text-[3rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.08] mb-6"
             >
-              Eleve o Padrão do seu Escritório para a{" "}
-              <span className="text-gradient">Era da Inteligência Segura</span>
+              O padrão do seu escritório{" "}
+              <span className="text-gradient">muda aqui.</span>
             </motion.h2>
 
             <motion.p
@@ -66,7 +65,7 @@ const FooterSection = () => {
               transition={{ delay: 0.1 }}
               className="text-muted-foreground text-base md:text-lg leading-relaxed"
             >
-              Junte-se aos profissionais que priorizam a técnica, a segurança e a soberania digital. Preencha os dados para ativar sua infraestrutura jurídica de alta performance.
+              Junte-se aos profissionais que escolheram trocar volume de trabalho mecânico por precisão validada. Preencha os dados abaixo para ativar sua infraestrutura jurídica de alta performance.
             </motion.p>
           </div>
 
@@ -148,12 +147,16 @@ const FooterSection = () => {
                 Solicitar Acesso
                 <ArrowRight className="w-4 h-4" />
               </button>
+
+              <p className="text-center text-[11px] text-muted-foreground/60 mt-2">
+                Sem cartão de crédito. Sem compromisso de permanência. Com a segurança de quem leva o Direito a sério.
+              </p>
             </form>
           </motion.div>
         </div>
       </div>
 
-      {/* Footer bottom — Antimetal-style columns */}
+      {/* Footer bottom */}
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 mt-28">
         <div className="anti-divider" />
 
