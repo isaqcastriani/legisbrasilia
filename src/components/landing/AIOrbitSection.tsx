@@ -20,15 +20,15 @@ import llama from "@/assets/ai-logos/meta-upload.png";
 import sabia from "@/assets/ai-logos/sabia-upload.png";
 
 const aiModels = [
-  { name: "GPT-5", logo: gpt5, size: "sm", angle: -148 },
-  { name: "Claude 4", logo: claude, size: "sm", angle: -110 },
-  { name: "Gemini 3", logo: gemini, size: "sm", angle: -72 },
-  { name: "Perplexity", logo: perplexity, size: "md", angle: -28 },
-  { name: "Sabiá-2", logo: sabia, size: "sm", angle: 14 },
-  { name: "Mistral", logo: mistral, size: "sm", angle: 58 },
-  { name: "DeepSeek", logo: deepseek, size: "md", angle: 102 },
-  { name: "Llama 4", logo: llama, size: "lg", angle: 142 },
-] as const;
+  { name: "GPT-5", logo: gpt5 },
+  { name: "Claude 4", logo: claude },
+  { name: "Gemini 3", logo: gemini },
+  { name: "Perplexity", logo: perplexity },
+  { name: "Sabiá-2", logo: sabia },
+  { name: "Mistral", logo: mistral },
+  { name: "DeepSeek", logo: deepseek },
+  { name: "Llama 4", logo: llama },
+];
 
 const orbitRadius = 280;
 const stepAngle = 360 / aiModels.length;
