@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useId } from "react";
 
 interface WaveDividerProps {
   flip?: boolean;
@@ -6,83 +6,117 @@ interface WaveDividerProps {
 }
 
 const WaveDivider = ({ flip = false, color }: WaveDividerProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const onScroll = () => {
-      const rect = el.getBoundingClientRect();
-      const viewH = window.innerHeight;
-      const start = viewH * 0.95;
-      const end = viewH * 0.35;
-      const raw = (start - rect.top) / (start - end);
-      setProgress(Math.max(0, Math.min(1, raw)));
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const fillColor = color || "hsl(var(--background))";
-
-  // Generate wave path that reveals based on scroll progress
-  const waveHeight = 60;
-  const generateWavePath = (p: number) => {
-    // Wave moves from bottom to top (or top to bottom if flipped)
-    const yOffset = (1 - p) * (waveHeight + 20);
-    const amp = 12 + p * 8; // amplitude grows as it reveals
-    const freq = 0.008;
-
-    let path = `M 0 ${yOffset}`;
-    for (let x = 0; x <= 1200; x += 10) {
-      const wave1 = Math.sin(x * freq * 2 + p * 4) * amp;
-      const wave2 = Math.sin(x * freq * 3 + p * 2 + 1) * (amp * 0.5);
-      const y = yOffset + wave1 + wave2;
-      path += ` L ${x} ${y}`;
-    }
-    path += ` L 1200 ${waveHeight + 30} L 0 ${waveHeight + 30} Z`;
-    return path;
-  };
+  const id = useId().replace(/:/g, "");
 
   return (
     <div
-      ref={ref}
-      className={`w-full relative z-10 ${flip ? "rotate-180" : ""}`}
+      className={`relative w-full overflow-hidden ${flip ? "rotate-180" : ""}`}
       style={{
-        height: `${waveHeight + 30}px`,
+        height: "88px",
         marginTop: flip ? 0 : "-1px",
         marginBottom: flip ? "-1px" : 0,
       }}
     >
       <svg
-        viewBox={`0 0 1200 ${waveHeight + 30}`}
+        viewBox="0 0 1200 88"
         preserveAspectRatio="none"
-        className="w-full h-full block"
-        style={{ filter: "drop-shadow(0 -2px 8px hsl(var(--primary) / 0.05))" }}
+        className="block h-full w-full"
+        aria-hidden="true"
       >
         <defs>
-          <linearGradient id={`waveGrad-${flip}`} x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor={fillColor} stopOpacity="0.95" />
-            <stop offset="50%" stopColor={fillColor} stopOpacity="1" />
-            <stop offset="100%" stopColor={fillColor} stopOpacity="0.95" />
+          <linearGradient id={`${id}-band`} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor={fillColor} stopOpacity="0" />
+            <stop offset="18%" stopColor={fillColor} stopOpacity="0.68" />
+            <stop offset="50%" stopColor={fillColor} stopOpacity="0.96" />
+            <stop offset="82%" stopColor={fillColor} stopOpacity="0.68" />
+            <stop offset="100%" stopColor={fillColor} stopOpacity="0" />
           </linearGradient>
+
+          <linearGradient id={`${id}-beam`} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity="0" />
+            <stop offset="20%" stopColor="hsl(var(--secondary))" stopOpacity="0.18" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.75" />
+            <stop offset="80%" stopColor="hsl(var(--secondary))" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity="0" />
+          </linearGradient>
+
+          <linearGradient id={`${id}-glow`} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+          </linearGradient>
+
+          <filter id={`${id}-blur`} x="-20%" y="-200%" width="140%" height="400%">
+            <feGaussianBlur stdDeviation="6" />
+          </filter>
         </defs>
+
         <path
-          d={generateWavePath(progress)}
-          fill={`url(#waveGrad-${flip})`}
-          style={{ transition: "d 0.15s ease-out" }}
+          d="M0 34 L180 34 L252 18 L948 18 L1020 34 L1200 34 L1200 54 L1020 54 L948 70 L252 70 L180 54 L0 54 Z"
+          fill={`url(#${id}-band)`}
+          opacity="0.92"
         />
-        {/* Secondary subtle wave for depth */}
+
         <path
-          d={generateWavePath(Math.max(0, progress - 0.08))}
-          fill={fillColor}
-          opacity="0.3"
-          style={{ transition: "d 0.2s ease-out" }}
-        />
+          d="M0 34 L180 34 L252 18 L948 18 L1020 34 L1200 34"
+          fill="none"
+          stroke={`url(#${id}-beam)`}
+          strokeWidth="1.5"
+          strokeDasharray="18 20"
+          opacity="0.8"
+        >
+          <animate attributeName="stroke-dashoffset" from="0" to="-114" dur="3s" repeatCount="indefinite" />
+        </path>
+
+        <path
+          d="M0 54 L180 54 L252 70 L948 70 L1020 54 L1200 54"
+          fill="none"
+          stroke={`url(#${id}-beam)`}
+          strokeWidth="1.5"
+          strokeDasharray="12 18"
+          opacity="0.55"
+        >
+          <animate attributeName="stroke-dashoffset" from="0" to="96" dur="3.8s" repeatCount="indefinite" />
+        </path>
+
+        <path
+          d="M0 44 L1200 44"
+          fill="none"
+          stroke={`url(#${id}-glow)`}
+          strokeWidth="2"
+          filter={`url(#${id}-blur)`}
+          opacity="0.45"
+        >
+          <animate attributeName="opacity" values="0.22;0.48;0.22" dur="4.2s" repeatCount="indefinite" />
+        </path>
+
+        <g opacity="0.85">
+          <rect x="120" y="40" width="10" height="4" rx="2" fill="hsl(var(--primary))">
+            <animate attributeName="x" values="120;980" dur="4.8s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0;1;1;0" dur="4.8s" repeatCount="indefinite" />
+          </rect>
+          <rect x="320" y="46" width="8" height="3" rx="1.5" fill="hsl(var(--secondary))">
+            <animate attributeName="x" values="320;1080" dur="3.6s" begin="-1.2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0;0.8;0.8;0" dur="3.6s" begin="-1.2s" repeatCount="indefinite" />
+          </rect>
+          <rect x="980" y="39" width="9" height="4" rx="2" fill="hsl(var(--primary))">
+            <animate attributeName="x" values="980;180" dur="5.2s" begin="-2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0;0.9;0.9;0" dur="5.2s" begin="-2s" repeatCount="indefinite" />
+          </rect>
+        </g>
+
+        <g opacity="0.45">
+          <circle cx="248" cy="18" r="2" fill="hsl(var(--primary))">
+            <animate attributeName="opacity" values="0.2;1;0.2" dur="2.4s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="948" cy="70" r="2" fill="hsl(var(--secondary))">
+            <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" begin="-1.4s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="600" cy="44" r="1.5" fill="hsl(var(--primary))">
+            <animate attributeName="opacity" values="0.15;0.8;0.15" dur="3.1s" begin="-0.8s" repeatCount="indefinite" />
+          </circle>
+        </g>
       </svg>
     </div>
   );
