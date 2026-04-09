@@ -64,12 +64,32 @@ const OrbitalLine = ({ size = 80, delay = 0 }: { size?: number; delay?: number }
   </svg>
 );
 
-const metrics = [
-  { value: 98, suffix: "%", label: "Acurácia", desc: "em conformidade jurídica" },
-  { value: 50, suffix: "+", label: "Juristas", desc: "validaram a plataforma" },
-  { value: 10, suffix: "x", label: "Mais rápido", desc: "que pesquisa manual" },
-  { value: 100, suffix: "%", label: "Brasileiro", desc: "treinamento nacional" },
-];
+/* Individual metric card component (hooks-safe) */
+const MetricCard = ({ value, suffix, label, desc, delay }: { value: number; suffix: string; label: string; desc: string; delay: number }) => {
+  const { count, ref } = useCounter(value, 2000);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay }}
+      className="relative flex flex-col items-center text-center"
+    >
+      <div className="relative w-20 h-20 mb-3 flex items-center justify-center">
+        <OrbitalLine size={80} delay={delay * 8} />
+        <div ref={ref} className="relative z-10">
+          <span className="font-heading text-3xl md:text-4xl font-extrabold text-foreground">
+            {count}{suffix}
+          </span>
+        </div>
+      </div>
+      <p className="text-xs font-semibold text-primary tracking-wide uppercase font-mono mb-0.5">
+        {label}
+      </p>
+      <p className="text-[11px] text-muted-foreground">{desc}</p>
+    </motion.div>
+  );
+};
 
 const ContactFormSection = () => {
   const [form, setForm] = useState({
@@ -81,8 +101,6 @@ const ContactFormSection = () => {
   });
   const set = (k: string, v: string | boolean) =>
     setForm((p) => ({ ...p, [k]: v }));
-
-  const counters = metrics.map((m) => useCounter(m.value, 2000, m.suffix));
 
   return (
     <section id="contato" className="relative">
