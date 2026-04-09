@@ -141,8 +141,8 @@ const AIOrbitSection = () => {
         />
       </div>
 
-      <div className="max-w-[1240px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-12 lg:gap-0 items-center">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-12 lg:gap-0 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -201,7 +201,7 @@ const AIOrbitSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative flex items-center justify-center lg:-ml-[28rem] xl:-ml-[32rem]"
+            className="relative flex items-center justify-center lg:-ml-[18rem] xl:-ml-[22rem]"
           >
             <div className="relative w-[420px] h-[420px] md:w-[620px] md:h-[620px] lg:w-[820px] lg:h-[820px]">
               <svg
