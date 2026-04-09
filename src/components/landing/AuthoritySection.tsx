@@ -135,7 +135,7 @@ const AuthoritySection = () => {
                     boxShadow: "0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7)",
                   }}
                 >
-                  <div className="grid md:grid-cols-[1fr_1.3fr] gap-4 md:gap-[30px] min-h-[380px]">
+                  <div className="grid md:grid-cols-[1fr_1.3fr] gap-4 md:gap-[30px] min-h-[440px]">
                     {/* Left — Text card */}
                     <div
                       className="rounded-xl p-7 md:p-8 flex flex-col justify-between relative border border-white/[0.04]"
