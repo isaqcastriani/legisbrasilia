@@ -253,7 +253,7 @@ const ContactFormSection = () => {
                       boxShadow: "inset 0 2px 4px hsl(213 60% 4% / 0.6), inset 0 1px 2px hsl(213 60% 3% / 0.4), 0 1px 0 hsl(0 0% 100% / 0.03)",
                     }}
                   />
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input
                       type="text"
                       placeholder="Telefone"

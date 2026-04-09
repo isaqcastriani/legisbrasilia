@@ -144,12 +144,12 @@ const SpecialistsSection = () => {
           {/* Inner card */}
           <div className="relative rounded-[22px] border border-white/[0.04] overflow-hidden" style={{ background: "hsl(var(--card) / 0.85)" }}>
           {/* Numbered tabs — Kode Mono */}
-          <div className="flex items-center border-b border-border/20">
+          <div className="flex items-center border-b border-border/20 overflow-x-auto scrollbar-hide">
             {specialists.map((s, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIdx(i)}
-                className={`relative flex-1 flex items-center justify-center gap-2 py-4 font-mono text-[10px] md:text-[12px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 border-b-2 -mb-px ${
+                className={`relative flex-shrink-0 flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-3 sm:py-4 font-mono text-[10px] md:text-[12px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 border-b-2 -mb-px min-w-[48px] ${
                   i === activeIdx
                     ? "border-primary text-foreground"
                     : "border-transparent text-muted-foreground/50 hover:text-muted-foreground"
@@ -164,7 +164,7 @@ const SpecialistsSection = () => {
                 >
                   {i + 1}
                 </span>
-                <span className="hidden sm:inline">{s.tab}</span>
+                <span className="hidden md:inline">{s.tab}</span>
               </button>
             ))}
           </div>
@@ -178,9 +178,9 @@ const SpecialistsSection = () => {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
-            <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[460px] max-h-[560px] overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
+            <div className="relative grid md:grid-cols-[1fr_1.4fr] md:min-h-[460px] md:max-h-[560px] overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
               {/* Left — Text content */}
-              <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
+              <div className="p-5 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-between">
                 <div>
                   {/* Icon */}
                   <div className="w-10 h-10 rounded-lg border border-border/30 flex items-center justify-center mb-6">
@@ -223,7 +223,7 @@ const SpecialistsSection = () => {
               </div>
 
               {/* Right — Image + floating UI elements */}
-              <div className="relative overflow-hidden rounded-br-2xl">
+              <div className="relative overflow-hidden rounded-br-2xl hidden md:block">
                 {/* Agent image */}
                 <img
                   src={active.img}
