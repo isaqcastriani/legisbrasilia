@@ -2,12 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, MessageSquare, Search, FileText } from "lucide-react";
 
-import imgAguia from "@/assets/specialist-aguia.png";
-import imgGolfinho from "@/assets/specialist-golfinho.png";
-import imgRobo from "@/assets/specialist-robo.png";
-import imgPantera from "@/assets/specialist-pantera.png";
-import imgFila from "@/assets/specialist-fila.png";
-import imgArara from "@/assets/specialist-arara.png";
+import imgAguia from "@/assets/eagle.png";
+import imgGolfinho from "@/assets/dolphin.png";
+import imgRobo from "@/assets/robot.png";
+import imgPantera from "@/assets/panther.png";
+import imgFila from "@/assets/dog.png";
+import imgArara from "@/assets/macaw.png";
 
 const specialists = [
   {
