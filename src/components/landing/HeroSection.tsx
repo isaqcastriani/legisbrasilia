@@ -253,11 +253,10 @@ const HeroSection = () => {
                       <div
                         key={i}
                         className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs ${
-                          i === 0 ? "ring-1" : ""
+                          i === 0 ? "ring-1 ring-primary/30" : ""
                         }`}
                         style={{
                           background: i === 0 ? "hsl(var(--primary) / 0.12)" : "transparent",
-                          ringColor: i === 0 ? "hsl(var(--primary) / 0.3)" : undefined,
                         }}
                       >
                         {icon}
