@@ -3,7 +3,7 @@ import { useRef, useEffect, useState, useMemo } from "react";
 const COLS = 80;
 const ROWS = 8;
 
-const PixelDivider = ({ flip = false }: { flip?: boolean }) => {
+const PixelDivider = ({ flip = false, color }: { flip?: boolean; color?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
 
@@ -63,7 +63,7 @@ const PixelDivider = ({ flip = false }: { flip?: boolean }) => {
               key={idx}
               style={{
                 background: filled
-                  ? "hsl(var(--background))"
+                  ? (color || "hsl(var(--background))")
                   : "transparent",
                 transition: "background 0.15s ease",
               }}
