@@ -175,10 +175,7 @@ const AIOrbitSection = () => {
               </span>
             </p>
 
-            <p className="text-muted-foreground/70 text-xs md:text-sm leading-relaxed max-w-md mb-8">
-              Os melhores modelos de IA trabalham juntos em uma única camada jurídica,
-              com curadoria para o contexto brasileiro.
-            </p>
+            <div className="mb-8" />
 
             <a
               href="#contato"
