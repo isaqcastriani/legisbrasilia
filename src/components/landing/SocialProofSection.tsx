@@ -132,8 +132,10 @@ const SocialProofSection = () => {
                       <td
                         className="px-6 py-5 align-top"
                         style={{
-                          background: "hsl(var(--primary))",
-                          ...(i === 0
+                          ...(i > 0
+                            ? { background: "hsl(var(--primary))" }
+                            : {}),
+                          ...(i === 1
                             ? { borderTopLeftRadius: "12px", borderTopRightRadius: "12px" }
                             : {}),
                           ...(isLast
@@ -141,7 +143,7 @@ const SocialProofSection = () => {
                             : {}),
                         }}
                       >
-                        <span className="text-[15px] font-bold text-primary-foreground leading-relaxed">
+                        <span className={`text-[15px] font-bold leading-relaxed ${i > 0 ? "text-primary-foreground" : "text-primary"}`}>
                           {row.legis}
                         </span>
                       </td>
