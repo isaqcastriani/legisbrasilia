@@ -57,75 +57,7 @@ const cards = [
   },
 ];
 
-/* Animated tech arrow connector between cards */
-const CardArrow = () => (
-  <div className="flex flex-col items-center py-4 md:py-6 relative">
-    <svg
-      width="32"
-      height="80"
-      viewBox="0 0 32 80"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <linearGradient id="cardArrowBase" x1="16" y1="80" x2="16" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
-          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.08" />
-        </linearGradient>
-        <linearGradient id="cardArrowGlow" x1="16" y1="80" x2="16" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0">
-            <animate attributeName="offset" values="-0.3;0.7;1.3" dur="2.2s" repeatCount="indefinite" />
-          </stop>
-          <stop offset="12%" stopColor="hsl(var(--primary))" stopOpacity="1">
-            <animate attributeName="offset" values="-0.18;0.82;1.42" dur="2.2s" repeatCount="indefinite" />
-          </stop>
-          <stop offset="25%" stopColor="hsl(var(--primary))" stopOpacity="0">
-            <animate attributeName="offset" values="-0.05;0.95;1.55" dur="2.2s" repeatCount="indefinite" />
-          </stop>
-        </linearGradient>
-        <filter id="cardGlowBlur" x="-100%" y="-10%" width="300%" height="120%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
 
-      {/* Side rails */}
-      <line x1="10" y1="6" x2="10" y2="74" stroke="hsl(var(--primary))" strokeOpacity="0.06" strokeWidth="1" />
-      <line x1="22" y1="6" x2="22" y2="74" stroke="hsl(var(--primary))" strokeOpacity="0.06" strokeWidth="1" />
-
-      {/* Center base line */}
-      <line x1="16" y1="4" x2="16" y2="68" stroke="url(#cardArrowBase)" strokeWidth="2" strokeLinecap="round" />
-
-      {/* Animated glow */}
-      <line x1="16" y1="4" x2="16" y2="68" stroke="url(#cardArrowGlow)" strokeWidth="2.5" strokeLinecap="round" filter="url(#cardGlowBlur)" />
-
-      {/* Arrowhead — chevron style */}
-      <path
-        d="M9 62 L16 74 L23 62"
-        stroke="hsl(var(--primary))"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-        opacity="0.5"
-      />
-
-      {/* Top dot */}
-      <circle cx="16" cy="4" r="2" fill="hsl(var(--primary))" opacity="0.15" />
-      {/* Bottom dot */}
-      <circle cx="16" cy="74" r="2.5" fill="hsl(var(--primary))" opacity="0.4" />
-    </svg>
-  </div>
-);
-const AuthoritySection = () => {
-  return (
-    <section id="diferenciais" className="relative">
-      {/* Tech arrow divider */}
-      <TechArrow />
 
       {/* Section bg */}
       <div
@@ -294,8 +226,7 @@ const AuthoritySection = () => {
                   </div>
                 </motion.div>
 
-                {/* Dot divider between cards */}
-                {i < cards.length - 1 && <CardArrow />}
+                {i < cards.length - 1 && <div className="h-4" />}
               </div>
             );
           })}
