@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { AlertTriangle, ArrowRight, Link2, ShieldAlert } from "lucide-react";
+import ProblemDocAnimation from "./ProblemDocAnimation";
 
 const problemCards = [
   {
@@ -69,6 +70,11 @@ const ProblemSection = () => {
               </span>
             </a>
           </motion.div>
+        </div>
+
+        {/* 3D Document Animation */}
+        <div className="mb-12 md:mb-16 max-w-[780px] mx-auto">
+          <ProblemDocAnimation />
         </div>
 
         <div className="space-y-5 md:space-y-7">
