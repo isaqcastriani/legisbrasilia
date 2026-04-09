@@ -57,8 +57,9 @@ const cards = [
   },
 ];
 
-
-
+const AuthoritySection = () => {
+  return (
+    <section id="diferenciais" className="relative">
       {/* Section bg */}
       <div
         className="relative py-12 md:py-16"
