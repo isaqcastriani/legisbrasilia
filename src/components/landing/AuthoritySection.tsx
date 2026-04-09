@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { Scale } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 import CtaButton from "./CtaButton";
 
 const differentials = [
@@ -27,79 +28,86 @@ const differentials = [
 
 const AuthoritySection = () => {
   return (
-    <section id="diferenciais" className="relative section-spacing">
-      <div className="absolute inset-0 grid-lines pointer-events-none" />
+    <>
+      <SectionDivider />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-        {/* Section label */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="section-label mb-5"
-        >
-          <span className="text-primary">🛡️</span>
-          <span>Por Que Nós</span>
-        </motion.div>
+      <section id="diferenciais" className="relative py-20 md:py-28">
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+          {/* Humble-style: Centered headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-6"
+          >
+            <h2 className="font-heading text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.08]">
+              A diferença entre "usar IA" e{" "}
+              <span className="text-gradient">confiar nela.</span>
+            </h2>
+          </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] max-w-3xl mb-6"
-        >
-          A diferença entre "usar IA" e{" "}
-          <span className="text-gradient">confiar nela.</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-16 leading-relaxed"
-        >
-          Não confie sua reputação a algoritmos genéricos e estrangeiros. Utilize a única infraestrutura jurídica desenvolvida por quem conhece o rigor dos tribunais e a responsabilidade de uma decisão.
-        </motion.p>
-
-        {/* Differentials */}
-        <div className="space-y-6">
-          {differentials.map((d, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="anti-card p-6 md:p-8"
-            >
-              <h3 className="font-heading text-lg md:text-xl font-bold text-foreground mb-3">
-                {d.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                {d.desc}
-              </p>
-              <div className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <p className="text-sm font-medium text-primary">
-                  E daí? {d.result}
-                </p>
+          {/* Founder card — Humble style */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="flex justify-center mb-16"
+          >
+            <div className="anti-card px-6 py-4 inline-flex items-center gap-4">
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "hsl(var(--primary) / 0.1)" }}
+              >
+                <Scale className="w-5 h-5 text-primary" />
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <div>
+                <p className="font-heading font-bold text-foreground text-sm">Dr. Ali Mazloum</p>
+                <p className="text-xs text-muted-foreground">Desembargador Federal · Fundador</p>
+              </div>
+            </div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center mt-16"
-        >
-          <CtaButton>ENTRAR PARA A ELITE JURÍDICA</CtaButton>
-        </motion.div>
-      </div>
-    </section>
+          {/* Humble-style: Feature cards as dark rounded cards stacked */}
+          <div className="space-y-4">
+            {differentials.map((d, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className="anti-card"
+              >
+                <div className="p-6 md:p-8">
+                  <h3 className="font-heading text-lg md:text-xl font-bold text-foreground mb-3">
+                    {d.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    {d.desc}
+                  </p>
+                  <div className="flex items-start gap-3 rounded-xl p-4" style={{ background: "hsl(var(--primary) / 0.05)", border: "1px solid hsl(var(--primary) / 0.1)" }}>
+                    <span className="font-mono text-xs text-primary font-semibold flex-shrink-0 mt-0.5">→ E daí?</span>
+                    <p className="text-sm font-medium text-primary leading-relaxed">
+                      {d.result}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex justify-center mt-14"
+          >
+            <CtaButton>ENTRAR PARA A ELITE JURÍDICA</CtaButton>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 };
 
