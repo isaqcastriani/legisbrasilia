@@ -8,7 +8,7 @@ const FooterSection = () => {
     <>
       {/* CTA Section — title + button + full-width image */}
       <section className="relative">
-        <div className="relative z-10 text-center pt-24 md:pt-32 pb-10">
+        <div className="relative z-10 text-center pt-24 md:pt-32 pb-0 mb-[-80px] md:mb-[-120px]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
