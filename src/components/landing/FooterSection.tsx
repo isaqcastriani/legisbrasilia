@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import logo from "@/assets/logo-white.png";
+import footerBg from "@/assets/footer-cta-bg.jpg";
 
 const professions = [
   "Advogado(a)",
@@ -25,43 +26,77 @@ const FooterSection = () => {
 
   return (
     <>
-      {/* CTA Section — Ease Health inspired full-width accent block */}
-      <section id="contato" className="relative py-24 md:py-32">
-        <div className="max-w-[1240px] mx-auto px-5 md:px-8">
-          {/* Grid: CTA card left + Form right */}
-          <div className="grid lg:grid-cols-2 gap-4">
-            {/* Left — Accent CTA card (Ease Health style) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="accent-card p-8 md:p-10 flex flex-col justify-between min-h-[380px]"
+      {/* CTA Section — Humble inspired: title + button + full-width image */}
+      <section id="contato" className="relative">
+        {/* Top text + button area */}
+        <div className="relative z-10 text-center pt-24 md:pt-32 pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto px-5"
+          >
+            <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.06] mb-4">
+              Pronto para a nova era jurídica?
+            </h2>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-8 max-w-xl mx-auto">
+              Solicite seu acesso ou agende uma demonstração de 15 minutos.
+            </p>
+            <a
+              href="#form-contato"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-[13px] tracking-wide cta-3d hover:translate-y-[-2px] active:translate-y-[1px] transition-all"
             >
-              <div>
-                <span className="text-[11px] font-mono font-medium uppercase tracking-widest opacity-50 mb-4 block">
-                  Solicitar Acesso
-                </span>
-                <h2 className="font-heading text-2xl md:text-3xl lg:text-[2.5rem] font-bold leading-[1.08] mb-4">
-                  O padrão do seu escritório muda aqui.
-                </h2>
-                <p className="text-sm opacity-70 leading-relaxed max-w-md">
-                  Junte-se aos profissionais que escolheram trocar volume de trabalho mecânico por precisão validada.
-                </p>
-              </div>
-              <div className="mt-8">
-                <p className="text-[11px] opacity-40">
-                  Sem cartão de crédito. Sem compromisso. Com a segurança de quem leva o Direito a sério.
-                </p>
-              </div>
-            </motion.div>
+              Solicitar Acesso
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.div>
+        </div>
 
-            {/* Right — Form card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bento-card p-7 md:p-9"
+        {/* Full-width cinematic image */}
+        <div className="relative w-full h-[300px] md:h-[450px] lg:h-[550px] overflow-hidden">
+          <img
+            src={footerBg}
+            alt=""
+            className="w-full h-full object-cover object-center"
+            loading="lazy"
+            width={1920}
+            height={800}
+          />
+          {/* Top gradient fade into background */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 35%, transparent 70%, hsl(213 60% 5%) 100%)",
+            }}
+          />
+        </div>
+      </section>
+
+      {/* Form section */}
+      <section
+        id="form-contato"
+        className="relative py-16 md:py-20"
+        style={{ background: "hsl(213 60% 5%)" }}
+      >
+        <div className="max-w-[600px] mx-auto px-5 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-2xl p-[1px]"
+            style={{
+              background:
+                "linear-gradient(145deg, hsl(var(--primary) / 0.2), hsl(var(--secondary) / 0.1), hsl(var(--primary) / 0.05))",
+            }}
+          >
+            <div
+              className="rounded-2xl p-7 md:p-9"
+              style={{
+                background: "hsl(213 50% 10%)",
+                boxShadow:
+                  "0 25px 60px -15px hsl(213 60% 4% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.03)",
+              }}
             >
               <h3 className="font-heading text-lg font-bold text-primary text-center mb-1">
                 Solicitar Acesso
@@ -76,16 +111,22 @@ const FooterSection = () => {
                   placeholder="Nome completo"
                   value={form.name}
                   onChange={(e) => set("name", e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-background/50 border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
-                  style={{ borderColor: "hsl(var(--border) / 0.12)" }}
+                  className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
+                  style={{
+                    borderColor: "hsl(var(--border) / 0.12)",
+                    background: "hsl(213 50% 8%)",
+                  }}
                 />
                 <input
                   type="email"
                   placeholder="Email profissional"
                   value={form.email}
                   onChange={(e) => set("email", e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-background/50 border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
-                  style={{ borderColor: "hsl(var(--border) / 0.12)" }}
+                  className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
+                  style={{
+                    borderColor: "hsl(var(--border) / 0.12)",
+                    background: "hsl(213 50% 8%)",
+                  }}
                 />
                 <div className="grid grid-cols-2 gap-3">
                   <input
@@ -93,18 +134,26 @@ const FooterSection = () => {
                     placeholder="Telefone"
                     value={form.phone}
                     onChange={(e) => set("phone", e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-background/50 border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
-                    style={{ borderColor: "hsl(var(--border) / 0.12)" }}
+                    className="w-full px-4 py-3 rounded-xl border text-foreground placeholder:text-muted-foreground/35 text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition"
+                    style={{
+                      borderColor: "hsl(var(--border) / 0.12)",
+                      background: "hsl(213 50% 8%)",
+                    }}
                   />
                   <select
                     value={form.profession}
                     onChange={(e) => set("profession", e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-background/50 border text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition appearance-none"
-                    style={{ borderColor: "hsl(var(--border) / 0.12)" }}
+                    className="w-full px-4 py-3 rounded-xl border text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-primary/30 transition appearance-none"
+                    style={{
+                      borderColor: "hsl(var(--border) / 0.12)",
+                      background: "hsl(213 50% 8%)",
+                    }}
                   >
                     <option value="">Profissão</option>
                     {professions.map((p) => (
-                      <option key={p} value={p}>{p}</option>
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -118,8 +167,13 @@ const FooterSection = () => {
                   />
                   <span className="text-[11px] text-muted-foreground">
                     Concordo com os{" "}
-                    <a href="#" className="text-primary hover:underline">Termos</a> e{" "}
-                    <a href="#" className="text-primary hover:underline">Privacidade</a>
+                    <a href="#" className="text-primary hover:underline">
+                      Termos
+                    </a>{" "}
+                    e{" "}
+                    <a href="#" className="text-primary hover:underline">
+                      Privacidade
+                    </a>
                   </span>
                 </label>
 
@@ -131,54 +185,132 @@ const FooterSection = () => {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Footer — Bento-style grid inspired by Ease Health */}
-      <footer className="relative py-12 md:py-16">
+      {/* Footer — 3D cards with depth */}
+      <footer
+        className="relative py-12 md:py-16"
+        style={{ background: "hsl(213 60% 5%)" }}
+      >
         <div className="max-w-[1240px] mx-auto px-5 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-4">
-            {/* Left — Tagline card */}
+            {/* Left — Tagline card with 3D depth */}
             <div
-              className="bento-card p-8 md:p-10"
+              className="relative rounded-2xl p-8 md:p-10 border border-white/[0.06] overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(145deg, hsl(213 50% 14%) 0%, hsl(213 55% 9%) 100%)",
+                boxShadow:
+                  "0 20px 50px -15px hsl(213 60% 4% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 4% / 0.4)",
+              }}
             >
-              <img src={logo} alt="LegisBrasil.IA" className="h-6 w-auto opacity-40 mb-6" />
-              <p className="font-heading text-xl md:text-2xl font-bold text-foreground leading-tight max-w-md">
-                A Única IA Jurídica 100% Brasileira,{" "}
-                <span className="text-primary/50">Validada por Especialistas</span>
-                <span className="text-primary">.</span>
-              </p>
+              {/* Subtle gradient orbs */}
+              <div
+                className="absolute -top-16 -right-16 w-48 h-48 rounded-full pointer-events-none opacity-20"
+                style={{
+                  background:
+                    "radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%)",
+                }}
+              />
+              <div
+                className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full pointer-events-none opacity-15"
+                style={{
+                  background:
+                    "radial-gradient(circle, hsl(var(--secondary) / 0.3) 0%, transparent 70%)",
+                }}
+              />
+              <div className="relative z-10">
+                <img
+                  src={logo}
+                  alt="LegisBrasil.IA"
+                  className="h-6 w-auto opacity-40 mb-6"
+                />
+                <p className="font-heading text-xl md:text-2xl font-bold text-foreground leading-tight max-w-md">
+                  A Única IA Jurídica 100% Brasileira,{" "}
+                  <span className="text-primary/50">
+                    Validada por Especialistas
+                  </span>
+                  <span className="text-primary">.</span>
+                </p>
+              </div>
             </div>
 
-            {/* Right — Links card */}
+            {/* Right — Links card with 3D depth */}
             <div
-              className="bento-card p-8 md:p-10"
+              className="relative rounded-2xl p-8 md:p-10 border border-white/[0.06] overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(160deg, hsl(213 48% 13%) 0%, hsl(213 52% 9%) 100%)",
+                boxShadow:
+                  "0 20px 50px -15px hsl(213 60% 4% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 4% / 0.4)",
+              }}
             >
-              <div className="grid grid-cols-2 gap-8">
+              <div
+                className="absolute top-8 right-8 w-32 h-32 rounded-full pointer-events-none opacity-10"
+                style={{
+                  background:
+                    "radial-gradient(circle, hsl(var(--primary) / 0.4) 0%, transparent 70%)",
+                }}
+              />
+              <div className="relative z-10 grid grid-cols-2 gap-8">
                 <div>
-                  <p className="text-[11px] font-semibold text-foreground mb-4 tracking-wide uppercase font-mono">Plataforma</p>
+                  <p className="text-[11px] font-semibold text-foreground mb-4 tracking-wide uppercase font-mono">
+                    Plataforma
+                  </p>
                   <div className="space-y-2.5">
-                    <a href="#especialistas" className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors">Especialistas</a>
-                    <a href="#diferenciais" className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors">Diferenciais</a>
-                    <a href="#validacao" className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors">Validação</a>
+                    <a
+                      href="#especialistas"
+                      className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Especialistas
+                    </a>
+                    <a
+                      href="#diferenciais"
+                      className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Diferenciais
+                    </a>
+                    <a
+                      href="#validacao"
+                      className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Validação
+                    </a>
                   </div>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold text-foreground mb-4 tracking-wide uppercase font-mono">Legal</p>
+                  <p className="text-[11px] font-semibold text-foreground mb-4 tracking-wide uppercase font-mono">
+                    Legal
+                  </p>
                   <div className="space-y-2.5">
-                    <a href="#" className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors">Termos</a>
-                    <a href="#" className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors">Privacidade</a>
+                    <a
+                      href="#"
+                      className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Termos
+                    </a>
+                    <a
+                      href="#"
+                      className="block text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Privacidade
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Bottom bar */}
+          {/* Bottom bar with 3D */}
           <div
-            className="mt-4 bento-card px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3"
+            className="mt-4 rounded-2xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 border border-white/[0.04]"
+            style={{
+              background: "linear-gradient(180deg, hsl(213 48% 11%) 0%, hsl(213 52% 8%) 100%)",
+              boxShadow: "0 8px 25px -10px hsl(213 60% 4% / 0.6), inset 0 1px 0 hsl(0 0% 100% / 0.02)",
+            }}
           >
             <p className="text-[11px] text-muted-foreground/40">
               © 2026 LegisBrasil.IA · Todos os direitos reservados
