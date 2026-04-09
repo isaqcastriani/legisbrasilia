@@ -1,37 +1,15 @@
 import { motion } from "framer-motion";
-import { Video, FileText, ShieldCheck } from "lucide-react";
+import { AlertTriangle, CheckCircle2, X, Scale } from "lucide-react";
 import CtaButton from "./CtaButton";
 
-const features = [
-  {
-    icon: Video,
-    title: "Transcrição Multimodal",
-    desc: "Transcreve áudio e vídeo de audiências, transformando horas de gravação em estratégia.",
-  },
-  {
-    icon: FileText,
-    title: "Redação Técnica",
-    desc: "Gera petições, sentenças e votos com jurisprudência real e verificável.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Segurança e LGPD",
-    desc: "Proteção total de dados em solo nacional, seguindo rigorosamente as normas do CNJ.",
-  },
+const comparisonRows = [
+  "Treinamento jurídico brasileiro",
+  "Validação por magistrados",
+  "Dados 100% no Brasil (LGPD)",
+  "Anti-alucinação com fontes",
+  "Links auditáveis",
+  "Curadoria de doutrina",
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.12,
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1] as const,
-    },
-  }),
-};
 
 const ProblemSection = () => {
   return (
@@ -39,7 +17,7 @@ const ProblemSection = () => {
       <div className="absolute inset-0 grid-lines pointer-events-none" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-        {/* Section label like Antimetal */}
+        {/* Section label */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -47,73 +25,131 @@ const ProblemSection = () => {
           transition={{ duration: 0.5 }}
           className="section-label mb-5"
         >
-          <span className="text-primary">⚡</span>
-          <span>Infraestrutura Jurídica</span>
+          <span className="text-primary">⚠️</span>
+          <span>O Problema</span>
         </motion.div>
 
-        {/* Headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] max-w-3xl mb-5"
-        >
-          Sua Equipe de Elite Digital
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-16 leading-relaxed"
-        >
-          Somos a primeira infraestrutura de IA desenvolvida por magistrados e juristas para dominar todo o ciclo jurídico brasileiro, da prova à peça final.
-        </motion.p>
-
-        {/* Feature cards — Antimetal style: horizontal rule + cards */}
-        <div className="anti-divider mb-12" />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:divide-x md:divide-border/15">
-          {features.map((f, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left column — Copy */}
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              variants={cardVariants}
-              className="group px-0 md:px-8 py-8 md:py-0 first:pl-0 last:pr-0 border-b md:border-b-0 border-border/15 last:border-b-0"
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] mb-6"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: "hsl(var(--primary) / 0.08)" }}
-                >
-                  <f.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-heading text-lg font-semibold text-foreground">
-                  {f.title}
-                </h3>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {f.desc}
+              Por Que Não Usar{" "}
+              <span className="text-gradient">Uma IA Genérica?</span>
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="space-y-4 text-muted-foreground text-sm md:text-base leading-relaxed mb-8"
+            >
+              <p>
+                O ChatGPT inventa leis. O Gemini alucina precedentes. No direito,{" "}
+                <strong className="text-foreground">um erro de citação pode custar o processo inteiro.</strong>
+              </p>
+              <p>
+                Ferramentas genéricas de IA foram treinadas com a média da internet global. Elas não entendem a lógica processual brasileira, não conhecem a jurisprudência do seu tribunal e, pior, inventam leis que não existem com a confiança de quem cita o Código Civil de cor.
+              </p>
+              <p>
+                O resultado? O advogado que confiou na ferramenta descobre a alucinação quando o juiz aponta. O magistrado que buscou agilidade ganha retrabalho. O parecer que deveria poupar horas custa a credibilidade de quem assinou.
+              </p>
+              <p className="text-foreground font-medium">
+                IAs estrangeiras traduzem sintaxe jurídica. A LegisBrasil.IA raciocina dentro dela.
               </p>
             </motion.div>
-          ))}
+
+            {/* Risk callout */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="anti-card p-5 mb-6"
+            >
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-1">Risco real:</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Em 2024, advogados nos EUA foram multados por citar jurisprudência inventada por IA genérica.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Authority card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="anti-card p-5 flex items-center gap-4"
+            >
+              <div
+                className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "hsl(var(--primary) / 0.1)" }}
+              >
+                <Scale className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <p className="font-heading font-bold text-foreground text-sm">Dr. Ali Mazloum</p>
+                <p className="text-xs text-muted-foreground">
+                  Desembargador Federal · Fundador
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right column — Comparison table */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div
+              className="rounded-2xl border overflow-hidden"
+              style={{
+                borderColor: "hsl(var(--border) / 0.2)",
+                background: "hsl(var(--card) / 0.4)",
+              }}
+            >
+              {/* Table header */}
+              <div
+                className="grid grid-cols-[1fr_80px_80px] px-5 py-3 text-xs font-semibold uppercase tracking-wider border-b"
+                style={{ borderColor: "hsl(var(--border) / 0.15)" }}
+              >
+                <span className="text-muted-foreground/60">Critério</span>
+                <span className="text-center text-primary">Legis</span>
+                <span className="text-center text-muted-foreground/60">Genérica</span>
+              </div>
+
+              {/* Table rows */}
+              {comparisonRows.map((row, i) => (
+                <div
+                  key={i}
+                  className="grid grid-cols-[1fr_80px_80px] px-5 py-4 border-b last:border-b-0 hover:bg-card/30 transition-colors"
+                  style={{ borderColor: "hsl(var(--border) / 0.1)" }}
+                >
+                  <span className="text-sm text-foreground">{row}</span>
+                  <span className="flex justify-center">
+                    <CheckCircle2 className="w-5 h-5 text-secondary" />
+                  </span>
+                  <span className="flex justify-center">
+                    <X className="w-5 h-5 text-muted-foreground/40" />
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
-
-        <div className="anti-divider mt-12 mb-14" />
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center"
-        >
-          <CtaButton>ASSINAR A INTELIGÊNCIA QUE ENTENDE O DIREITO</CtaButton>
-        </motion.div>
       </div>
     </section>
   );

@@ -97,13 +97,8 @@ const HeroSection = () => {
             </motion.div>
 
             <h1 className="font-heading text-[2.25rem] md:text-[2.75rem] lg:text-[3.25rem] font-bold leading-[1.06] tracking-tight text-foreground">
-              A Única IA
-              <br />
-              Jurídica 100%
-              <br />
-              Brasileira e
-              <br />
-              <span className="text-gradient">Validada</span>
+              A Única IA Jurídica 100% Brasileira e{" "}
+              <span className="text-gradient">Validada por Especialistas</span>
               <span className="text-primary">.</span>
             </h1>
           </motion.div>
@@ -138,11 +133,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="text-left lg:text-left lg:pl-4"
           >
-            <p className="font-heading text-base md:text-lg font-semibold text-foreground leading-snug mb-3 max-w-xs">
-              Dominamos todo o ciclo jurídico, da prova à peça final.
-            </p>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              <span className="text-primary font-medium">Validada por especialistas</span> — a única inteligência artificial treinada exclusivamente com o raciocínio dos tribunais brasileiros.
+              Dominamos todo o ciclo jurídico, da transcrição da prova à peça final, através da única inteligência artificial treinada exclusivamente com o raciocínio e a burocracia dos tribunais brasileiros.
             </p>
           </motion.div>
         </div>

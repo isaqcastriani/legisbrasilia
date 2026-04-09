@@ -15,19 +15,19 @@ const specialists = [
     img: imgAguia,
     name: "Águia",
     role: "Super Analista",
-    desc: "Responsável por examinar processos na íntegra, identificar pontos jurídicos cruciais e extrair o núcleo decisório de grandes volumes documentais em segundos.",
+    desc: "Examina processos inteiros, identifica os pontos jurídicos que decidem o caso e extrai o núcleo decisório de volumes documentais que levariam dias. Faz isso em segundos.",
   },
   {
     img: imgGolfinho,
     name: "Golfinho",
     role: "Análise Multimodal",
-    desc: "Assiste a vídeos e ouve áudios de audiências gravadas, transcrevendo e indexando o conteúdo para transformar horas de gravação em 15 minutos de estratégia pura.",
+    desc: "Assiste vídeos e ouve áudios de audiências gravadas. Transcreve, indexa e transforma horas de gravação em 15 minutos de estratégia utilizável.",
   },
   {
     img: imgRobo,
     name: "Robô",
     role: "Juiz Robô (Jurimetria)",
-    desc: "Aplica inteligência de dados para identificar tendências de tribunais e prever as probabilidades de êxito e resultados do processo com base no cenário nacional.",
+    desc: "Cruza dados de tribunais para identificar tendências, prever probabilidades de êxito e mapear o cenário decisório do seu caso com base no histórico nacional.",
   },
   {
     img: imgPantera,
@@ -69,7 +69,6 @@ const SpecialistsSection = () => {
 
   return (
     <section id="especialistas" className="relative section-spacing overflow-hidden">
-      {/* Warm gradient background like Antimetal's amber section */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -87,7 +86,7 @@ const SpecialistsSection = () => {
           className="section-label mb-5"
         >
           <span className="text-secondary">🤖</span>
-          <span>Especialistas IA</span>
+          <span>A Virada</span>
         </motion.div>
 
         <motion.h2
@@ -97,7 +96,9 @@ const SpecialistsSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="font-heading text-3xl md:text-[3rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.08] max-w-3xl mb-4"
         >
-          Pare de trabalhar sozinho.
+          Não é um chatbot com toga.
+          <br />
+          <span className="text-gradient">É a sua equipe de elite digital.</span>
         </motion.h2>
 
         <motion.p
@@ -105,9 +106,19 @@ const SpecialistsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-14 leading-relaxed"
+          className="text-muted-foreground text-base md:text-lg max-w-2xl mb-5 leading-relaxed"
         >
-          Muito mais que um software, a LegisBrasil.IA funciona como uma equipe digital de apoio, onde diferentes especialistas trabalham integrados para garantir precisão e rapidez em cada caso.
+          A LegisBrasil.IA funciona como um escritório inteiro comprimido em especialistas que trabalham integrados, cada um dominando uma etapa do ciclo jurídico que nenhum profissional sozinho dá conta de cobrir com a mesma velocidade.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="text-foreground font-medium text-sm md:text-base mb-14"
+        >
+          Sozinho, cada especialista poupa horas. Juntos, eles mudam a lógica do seu escritório.
         </motion.p>
 
         {/* Cards */}
