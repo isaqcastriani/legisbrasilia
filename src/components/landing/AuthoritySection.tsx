@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Scale, Shield, Eye, Lock, MessageSquare, FileCheck, Search } from "lucide-react";
-import TechArrow from "./TechArrow";
+
 
 import bgAuth1 from "@/assets/bg-authority-1.jpg";
 import bgAuth2 from "@/assets/bg-authority-2.jpg";
