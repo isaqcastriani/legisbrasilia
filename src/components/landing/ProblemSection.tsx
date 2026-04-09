@@ -19,7 +19,7 @@ const problems = [
 
 const ProblemSection = () => {
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-14 md:py-20">
       <div className="max-w-[1240px] mx-auto px-5 md:px-8">
         {/* Centered headline */}
         <motion.div

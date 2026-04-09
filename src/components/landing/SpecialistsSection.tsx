@@ -116,7 +116,7 @@ const SpecialistsSection = () => {
   const FloatingIcon = floatingIcons[activeIdx];
 
   return (
-    <section id="especialistas" className="relative py-24 md:py-36">
+    <section id="especialistas" className="relative py-14 md:py-20">
       <div className="max-w-[1240px] mx-auto px-5 md:px-8">
         {/* Header */}
         <motion.div

@@ -23,7 +23,7 @@ const ContactFormSection = () => {
     setForm((p) => ({ ...p, [k]: v }));
 
   return (
-    <section id="contato" className="relative py-16 md:py-24">
+    <section id="contato" className="relative py-14 md:py-20">
       <div className="max-w-[1100px] mx-auto px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
