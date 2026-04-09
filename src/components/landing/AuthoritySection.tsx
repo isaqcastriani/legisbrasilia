@@ -57,11 +57,37 @@ const cards = [
   },
 ];
 
-/* Dot divider between cards */
-const DotDivider = () => (
-  <div className="flex items-center justify-center gap-[140px] md:gap-[280px] py-6 md:py-8">
-    <div className="w-2 h-2 rounded-full bg-primary/40" />
-    <div className="w-2 h-2 rounded-full bg-primary/40" />
+/* Tech connector between cards */
+const TechConnector = () => (
+  <div className="flex flex-col items-center py-6 md:py-10 relative">
+    {/* Vertical line */}
+    <div
+      className="w-px h-12 md:h-16"
+      style={{ background: "linear-gradient(180deg, hsl(var(--primary) / 0.5), hsl(var(--secondary) / 0.3))" }}
+    />
+    {/* Center node */}
+    <div className="relative flex items-center">
+      {/* Left branch */}
+      <div
+        className="w-8 md:w-16 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4))" }}
+      />
+      {/* Node dot */}
+      <div className="relative">
+        <div className="w-3 h-3 rounded-full border-2" style={{ borderColor: "hsl(var(--primary) / 0.6)", background: "hsl(var(--primary) / 0.15)" }} />
+        <div className="absolute inset-0 w-3 h-3 rounded-full animate-ping" style={{ background: "hsl(var(--primary) / 0.2)" }} />
+      </div>
+      {/* Right branch */}
+      <div
+        className="w-8 md:w-16 h-px"
+        style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.4), transparent)" }}
+      />
+    </div>
+    {/* Vertical line */}
+    <div
+      className="w-px h-12 md:h-16"
+      style={{ background: "linear-gradient(180deg, hsl(var(--secondary) / 0.3), hsl(var(--primary) / 0.5))" }}
+    />
   </div>
 );
 
@@ -238,7 +264,7 @@ const AuthoritySection = () => {
                 </motion.div>
 
                 {/* Dot divider between cards */}
-                {i < cards.length - 1 && <DotDivider />}
+                {i < cards.length - 1 && <TechConnector />}
               </div>
             );
           })}
