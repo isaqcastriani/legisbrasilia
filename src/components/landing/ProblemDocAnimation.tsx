@@ -1,5 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useCallback } from "react";
 import { AlertTriangle, FileText, Search } from "lucide-react";
 
 const docLines = [
@@ -19,48 +19,71 @@ const docLines = [
   { text: "§4º — responsabilidade objetiva do fornecedor.", type: "body" },
 ];
 
-const errorLine = 7; // "Súmula 387 do STJ" line
+const errorLine = 7;
 const errorText = "Súmula 387 do STJ";
 
 const ProblemDocAnimation = () => {
   const scanControls = useAnimation();
   const errorControls = useAnimation();
   const badgeControls = useAnimation();
-  const hasAnimated = useRef(false);
+  const scanBadgeControls = useAnimation();
+  const linesControls = useAnimation();
 
-  useEffect(() => {
-    if (hasAnimated.current) return;
-    hasAnimated.current = true;
+  const runLoop = useCallback(async () => {
+    while (true) {
+      // Reset everything
+      errorControls.set({ opacity: 0, scaleX: 0 });
+      badgeControls.set({ opacity: 0, scale: 0.6, y: 12 });
+      scanBadgeControls.set({ opacity: 0, x: -10 });
+      linesControls.set({ opacity: 0 });
 
-    const sequence = async () => {
-      // Wait for typing to finish
-      await new Promise((r) => setTimeout(r, 3200));
+      // Phase 1: Lines type in
+      linesControls.start({ opacity: 1, transition: { duration: 0.8 } });
+      await new Promise((r) => setTimeout(r, 2600));
 
-      // Scan line sweeps down
+      // Phase 2: Scan badge appears
+      scanBadgeControls.start({ opacity: 1, x: 0, transition: { duration: 0.35 } });
+
+      // Phase 3: Scan line sweeps down
       await scanControls.start({
         top: ["0%", "100%"],
         opacity: [0, 1, 1, 0],
-        transition: { duration: 1.8, ease: "easeInOut" },
+        transition: { duration: 1.6, ease: "easeInOut" },
       });
 
-      // Error highlight appears
+      // Phase 4: Error highlight
       await errorControls.start({
         opacity: 1,
         scaleX: 1,
         transition: { duration: 0.35, ease: "easeOut" },
       });
 
-      // Badge pops in
+      // Phase 5: Error badge pops in
       await badgeControls.start({
         opacity: 1,
         scale: 1,
         y: 0,
         transition: { type: "spring", stiffness: 400, damping: 20 },
       });
-    };
 
-    sequence();
-  }, [scanControls, errorControls, badgeControls]);
+      // Hold visible
+      await new Promise((r) => setTimeout(r, 3000));
+
+      // Fade out everything
+      await Promise.all([
+        errorControls.start({ opacity: 0, transition: { duration: 0.5 } }),
+        badgeControls.start({ opacity: 0, transition: { duration: 0.5 } }),
+        scanBadgeControls.start({ opacity: 0, transition: { duration: 0.5 } }),
+        linesControls.start({ opacity: 0, transition: { duration: 0.5 } }),
+      ]);
+
+      await new Promise((r) => setTimeout(r, 600));
+    }
+  }, [scanControls, errorControls, badgeControls, scanBadgeControls, linesControls]);
+
+  useEffect(() => {
+    runLoop();
+  }, [runLoop]);
 
   return (
     <motion.div
@@ -82,7 +105,8 @@ const ProblemDocAnimation = () => {
         }}
       >
         {/* Window chrome */}
-        <div className="flex items-center gap-2 px-5 py-3 border-b border-white/[0.06]"
+        <div
+          className="flex items-center gap-2 px-5 py-3 border-b border-white/[0.06]"
           style={{ background: "hsl(213 50% 8%)" }}
         >
           <div className="flex gap-1.5">
@@ -110,17 +134,17 @@ const ProblemDocAnimation = () => {
           />
 
           {/* Lines */}
-          <div className="space-y-0 font-mono text-[9px] md:text-[11px] leading-[1.7]">
+          <motion.div
+            animate={linesControls}
+            className="space-y-0 font-mono text-[9px] md:text-[11px] leading-[1.7]"
+          >
             {docLines.map((line, i) => {
-              if (line.type === "spacer")
-                return <div key={i} className="h-3" />;
+              if (line.type === "spacer") return <div key={i} className="h-3" />;
 
               const isError = i === errorLine;
-              const delay = i * 0.18 + 0.3;
 
               return (
                 <div key={i} className="relative">
-                  {/* Error highlight bg */}
                   {isError && (
                     <motion.div
                       animate={errorControls}
@@ -129,11 +153,7 @@ const ProblemDocAnimation = () => {
                       style={{ background: "hsl(0 80% 50% / 0.15)", border: "1px solid hsl(0 80% 50% / 0.3)" }}
                     />
                   )}
-
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.05, delay }}
+                  <span
                     className={`relative z-10 ${
                       line.type === "heading"
                         ? "text-foreground/90 font-semibold tracking-wide"
@@ -143,17 +163,16 @@ const ProblemDocAnimation = () => {
                     } ${isError ? "text-destructive/90" : ""}`}
                   >
                     {line.text}
-                  </motion.span>
+                  </span>
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
-          {/* Typing cursor */}
+          {/* Typing cursor — always blinking */}
           <motion.div
-            initial={{ opacity: 1 }}
             animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.5, repeat: 5, repeatType: "reverse", delay: 0.2 }}
+            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
             className="inline-block w-[2px] h-3 md:h-4 ml-0.5 mt-1"
             style={{ background: "hsl(var(--primary))" }}
           />
@@ -188,9 +207,8 @@ const ProblemDocAnimation = () => {
 
           {/* Scan badge */}
           <motion.div
+            animate={scanBadgeControls}
             initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 3.0, duration: 0.4 }}
             className="absolute left-4 md:left-6 bottom-4 md:bottom-6 z-30"
           >
             <div
