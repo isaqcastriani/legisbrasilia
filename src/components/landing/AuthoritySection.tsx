@@ -148,9 +148,7 @@ const AuthorityCard = ({
             </div>
           </div>
         </div>
-      </motion.div>
-      </div>
-    </div>
+    </motion.div>
   );
 };
 
