@@ -1,14 +1,49 @@
 import { motion } from "framer-motion";
-import { Quote, CheckCircle2, X } from "lucide-react";
+import { Quote } from "lucide-react";
 
-const comparisonRows = [
-  "Treinamento jurídico brasileiro",
-  "Validação por magistrados",
-  "Dados 100% no Brasil (LGPD)",
-  "Anti-alucinação com fontes",
-  "Links auditáveis",
-  "Curadoria de doutrina",
-  "Conformidade CNJ",
+const comparisonData = [
+  {
+    feature: "Tempo para primeiro valor",
+    legis: "Primeiros resultados em segundos",
+    iaGen: "Requer prompts complexos e revisão manual",
+    manual: "Dias a semanas de pesquisa",
+  },
+  {
+    feature: "Precisão das fontes",
+    legis: "100% auditável com links oficiais",
+    iaGen: "Inventa leis e jurisprudência",
+    manual: "Depende da experiência do profissional",
+  },
+  {
+    feature: "Base de treinamento",
+    legis: "Exclusivamente doutrina, legislação e jurisprudência brasileira",
+    iaGen: "Modelos genéricos importados",
+    manual: "Conhecimento individual limitado",
+  },
+  {
+    feature: "Alucinações",
+    legis: "Zero — mecanismos de validação impedem criação de fontes falsas",
+    iaGen: "Frequentes e difíceis de detectar",
+    manual: "Erros humanos ocasionais",
+  },
+  {
+    feature: "Conformidade LGPD/CNJ",
+    legis: "Arquitetura nativa — dados nunca saem do Brasil",
+    iaGen: "Dados processados no exterior",
+    manual: "Depende de processos internos",
+  },
+  {
+    feature: "Curadoria",
+    legis: "Validada por magistrados com 30+ anos de experiência",
+    iaGen: "Sem validação jurídica",
+    manual: "Limitada ao time disponível",
+  },
+  {
+    feature: "Análise multimodal",
+    legis: "Vídeos, áudios e documentos em um só lugar",
+    iaGen: "Apenas texto",
+    manual: "Fragmentada entre ferramentas",
+  },
 ];
 
 const metrics = [
@@ -26,18 +61,116 @@ const SocialProofSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-6"
         >
           <span className="section-label mb-5 block">Validação</span>
-          <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.06]">
-            Quem carrega o peso da decisão
-            <br />
-            judicial já testou. <span className="text-gradient">E aprovou.</span>
+          <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.06] mb-4">
+            Por que a LegisBrasil é mais segura,{" "}
+            <span className="text-gradient">mais inteligente.</span>
           </h2>
+          <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+            A LegisBrasil entrega resultados reais em segundos e melhora continuamente —{" "}
+            <span className="text-foreground font-medium">feedback mais rápido, mais valor, menos risco.</span>
+          </p>
         </motion.div>
 
-        {/* Bento layout: Quote + Metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-4 mb-12">
+        {/* Comparison Table — Humble Factory style */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse min-w-[700px]">
+              {/* Table Header */}
+              <thead>
+                <tr>
+                  <th className="w-[180px]" />
+                  <th
+                    className="px-5 py-5 text-left"
+                    style={{
+                      background: "hsl(var(--primary) / 0.08)",
+                      borderTopLeftRadius: "16px",
+                      borderTopRightRadius: "16px",
+                    }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center"
+                        style={{ background: "hsl(var(--primary))" }}
+                      >
+                        <span className="text-primary-foreground text-xs font-bold">LB</span>
+                      </div>
+                    </div>
+                  </th>
+                  <th className="px-5 py-5 text-center">
+                    <span className="font-heading text-sm font-bold text-foreground">
+                      IA Genérica
+                    </span>
+                    <br />
+                    <span className="text-[10px] text-muted-foreground/50 font-mono">ChatGPT/Gemini/etc</span>
+                  </th>
+                  <th className="px-5 py-5 text-center">
+                    <span className="font-heading text-sm font-bold text-foreground">
+                      Status Quo
+                    </span>
+                    <br />
+                    <span className="text-[10px] text-muted-foreground/50 font-mono">(Pesquisa Manual)</span>
+                  </th>
+                </tr>
+              </thead>
+
+              {/* Table Body */}
+              <tbody>
+                {comparisonData.map((row, i) => (
+                  <tr
+                    key={i}
+                    className="border-t"
+                    style={{ borderColor: "hsl(var(--border) / 0.08)" }}
+                  >
+                    {/* Feature name */}
+                    <td className="px-4 py-4 text-[13px] font-medium text-foreground/70 align-top">
+                      {row.feature}
+                    </td>
+
+                    {/* Legis column — highlighted */}
+                    <td
+                      className="px-5 py-4 align-top"
+                      style={{
+                        background: "hsl(var(--primary) / 0.08)",
+                        ...(i === comparisonData.length - 1
+                          ? { borderBottomLeftRadius: "16px", borderBottomRightRadius: "16px" }
+                          : {}),
+                      }}
+                    >
+                      <span className="text-[12px] font-semibold text-primary leading-relaxed">
+                        {row.legis}
+                      </span>
+                    </td>
+
+                    {/* IA Gen column */}
+                    <td className="px-5 py-4 text-center align-top">
+                      <span className="text-[12px] text-muted-foreground/50 leading-relaxed">
+                        {row.iaGen}
+                      </span>
+                    </td>
+
+                    {/* Manual column */}
+                    <td className="px-5 py-4 text-center align-top">
+                      <span className="text-[12px] text-muted-foreground/50 leading-relaxed">
+                        {row.manual}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+
+        {/* Quote + Metrics */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-4">
           {/* Quote card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -88,49 +221,6 @@ const SocialProofSection = () => {
             ))}
           </div>
         </div>
-
-        {/* Comparison table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bento-card overflow-hidden"
-        >
-          {/* Header */}
-          <div
-            className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] text-[10px] font-semibold uppercase tracking-wider"
-            style={{ background: "hsl(var(--muted) / 0.2)" }}
-          >
-            <div className="px-5 py-3.5" />
-            <div className="px-3 py-3.5 text-center">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                <span className="text-primary font-bold font-mono">Legis</span>
-              </span>
-            </div>
-            <div className="px-3 py-3.5 text-center text-muted-foreground/35 font-mono">IA Gen.</div>
-            <div className="px-3 py-3.5 text-center text-muted-foreground/35 font-mono">Manual</div>
-          </div>
-
-          {comparisonRows.map((row, i) => (
-            <div
-              key={i}
-              className="grid grid-cols-[1.5fr_80px_80px_80px] md:grid-cols-[1.5fr_1fr_1fr_1fr] border-t"
-              style={{ borderColor: "hsl(var(--border) / 0.06)" }}
-            >
-              <div className="px-5 py-3 text-[12px] text-foreground/80">{row}</div>
-              <div className="px-3 py-3 flex justify-center" style={{ background: "hsl(var(--primary) / 0.02)" }}>
-                <CheckCircle2 className="w-4 h-4 text-primary" />
-              </div>
-              <div className="px-3 py-3 flex justify-center">
-                <X className="w-4 h-4 text-muted-foreground/15" />
-              </div>
-              <div className="px-3 py-3 flex justify-center">
-                <X className="w-4 h-4 text-muted-foreground/15" />
-              </div>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
