@@ -7,50 +7,63 @@ const specialists = [
   {
     name: "Super Analista",
     animal: "Águia",
-    image: "https://legisbrasilia.com.br/images/characters/eagle.png",
-    description: "Responsável por examinar processos na íntegra, identificar pontos jurídicos cruciais e extrair o núcleo decisório de grandes volumes documentais em segundos.",
+    description: "Examina processos na íntegra, identifica pontos jurídicos cruciais e extrai o núcleo decisório de grandes volumes documentais em segundos.",
+    color: "from-amber-500/20 to-transparent",
   },
   {
     name: "Análise Multimodal",
     animal: "Golfinho",
-    image: "https://legisbrasilia.com.br/images/characters/dolphin.png",
-    description: "Assiste a vídeos e ouve áudios de audiências gravadas, transcrevendo e indexando o conteúdo para transformar horas de gravação em 15 minutos de estratégia pura.",
+    description: "Assiste a vídeos e ouve áudios de audiências gravadas, transcrevendo e indexando o conteúdo para transformar horas de gravação em estratégia.",
+    color: "from-cyan-500/20 to-transparent",
   },
   {
     name: "Juiz Robô (Jurimetria)",
     animal: "Robô",
-    image: "https://legisbrasilia.com.br/images/characters/robot.png",
-    description: "Aplica inteligência de dados para identificar tendências de tribunais e prever as probabilidades de êxito e resultados do processo com base no cenário nacional.",
+    description: "Aplica inteligência de dados para identificar tendências de tribunais e prever probabilidades de êxito com base no cenário nacional.",
+    color: "from-violet-500/20 to-transparent",
   },
   {
     name: "O Estrategista",
     animal: "Pantera",
-    image: "https://legisbrasilia.com.br/images/characters/panther.png",
-    description: "Utiliza jurimetria e dados técnicos para sugerir caminhos jurídicos, indicando as medidas mais eficazes e as melhores peças para cada situação concreta.",
+    description: "Utiliza jurimetria e dados técnicos para sugerir caminhos jurídicos, indicando as medidas mais eficazes para cada situação concreta.",
+    color: "from-emerald-500/20 to-transparent",
   },
   {
     name: "Detector de Mentiras",
     animal: "Fila Brasileiro",
-    image: "https://legisbrasilia.com.br/images/characters/dog.png",
-    description: "Identifica inconsistências factuais, contradições cronológicas, falácias argumentativas e falsas memórias em depoimentos e documentos.",
+    description: "Identifica inconsistências factuais, contradições cronológicas e falácias argumentativas em depoimentos e documentos.",
+    color: "from-red-500/20 to-transparent",
   },
   {
     name: "Buscador de Jurisprudência",
     animal: "Arara Azul",
-    image: "https://legisbrasilia.com.br/images/characters/macaw.png",
-    description: "Localiza precedentes alinhados ao caso com links auditáveis e fontes oficiais, eliminando o risco de citações falsas ou leis revogadas.",
+    description: "Localiza precedentes alinhados ao caso com links auditáveis e fontes oficiais, eliminando o risco de citações falsas.",
+    color: "from-blue-500/20 to-transparent",
   },
 ];
 
 const SpecialistsSection = () => {
   const [current, setCurrent] = useState(0);
-  const visibleCount = typeof window !== "undefined" && window.innerWidth >= 1024 ? 3 : typeof window !== "undefined" && window.innerWidth >= 768 ? 2 : 1;
 
-  const next = () => setCurrent((p) => Math.min(p + 1, specialists.length - visibleCount));
-  const prev = () => setCurrent((p) => Math.max(p - 1, 0));
+  const next = () => setCurrent((p) => (p + 1) % specialists.length);
+  const prev = () => setCurrent((p) => (p - 1 + specialists.length) % specialists.length);
+
+  // Show 3 on lg, 2 on md, 1 on sm
+  const getVisibleCount = () => {
+    if (typeof window === "undefined") return 3;
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  };
+
+  const visibleCount = getVisibleCount();
+  const visibleSpecs = [];
+  for (let i = 0; i < visibleCount; i++) {
+    visibleSpecs.push(specialists[(current + i) % specialists.length]);
+  }
 
   return (
-    <section id="especialistas" className="section-spacing relative overflow-hidden">
+    <section id="especialistas" className="section-spacing relative">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,40 +71,37 @@ const SpecialistsSection = () => {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="badge-glow mb-6 mx-auto w-fit">Inteligência Especializada</div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <div className="badge-glow mb-6 mx-auto w-fit">✦ Especialistas</div>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
             Pare de trabalhar sozinho.{" "}
             <span className="text-gradient">Ative sua Equipe de Especialistas.</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Muito mais que um software, a LegisBrasil.IA funciona como uma equipe digital de apoio, onde diferentes especialistas trabalham integrados para garantir precisão e rapidez em cada caso.
+            Muito mais que um software. Uma equipe digital de apoio onde diferentes especialistas trabalham integrados para cada caso.
           </p>
         </motion.div>
 
-        {/* Carousel */}
+        {/* Cards grid */}
         <div className="relative">
-          <div className="flex gap-6 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <AnimatePresence mode="popLayout">
-              {specialists.slice(current, current + (typeof window !== "undefined" && window.innerWidth >= 1024 ? 3 : typeof window !== "undefined" && window.innerWidth >= 768 ? 2 : 1)).map((spec) => (
+              {visibleSpecs.map((spec) => (
                 <motion.div
                   key={spec.name}
-                  initial={{ opacity: 0, x: 60 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -60 }}
-                  transition={{ duration: 0.4 }}
-                  className="flex-1 min-w-0 glass-card overflow-hidden group"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.35 }}
+                  className="glass-card overflow-hidden group"
                 >
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={spec.image}
-                      alt={spec.animal}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0" style={{ background: "linear-gradient(to top, hsl(213 60% 11%) 0%, transparent 60%)" }} />
+                  {/* Colored top gradient */}
+                  <div className={`h-32 bg-gradient-to-b ${spec.color} flex items-center justify-center`}>
+                    <span className="font-heading text-5xl font-bold text-foreground/10 group-hover:text-foreground/20 transition-colors">
+                      {spec.animal.charAt(0)}
+                    </span>
                   </div>
                   <div className="p-6 space-y-3">
-                    <span className="badge-glow text-xs">{spec.name}</span>
+                    <div className="badge-glow text-xs w-fit">{spec.name}</div>
                     <h3 className="font-heading text-xl font-bold text-foreground">{spec.animal}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{spec.description}</p>
                   </div>
@@ -100,29 +110,28 @@ const SpecialistsSection = () => {
             </AnimatePresence>
           </div>
 
-          {/* Nav arrows */}
+          {/* Navigation */}
           <div className="flex items-center justify-center gap-4 mt-10">
             <button
               onClick={prev}
-              disabled={current === 0}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-muted transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-12 h-12 rounded-full border border-border/60 flex items-center justify-center text-foreground hover:bg-muted hover:border-primary/40 transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <div className="flex gap-2">
               {specialists.map((_, i) => (
-                <div
+                <button
                   key={i}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    i >= current && i < current + 3 ? "bg-primary" : "bg-muted"
+                  onClick={() => setCurrent(i)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === current ? "bg-primary w-6" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                   }`}
                 />
               ))}
             </div>
             <button
               onClick={next}
-              disabled={current >= specialists.length - 3}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-muted transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-12 h-12 rounded-full border border-border/60 flex items-center justify-center text-foreground hover:bg-muted hover:border-primary/40 transition-all"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
