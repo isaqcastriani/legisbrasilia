@@ -57,54 +57,29 @@ const cards = [
   },
 ];
 
-/* Each card stacks on top of the previous with a parallax overlap effect */
-const ParallaxCard = ({
+const AuthorityCard = ({
   card,
   index,
-  total,
 }: {
   card: (typeof cards)[0];
   index: number;
   total: number;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center"],
-  });
-
   const Icon = card.icon;
   const FloatingIcon = card.floatingIcon;
 
-  const y = useTransform(scrollYProgress, [0, 1], [220, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
-  const cardOpacity = useTransform(scrollYProgress, [0, 0.28, 1], [0, 1, 1]);
-
   return (
-    <div
-      ref={ref}
-      className="relative"
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.55, delay: index * 0.08 }}
+      className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
       style={{
-        minHeight: index < total - 1 ? "140vh" : "92vh",
-        marginTop: index === 0 ? 0 : "-70vh",
-        zIndex: index + 1,
+        background: "hsl(213 45% 9%)",
+        boxShadow: `0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7)`,
       }}
     >
-      <div
-        className="sticky"
-        style={{
-          top: `${88 + index * 8}px`,
-          zIndex: index + 1,
-        }}
-      >
-        <motion.div
-          className="rounded-2xl border border-white/[0.08] p-4 md:p-[30px]"
-          style={{
-            background: "hsl(213 45% 9%)",
-            boxShadow: `0 4px 0 0 hsl(213 50% 5%), 0 8px 24px -4px hsl(213 50% 4% / 0.7), 0 ${8 + index * 4}px ${30 + index * 10}px -8px hsl(213 60% 3% / 0.6)`,
-            ...(index > 0 ? { y, scale, opacity: cardOpacity } : {}),
-          }}
-        >
         <div className="grid md:grid-cols-[1fr_1.3fr] gap-4 md:gap-[30px] min-h-[440px]">
           {/* Left — Text card */}
           <div
