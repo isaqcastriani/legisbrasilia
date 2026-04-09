@@ -11,8 +11,8 @@ const HeroSection = () => {
       <div
         className="absolute inset-0 pointer-events-none z-0 opacity-[0.25]"
         style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary) / 0.6) 1px, transparent 1px),
-                            linear-gradient(90deg, hsl(var(--primary) / 0.6) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(hsl(0 0% 100% / 0.06) 1px, transparent 1px),
+                            linear-gradient(90deg, hsl(0 0% 100% / 0.06) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
         }}
       />
