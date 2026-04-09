@@ -235,10 +235,11 @@ const AIOrbitSection = () => {
                 animate={{ rotate: -(activeIndex * stepAngle) }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
-                {aiModels.map((model) => {
-                  const rad = (model.angle * Math.PI) / 180;
+                {aiModels.map((model, i) => {
+                  const angle = (i * 360) / aiModels.length;
+                  const rad = (angle * Math.PI) / 180;
                   const x = 390 + orbitRadius * Math.cos(rad);
-                  const y = 300 + 220 * Math.sin(rad);
+                  const y = 300 + orbitRadius * 0.78 * Math.sin(rad);
 
                   return (
                     <div
