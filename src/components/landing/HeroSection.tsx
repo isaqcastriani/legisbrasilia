@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import CtaButton from "./CtaButton";
 import heroAraraVideo from "@/assets/hero-arara-video.mp4.asset.json";
 import heroPanelMockup from "@/assets/hero-panel-mockup.png";
+import ushapeLeft from "@/assets/hero-ushape-left.jpg";
+import ushapeRight from "@/assets/hero-ushape-right.jpg";
 
 /* Subtle particle dots in background */
 const ParticleCanvas = () => {
