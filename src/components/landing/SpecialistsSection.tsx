@@ -134,12 +134,12 @@ const SpecialistsSection = () => {
         {/* Outer card wrapping tabs + content */}
         <div className="rounded-2xl border border-border/20 overflow-hidden" style={{ background: "hsl(var(--card) / 0.5)" }}>
           {/* Numbered tabs — Kode Mono */}
-          <div className="flex items-center gap-0 overflow-x-auto scrollbar-hide border-b border-border/20 px-2">
+          <div className="flex items-center border-b border-border/20">
             {specialists.map((s, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIdx(i)}
-                className={`relative flex items-center gap-2 px-5 py-4 font-mono text-[11px] md:text-[13px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 border-b-2 -mb-px ${
+                className={`relative flex-1 flex items-center justify-center gap-2 py-4 font-mono text-[10px] md:text-[12px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 border-b-2 -mb-px ${
                   i === activeIdx
                     ? "border-primary text-foreground"
                     : "border-transparent text-muted-foreground/50 hover:text-muted-foreground"
@@ -154,7 +154,7 @@ const SpecialistsSection = () => {
                 >
                   {i + 1}
                 </span>
-                {s.tab}
+                <span className="hidden sm:inline">{s.tab}</span>
               </button>
             ))}
           </div>
