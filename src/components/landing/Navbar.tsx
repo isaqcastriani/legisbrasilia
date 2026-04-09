@@ -25,43 +25,37 @@ const Navbar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "border-b border-border/15" : "border-b border-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300"
       style={{
-        backdropFilter: scrolled ? "blur(24px)" : "blur(12px)",
+        borderColor: scrolled
+          ? "hsl(var(--border) / 0.15)"
+          : "hsl(var(--border) / 0.08)",
+        backdropFilter: "blur(20px)",
         background: scrolled
-          ? "hsl(var(--background) / 0.85)"
-          : "hsl(var(--background) / 0.4)",
+          ? "hsl(var(--background) / 0.92)"
+          : "hsl(var(--background) / 0.6)",
       }}
     >
-      <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-14">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-[56px]">
+        {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <img src={logo} alt="LegisBrasil.IA" className="h-6 w-auto" />
         </a>
 
+        {/* Desktop nav links — Humble style: inline, small text */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 font-body"
+              className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 font-body"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
-          <a
-            href="#contato"
-            className="px-5 py-2 rounded-full bg-primary text-primary-foreground text-[13px] font-semibold cta-3d hover:translate-y-[-1px] active:translate-y-[1px] transition-all font-body"
-          >
-            Solicitar Acesso
-          </a>
-        </div>
-
-        {/* Humble-style hamburger — simple lines */}
+        {/* Hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 text-foreground"
@@ -70,14 +64,19 @@ const Navbar = () => {
         </button>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden border-t border-border/15"
-            style={{ background: "hsl(var(--background) / 0.95)", backdropFilter: "blur(24px)" }}
+            className="md:hidden overflow-hidden border-t"
+            style={{
+              borderColor: "hsl(var(--border) / 0.1)",
+              background: "hsl(var(--background) / 0.97)",
+              backdropFilter: "blur(24px)",
+            }}
           >
             <div className="px-6 py-6 space-y-4">
               {navLinks.map((link) => (
@@ -90,13 +89,6 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#contato"
-                onClick={() => setMobileOpen(false)}
-                className="block w-full text-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm cta-3d"
-              >
-                Solicitar Acesso
-              </a>
             </div>
           </motion.div>
         )}

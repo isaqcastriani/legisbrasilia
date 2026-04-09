@@ -57,63 +57,83 @@ const SpecialistsSection = () => {
       <SectionDivider />
 
       <section id="especialistas" className="relative py-20 md:py-28">
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-          {/* Humble-style centered heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="font-heading text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-foreground leading-[1.08] mb-4">
-              Não é um chatbot com toga.
-              <br />
-              <span className="text-gradient">É a sua equipe de elite digital.</span>
-            </h2>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              A LegisBrasil.IA funciona como um escritório inteiro comprimido em especialistas que trabalham integrados, cada um dominando uma etapa do ciclo jurídico que nenhum profissional sozinho dá conta de cobrir com a mesma velocidade.
-            </p>
-          </motion.div>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
+          {/* Humble-style split header: headline left, description right */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-0 mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex gap-5 md:gap-7"
+            >
+              <div
+                className="hidden lg:block w-[2px] flex-shrink-0 rounded-full mt-2"
+                style={{ background: "hsl(var(--primary) / 0.4)", height: "120px" }}
+              />
+              <h2 className="font-heading text-[1.75rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.08]">
+                Não é um chatbot
+                <br />
+                com toga
+                <span className="text-primary">.</span>
+              </h2>
+            </motion.div>
 
-          {/* Humble-style dark card with tabs + content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex items-start lg:justify-end"
+            >
+              <div className="lg:max-w-[380px] lg:border-l lg:pl-8" style={{ borderColor: "hsl(var(--border) / 0.15)" }}>
+                <p className="font-heading text-[15px] md:text-base font-semibold text-foreground leading-snug mb-3">
+                  É a sua equipe de elite digital.
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  A LegisBrasil.IA funciona como um escritório inteiro comprimido em especialistas que trabalham integrados, cada um dominando uma etapa do ciclo jurídico.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Specialist tabs — Humble tab bar style */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="anti-card overflow-hidden"
+            className="rounded-xl border overflow-hidden"
+            style={{ borderColor: "hsl(var(--border) / 0.15)", background: "hsl(var(--card) / 0.4)" }}
           >
-            {/* Tab row — Humble numbered tabs */}
-            <div className="flex flex-wrap border-b" style={{ borderColor: "hsl(var(--border) / 0.15)" }}>
+            {/* Tab bar */}
+            <div className="flex overflow-x-auto border-b" style={{ borderColor: "hsl(var(--border) / 0.1)" }}>
               {specialists.map((s, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveIdx(i)}
-                  className={`flex items-center gap-2.5 px-5 py-4 text-sm font-medium transition-colors border-b-2 ${
+                  className={`flex items-center gap-2 px-5 py-3.5 text-[13px] font-medium transition-all whitespace-nowrap border-b-2 ${
                     i === activeIdx
                       ? "text-primary border-primary"
-                      : "text-muted-foreground border-transparent hover:text-foreground"
+                      : "text-muted-foreground/60 border-transparent hover:text-foreground"
                   }`}
                 >
-                  <span className="font-heading text-xs font-bold opacity-50">{i + 1}</span>
+                  <span className="font-mono text-[11px] opacity-40">{String(i + 1).padStart(2, "0")}</span>
                   <span className="hidden sm:inline">{s.name}</span>
                 </button>
               ))}
             </div>
 
-            {/* Content area */}
+            {/* Content */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIdx}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="grid md:grid-cols-[1fr_1.2fr] gap-0"
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+                className="grid md:grid-cols-[1fr_1.3fr] gap-0"
               >
-                {/* Left — Image */}
-                <div className="relative h-64 md:h-[400px] overflow-hidden">
+                {/* Image */}
+                <div className="relative h-56 md:h-[380px] overflow-hidden">
                   <img
                     src={specialists[activeIdx].img}
                     alt={specialists[activeIdx].name}
@@ -122,17 +142,23 @@ const SpecialistsSection = () => {
                     width={512}
                     height={512}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80 hidden md:block" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent md:hidden" />
+                  <div
+                    className="absolute inset-0 hidden md:block"
+                    style={{ background: "linear-gradient(90deg, transparent 60%, hsl(var(--card) / 0.9) 100%)" }}
+                  />
+                  <div
+                    className="absolute inset-0 md:hidden"
+                    style={{ background: "linear-gradient(180deg, transparent 50%, hsl(var(--card) / 0.9) 100%)" }}
+                  />
                 </div>
 
-                {/* Right — Info */}
+                {/* Info */}
                 <div className="p-8 md:p-10 flex flex-col justify-center">
-                  <div className="badge-glow w-fit text-xs mb-4">{specialists[activeIdx].role}</div>
-                  <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  <span className="section-label mb-3">{specialists[activeIdx].role}</span>
+                  <h3 className="font-heading text-2xl md:text-[2rem] font-bold text-foreground mb-4 leading-tight">
                     {specialists[activeIdx].name}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-8">
                     {specialists[activeIdx].desc}
                   </p>
 
@@ -143,8 +169,9 @@ const SpecialistsSection = () => {
                         key={i}
                         onClick={() => setActiveIdx(i)}
                         className={`h-1.5 rounded-full transition-all duration-300 ${
-                          i === activeIdx ? "bg-primary w-6" : "bg-border/40 w-1.5"
+                          i === activeIdx ? "bg-primary w-6" : "w-1.5"
                         }`}
+                        style={{ background: i === activeIdx ? undefined : "hsl(var(--border) / 0.3)" }}
                       />
                     ))}
                   </div>
@@ -158,9 +185,10 @@ const SpecialistsSection = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-foreground font-heading font-medium text-base md:text-lg mt-12 mb-10"
+            className="text-center text-foreground font-heading font-medium text-[15px] md:text-lg mt-14 mb-10"
           >
-            Sozinho, cada especialista poupa horas. <span className="text-primary">Juntos, eles mudam a lógica do seu escritório.</span>
+            Sozinho, cada especialista poupa horas.{" "}
+            <span className="text-primary">Juntos, eles mudam a lógica do seu escritório.</span>
           </motion.p>
 
           <div className="flex justify-center">
