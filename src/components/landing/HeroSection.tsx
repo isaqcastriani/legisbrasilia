@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import heroAraraVideo from "@/assets/hero-arara-video.mp4.asset.json";
+import imgArara from "@/assets/macaw.png";
 
 const HeroSection = () => {
   return (
