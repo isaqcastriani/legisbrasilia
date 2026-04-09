@@ -134,12 +134,12 @@ const AIOrbitSection = () => {
                     >
                       <div className="animate-[spin_60s_linear_infinite_reverse]">
                         <div
-                          className={`${diskSizeMap[model.size]} rounded-full border border-border/25 backdrop-blur-md flex items-center justify-center`}
+                          className={`${diskSizeMap[model.size]} rounded-full border border-primary/30 backdrop-blur-md flex items-center justify-center`}
                           style={{
                             background:
-                              "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.08), hsl(var(--background) / 0.96) 70%)",
+                              "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.06), hsl(var(--background) / 0.98) 72%)",
                             boxShadow:
-                              "0 30px 60px -30px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
+                              "0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
                           }}
                         >
                           <img
@@ -156,7 +156,7 @@ const AIOrbitSection = () => {
               </div>
 
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="relative flex flex-col items-center gap-4">
+                <div className="relative flex items-center justify-center">
                   <div
                     className="absolute -inset-10 rounded-full blur-3xl opacity-20"
                     style={{
@@ -165,24 +165,21 @@ const AIOrbitSection = () => {
                     }}
                   />
                   <div
-                    className="relative w-24 h-24 md:w-28 md:h-28 rounded-full border border-border/25 flex items-center justify-center"
+                    className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border border-primary/30 flex items-center justify-center"
                     style={{
                       background:
-                        "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.08), hsl(var(--background) / 0.98) 72%)",
+                        "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.05), hsl(var(--background) / 0.99) 74%)",
                       boxShadow:
-                        "0 30px 60px -30px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
+                        "0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
                     }}
                   >
                     <img
                       src={logoLegis}
                       alt="LegisBrasil.IA"
-                      className="w-12 h-12 md:w-14 md:h-14 object-contain"
+                      className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain brightness-0 invert"
                       loading="lazy"
                     />
                   </div>
-                  <span className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[10px] md:text-xs font-mono text-primary">
-                    LegisBrasil.IA
-                  </span>
                 </div>
               </div>
             </div>
