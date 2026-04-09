@@ -150,6 +150,7 @@ const AIOrbitSection = () => {
             transition={{ duration: 0.6 }}
             className="relative z-20"
           >
+            <div className="absolute -inset-x-8 -inset-y-4 rounded-3xl pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 60%, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.7) 50%, transparent 80%)", filter: "blur(20px)" }} />
             <span className="inline-flex items-center gap-2 text-[11px] font-mono font-semibold tracking-widest uppercase text-primary mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Integrações
