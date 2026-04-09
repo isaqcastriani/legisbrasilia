@@ -53,9 +53,9 @@ const ProblemSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="lg:pt-9"
+            className="lg:pt-9 flex flex-col items-end text-right"
           >
-            <p className="text-muted-foreground text-base md:text-[1.05rem] leading-relaxed max-w-[18ch] md:max-w-[24ch] mb-8">
+            <p className="text-muted-foreground text-base md:text-[1.05rem] leading-relaxed max-w-[24ch] mb-8">
               IAs generalistas escrevem com fluidez, mas ainda erram no que mais importa no Direito:
               fonte, contexto, vigência e lógica jurisprudencial.
             </p>
