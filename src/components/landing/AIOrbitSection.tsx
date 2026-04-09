@@ -253,12 +253,12 @@ const AIOrbitSection = () => {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                       >
                         <div
-                          className={`${diskSize} rounded-full border border-primary/30 backdrop-blur-md flex items-center justify-center`}
+                          className={`${diskSize} rounded-full border border-primary/20 backdrop-blur-md flex items-center justify-center`}
                           style={{
                             background:
-                              "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.06), hsl(var(--background) / 0.98) 72%)",
+                              "radial-gradient(ellipse at 35% 25%, hsl(var(--foreground) / 0.12) 0%, hsl(var(--foreground) / 0.04) 30%, hsl(var(--background) / 0.95) 70%, hsl(var(--background) / 0.99) 100%)",
                             boxShadow:
-                              "0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
+                              "0 8px 32px -4px hsl(var(--background) / 0.8), 0 20px 40px -12px rgba(0,0,0,0.5), inset 0 2px 1px hsl(var(--foreground) / 0.12), inset 0 -2px 4px hsl(var(--background) / 0.4), inset 2px 0 3px hsl(var(--foreground) / 0.04), inset -2px 0 3px hsl(var(--background) / 0.3)",
                           }}
                         >
                           <img
@@ -289,17 +289,17 @@ const AIOrbitSection = () => {
                     }}
                   />
                   <motion.div
-                    className="relative w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border border-primary/30 flex items-center justify-center"
+                    className="relative w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full border border-primary/20 flex items-center justify-center"
                     animate={{
                       scale: isHighlighting ? 1.06 : 1,
                     }}
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                     style={{
                       background:
-                        "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.05), hsl(var(--background) / 0.99) 74%)",
+                        "radial-gradient(ellipse at 35% 25%, hsl(var(--foreground) / 0.12) 0%, hsl(var(--foreground) / 0.04) 30%, hsl(var(--background) / 0.95) 70%, hsl(var(--background) / 0.99) 100%)",
                       boxShadow: isHighlighting
-                        ? "0 0 0 1px hsl(var(--primary) / 0.26), 0 0 34px hsl(var(--primary) / 0.22), 0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)"
-                        : "0 24px 50px -28px hsl(var(--background) / 0.95), inset 0 1px 0 hsl(var(--foreground) / 0.08)",
+                        ? "0 0 0 1px hsl(var(--primary) / 0.26), 0 0 34px hsl(var(--primary) / 0.22), 0 8px 32px -4px hsl(var(--background) / 0.8), 0 20px 40px -12px rgba(0,0,0,0.5), inset 0 2px 1px hsl(var(--foreground) / 0.12), inset 0 -2px 4px hsl(var(--background) / 0.4)"
+                        : "0 8px 32px -4px hsl(var(--background) / 0.8), 0 20px 40px -12px rgba(0,0,0,0.5), inset 0 2px 1px hsl(var(--foreground) / 0.12), inset 0 -2px 4px hsl(var(--background) / 0.4)",
                     }}
                   >
                     <img
