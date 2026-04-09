@@ -6,18 +6,22 @@ import SocialProofSection from "@/components/landing/SocialProofSection";
 import ContactFormSection from "@/components/landing/ContactFormSection";
 import FooterSection from "@/components/landing/FooterSection";
 import SectionDivider from "@/components/landing/SectionDivider";
+import PixelDivider from "@/components/landing/PixelDivider";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       
       <HeroSection />
-      <SectionDivider />
+      <PixelDivider />
       <ProblemSection />
-      <SectionDivider />
+      <PixelDivider flip />
       <SpecialistsSection />
+      <PixelDivider />
       <AuthoritySection />
+      <PixelDivider flip />
       <SocialProofSection />
+      <PixelDivider />
       <ContactFormSection />
       <SectionDivider />
       <FooterSection />
