@@ -81,18 +81,11 @@ const SocialProofSection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div
-            className="overflow-x-auto rounded-2xl border"
-            style={{
-              borderColor: "hsl(var(--border) / 0.1)",
-              background: "hsl(213 40% 96%)",
-            }}
-          >
+          <div className="overflow-x-auto rounded-2xl bento-card p-0 overflow-hidden">
             <table className="w-full border-collapse min-w-[700px]">
-              {/* Header */}
               <thead>
                 <tr>
-                  <th className="w-[200px]" />
+                  <th className="w-[200px] px-6 pt-6 pb-4" />
                   <th
                     className="px-6 pt-6 pb-4 text-center w-[220px]"
                     style={{
@@ -104,30 +97,29 @@ const SocialProofSection = () => {
                     <div className="flex flex-col items-center gap-2">
                       <div
                         className="w-10 h-10 rounded-xl flex items-center justify-center"
-                        style={{ background: "hsl(0 0% 100% / 0.2)" }}
+                        style={{ background: "hsl(0 0% 0% / 0.15)" }}
                       >
                         <span className="text-primary-foreground text-sm font-bold">LB</span>
                       </div>
                     </div>
                   </th>
                   <th className="px-6 pt-6 pb-4 text-center w-[200px]">
-                    <span className="font-heading text-sm font-bold" style={{ color: "hsl(213 20% 25%)" }}>
+                    <span className="font-heading text-sm font-bold text-muted-foreground">
                       IA Genérica
                     </span>
                     <br />
-                    <span className="text-[10px] font-mono" style={{ color: "hsl(213 15% 50%)" }}>ChatGPT/Gemini/etc</span>
+                    <span className="text-[10px] font-mono text-muted-foreground/60">ChatGPT/Gemini/etc</span>
                   </th>
                   <th className="px-6 pt-6 pb-4 text-center w-[200px]">
-                    <span className="font-heading text-sm font-bold" style={{ color: "hsl(213 20% 25%)" }}>
+                    <span className="font-heading text-sm font-bold text-muted-foreground">
                       Status Quo
                     </span>
                     <br />
-                    <span className="text-[10px] font-mono" style={{ color: "hsl(213 15% 50%)" }}>(Pesquisa Manual)</span>
+                    <span className="text-[10px] font-mono text-muted-foreground/60">(Pesquisa Manual)</span>
                   </th>
                 </tr>
               </thead>
 
-              {/* Body */}
               <tbody>
                 {comparisonData.map((row, i) => {
                   const isLast = i === comparisonData.length - 1;
@@ -135,18 +127,13 @@ const SocialProofSection = () => {
                     <tr
                       key={i}
                       style={{
-                        borderTop: "1px solid hsl(213 30% 88%)",
+                        borderTop: "1px solid hsl(var(--border) / 0.3)",
                       }}
                     >
-                      {/* Feature name */}
-                      <td
-                        className="px-6 py-5 text-[13px] font-medium align-top"
-                        style={{ color: "hsl(213 20% 30%)" }}
-                      >
+                      <td className="px-6 py-5 text-[13px] font-medium align-top text-foreground">
                         {row.feature}
                       </td>
 
-                      {/* LegisBrasil column — highlighted */}
                       <td
                         className="px-6 py-5 align-top"
                         style={{
@@ -161,16 +148,14 @@ const SocialProofSection = () => {
                         </span>
                       </td>
 
-                      {/* IA Gen column */}
                       <td className="px-6 py-5 text-center align-top">
-                        <span className="text-[12px] leading-relaxed" style={{ color: "hsl(213 15% 50%)" }}>
+                        <span className="text-[12px] leading-relaxed text-muted-foreground">
                           {row.iaGen}
                         </span>
                       </td>
 
-                      {/* Manual column */}
                       <td className="px-6 py-5 text-center align-top">
-                        <span className="text-[12px] leading-relaxed" style={{ color: "hsl(213 15% 50%)" }}>
+                        <span className="text-[12px] leading-relaxed text-muted-foreground">
                           {row.manual}
                         </span>
                       </td>
