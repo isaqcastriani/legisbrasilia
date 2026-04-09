@@ -9,7 +9,7 @@ const HeroSection = () => {
     <section className="relative pt-[60px]">
       {/* Grid lines background */}
       <div
-        className="absolute inset-0 pointer-events-none z-0 opacity-[0.06]"
+        className="absolute inset-0 pointer-events-none z-0 opacity-[0.12]"
         style={{
           backgroundImage: `linear-gradient(hsl(var(--primary) / 0.4) 1px, transparent 1px),
                             linear-gradient(90deg, hsl(var(--primary) / 0.4) 1px, transparent 1px)`,
