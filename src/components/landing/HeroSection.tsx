@@ -18,17 +18,6 @@ const HeroSection = () => {
         {/* Hero content — centered layout inspired by Mitra/AlphaHouse */}
         <div className="pt-20 md:pt-28 lg:pt-36 pb-12 text-center">
           {/* Badge pill — AlphaHouse style */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex justify-center mb-7"
-          >
-            <span className="badge-pill">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Inteligência Artificial Jurídica Brasileira
-            </span>
-          </motion.div>
 
           {/* Headline — large centered, Cernel/Resend inspired */}
           <motion.h1
