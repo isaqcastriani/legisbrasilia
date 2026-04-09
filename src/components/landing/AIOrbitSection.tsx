@@ -30,10 +30,10 @@ const aiModels = [
   { name: "Llama 4", logo: llama },
 ];
 
-const orbitRadius = 240;
+const orbitRadius = 310;
 const stepAngle = 360 / aiModels.length;
-const diskSize = "w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28";
-const logoSize = "w-9 h-9 md:w-11 md:h-11";
+const diskSize = "w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32";
+const logoSize = "w-11 h-11 md:w-13 md:h-13";
 
 const AIOrbitSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -203,7 +203,7 @@ const AIOrbitSection = () => {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="relative flex items-center justify-center lg:-ml-[28rem] xl:-ml-[32rem]"
           >
-            <div className="relative w-[360px] h-[360px] md:w-[520px] md:h-[520px] lg:w-[680px] lg:h-[620px]">
+            <div className="relative w-[420px] h-[420px] md:w-[620px] md:h-[620px] lg:w-[820px] lg:h-[820px]">
               <svg
                 className="absolute inset-0 w-full h-full opacity-30"
                 viewBox="0 0 680 620"
