@@ -168,7 +168,16 @@ const SpecialistsSection = () => {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
-            <div className="grid md:grid-cols-[1fr_1.4fr] min-h-[480px]">
+            {/* Inner content with blurred border glow */}
+            <div className="relative">
+              {/* Blurred glow border effect */}
+              <div className="absolute -inset-[1px] rounded-b-2xl pointer-events-none" style={{
+                background: "linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--secondary) / 0.1), hsl(var(--primary) / 0.08))",
+                filter: "blur(20px)",
+              }} />
+              <div className="absolute inset-0 rounded-b-2xl pointer-events-none border border-white/[0.06]" />
+              
+              <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[480px] rounded-b-2xl overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
               {/* Left — Text content */}
               <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
                 <div>
@@ -280,6 +289,7 @@ const SpecialistsSection = () => {
                   </div>
                 </motion.div>
               </div>
+            </div>
             </div>
           </motion.div>
         </AnimatePresence>
