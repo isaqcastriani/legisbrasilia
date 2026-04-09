@@ -250,7 +250,7 @@ const AIOrbitSection = () => {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                       >
                         <div
-                          className={`${diskSizeMap[model.size]} rounded-full border border-primary/30 backdrop-blur-md flex items-center justify-center`}
+                          className={`${diskSize} rounded-full border border-primary/30 backdrop-blur-md flex items-center justify-center`}
                           style={{
                             background:
                               "radial-gradient(circle at 30% 30%, hsl(var(--foreground) / 0.06), hsl(var(--background) / 0.98) 72%)",
@@ -261,7 +261,7 @@ const AIOrbitSection = () => {
                           <img
                             src={model.logo}
                             alt={model.name}
-                            className={`${logoSizeMap[model.size]} object-contain`}
+                            className={`${logoSize} object-contain`}
                             loading="lazy"
                           />
                         </div>
