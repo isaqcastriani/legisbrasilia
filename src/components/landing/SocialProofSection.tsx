@@ -82,7 +82,8 @@ const SocialProofSection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="overflow-x-auto p-0 overflow-hidden rounded-2xl border border-white/[0.06]" style={{ background: "linear-gradient(145deg, hsl(213 50% 18%) 0%, hsl(213 55% 12%) 100%)", boxShadow: "0 20px 60px -15px hsl(213 60% 6% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 6% / 0.4)" }}>
+          {/* Desktop table */}
+          <div className="hidden md:block overflow-x-auto p-0 overflow-hidden rounded-2xl border border-white/[0.06]" style={{ background: "linear-gradient(145deg, hsl(213 50% 18%) 0%, hsl(213 55% 12%) 100%)", boxShadow: "0 20px 60px -15px hsl(213 60% 6% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px hsl(213 60% 6% / 0.4)" }}>
             <table className="w-full border-collapse min-w-[700px]">
               <thead>
                 <tr>
@@ -165,6 +166,33 @@ const SocialProofSection = () => {
                 })}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile cards */}
+          <div className="md:hidden space-y-4">
+            {comparisonData.map((row, i) => (
+              <div
+                key={i}
+                className="rounded-xl border border-white/[0.06] p-5"
+                style={{ background: "linear-gradient(145deg, hsl(213 50% 18%) 0%, hsl(213 55% 12%) 100%)" }}
+              >
+                <p className="text-sm font-semibold text-foreground mb-3">{row.feature}</p>
+                <div className="space-y-2">
+                  <div className="rounded-lg p-3" style={{ background: "hsl(var(--primary))" }}>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-primary-foreground/60">LegisBrasil</span>
+                    <p className="text-sm font-bold text-primary-foreground mt-0.5">{row.legis}</p>
+                  </div>
+                  <div className="rounded-lg p-3" style={{ background: "hsl(0 0% 100% / 0.03)" }}>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/50">IA Genérica</span>
+                    <p className="text-xs text-muted-foreground mt-0.5">{row.iaGen}</p>
+                  </div>
+                  <div className="rounded-lg p-3" style={{ background: "hsl(0 0% 100% / 0.03)" }}>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/50">Pesquisa Manual</span>
+                    <p className="text-xs text-muted-foreground mt-0.5">{row.manual}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 

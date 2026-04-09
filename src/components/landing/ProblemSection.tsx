@@ -41,7 +41,7 @@ const ProblemSection = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="section-label mb-5 block">O problema</span>
-            <h2 className="font-heading text-[2rem] md:text-[3rem] lg:text-[4.6rem] font-bold text-foreground leading-[0.92] max-w-[9ch]">
+            <h2 className="font-heading text-[1.5rem] sm:text-[2rem] md:text-[3rem] lg:text-[4.6rem] font-bold text-foreground leading-[0.92] max-w-[9ch]">
               O erro parece pequeno.
               <br />
               O dano não.
@@ -53,7 +53,7 @@ const ProblemSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="lg:pt-9 flex flex-col items-end text-right"
+            className="lg:pt-9 flex flex-col items-start text-left lg:items-end lg:text-right"
           >
             <p className="text-muted-foreground text-base md:text-[1.05rem] leading-relaxed max-w-[24ch] mb-8">
               IAs generalistas escrevem com fluidez, mas ainda erram no que mais importa no Direito:
@@ -88,7 +88,7 @@ const ProblemSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
-                className="relative rounded-[2rem] border border-white/[0.08] overflow-hidden pl-20 md:pl-28"
+                className="relative rounded-2xl md:rounded-[2rem] border border-white/[0.08] overflow-hidden pl-6 sm:pl-20 md:pl-28"
                 style={{
                   background: "hsl(213 45% 8%)",
                   boxShadow: "0 8px 30px -18px hsl(213 60% 4% / 0.8), inset 0 1px 0 hsl(0 0% 100% / 0.03)",
@@ -101,7 +101,7 @@ const ProblemSection = () => {
                   }}
                 />
 
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 md:left-6">
+                <div className="hidden sm:block absolute left-4 top-1/2 -translate-y-1/2 md:left-6">
                   <div
                     className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full border border-white/[0.08]"
                     style={{
@@ -113,12 +113,12 @@ const ProblemSection = () => {
                   </div>
                 </div>
 
-                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-4 md:gap-8 px-6 py-7 md:px-9 md:py-9 items-center min-h-[132px] md:min-h-[150px]">
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-3 md:gap-8 px-4 py-5 sm:px-6 sm:py-7 md:px-9 md:py-9 items-center min-h-0 sm:min-h-[132px] md:min-h-[150px]">
                   <div>
                     <span className="block text-[11px] md:text-xs font-mono uppercase tracking-[0.22em] text-primary/70 mb-3">
                       {card.eyebrow}
                     </span>
-                    <h3 className="font-heading text-xl md:text-[2rem] font-bold text-foreground leading-[1.02] max-w-[14ch]">
+                    <h3 className="font-heading text-base sm:text-xl md:text-[2rem] font-bold text-foreground leading-[1.02] max-w-[14ch]">
                       {card.title}
                     </h3>
                   </div>
