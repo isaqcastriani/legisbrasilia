@@ -175,10 +175,10 @@ const AuthoritySection = () => {
             </h2>
           </motion.div>
 
-          {/* Parallax stacking cards */}
-          <div className="relative">
+          {/* Cards */}
+          <div className="space-y-6 md:space-y-8">
             {cards.map((card, i) => (
-              <ParallaxCard key={i} card={card} index={i} total={cards.length} />
+              <AuthorityCard key={i} card={card} index={i} total={cards.length} />
             ))}
           </div>
         </div>
