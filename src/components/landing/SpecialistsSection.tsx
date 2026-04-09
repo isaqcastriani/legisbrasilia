@@ -131,8 +131,18 @@ const SpecialistsSection = () => {
           </h2>
         </motion.div>
 
-        {/* Outer card wrapping tabs + content */}
-        <div className="rounded-2xl border border-border/20 overflow-hidden" style={{ background: "hsl(var(--card) / 0.5)" }}>
+        {/* Outer blurred border container */}
+        <div className="relative rounded-3xl p-[2px]" style={{
+          background: "linear-gradient(145deg, hsl(var(--primary) / 0.25), hsl(var(--secondary) / 0.15), hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.2))",
+        }}>
+          {/* Blur glow behind */}
+          <div className="absolute -inset-3 rounded-[2rem] pointer-events-none" style={{
+            background: "linear-gradient(145deg, hsl(var(--primary) / 0.12), hsl(var(--secondary) / 0.08), hsl(var(--primary) / 0.06))",
+            filter: "blur(30px)",
+          }} />
+          
+          {/* Inner card */}
+          <div className="relative rounded-[22px] border border-white/[0.04] overflow-hidden" style={{ background: "hsl(var(--card) / 0.85)" }}>
           {/* Numbered tabs — Kode Mono */}
           <div className="flex items-center border-b border-border/20">
             {specialists.map((s, i) => (
@@ -168,16 +178,7 @@ const SpecialistsSection = () => {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
-            {/* Inner content with blurred border glow */}
-            <div className="relative">
-              {/* Blurred glow border effect */}
-              <div className="absolute -inset-[1px] rounded-b-2xl pointer-events-none" style={{
-                background: "linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--secondary) / 0.1), hsl(var(--primary) / 0.08))",
-                filter: "blur(20px)",
-              }} />
-              <div className="absolute inset-0 rounded-b-2xl pointer-events-none border border-white/[0.06]" />
-              
-              <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[380px] max-h-[480px] rounded-b-2xl overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
+            <div className="relative grid md:grid-cols-[1fr_1.4fr] min-h-[380px] max-h-[480px] overflow-hidden" style={{ background: "hsl(var(--card) / 0.35)" }}>
               {/* Left — Text content */}
               <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
                 <div>
@@ -290,9 +291,9 @@ const SpecialistsSection = () => {
                 </motion.div>
               </div>
             </div>
-            </div>
           </motion.div>
         </AnimatePresence>
+        </div>
         </div>
 
         {/* Transition phrase */}
