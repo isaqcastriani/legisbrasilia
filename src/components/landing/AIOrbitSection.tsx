@@ -142,14 +142,13 @@ const AIOrbitSection = () => {
       </div>
 
       <div className="max-w-[1440px] mx-auto px-5 md:px-8">
-        <div className="relative flex flex-col items-center">
-          {/* Text content - centered and overlaid on top */}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-8 lg:gap-0 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative z-20 text-center mb-8 lg:mb-0 lg:absolute lg:inset-0 lg:flex lg:flex-col lg:items-center lg:justify-center"
+            className="relative z-20"
           >
             <div className="absolute -inset-x-12 -inset-y-6 rounded-3xl pointer-events-none z-10" style={{ background: "radial-gradient(ellipse at 50% 50%, hsl(var(--background) / 0.95) 0%, hsl(var(--background) / 0.8) 45%, transparent 80%)", filter: "blur(24px)" }} />
             <span className="relative z-20 inline-flex items-center gap-2 text-[11px] font-mono font-semibold tracking-widest uppercase text-primary mb-5">
@@ -157,12 +156,12 @@ const AIOrbitSection = () => {
               Integrações
             </span>
 
-            <h2 className="relative z-20 font-heading text-[1.5rem] sm:text-[1.9rem] md:text-[2.8rem] lg:text-[4rem] font-bold text-foreground leading-[0.98] mb-5">
+            <h2 className="relative z-20 font-heading text-[1.5rem] sm:text-[1.9rem] md:text-[2.8rem] lg:text-[4rem] font-bold text-foreground leading-[0.98] mb-5 max-w-[11ch]">
               Curadoria de Inteligência Global
             </h2>
 
             <div className="relative z-20">
-              <p className="relative text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mx-auto mb-4" style={{ textShadow: "0 0 20px hsl(213 60% 11%), 0 0 40px hsl(213 60% 11%), 0 0 60px hsl(213 60% 11%)" }}>
+              <p className="relative text-muted-foreground text-sm md:text-lg leading-relaxed max-w-xl mb-4" style={{ textShadow: "0 0 20px hsl(213 60% 11%), 0 0 40px hsl(213 60% 11%), 0 0 60px hsl(213 60% 11%)" }}>
                 Você não precisa de 10 assinaturas separadas.{" "}
                 <span className="text-foreground font-semibold">
                   Você só precisa da LegisBrasil.
@@ -180,7 +179,7 @@ const AIOrbitSection = () => {
               </a>
             </div>
 
-            <div className="relative z-30 mt-4 min-h-[52px]">
+            <div className="relative z-30 mt-4 min-h-[52px] max-w-sm">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeModel.name}
@@ -197,13 +196,12 @@ const AIOrbitSection = () => {
             </div>
           </motion.div>
 
-          {/* Orbit */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative flex items-center justify-center mx-auto"
+            className="relative flex items-center justify-center lg:-ml-[18rem] xl:-ml-[22rem] mx-auto"
           >
             <div className="relative w-[300px] h-[300px] sm:w-[420px] sm:h-[420px] md:w-[620px] md:h-[620px] lg:w-[820px] lg:h-[820px]">
               <svg
