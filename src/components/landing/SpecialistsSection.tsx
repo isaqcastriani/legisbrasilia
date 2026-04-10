@@ -144,7 +144,7 @@ const SpecialistsSection = () => {
           {/* Inner card */}
           <div className="relative rounded-[22px] border border-white/[0.04] overflow-hidden" style={{ background: "hsl(var(--card) / 0.85)" }}>
           {/* Numbered tabs — Kode Mono */}
-          <div className="flex items-center border-b border-border/20 overflow-x-auto scrollbar-hide">
+          <div className="flex items-center border-b border-border/20 overflow-hidden">
             {specialists.map((s, i) => (
               <button
                 key={i}
