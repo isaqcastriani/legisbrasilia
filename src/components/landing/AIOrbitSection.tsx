@@ -201,7 +201,7 @@ const AIOrbitSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative flex items-center justify-center lg:-ml-[18rem] xl:-ml-[22rem] mx-auto"
+            className="relative flex items-center justify-center lg:-ml-[10rem] mx-auto"
           >
             <div className="relative w-[300px] h-[300px] sm:w-[420px] sm:h-[420px] md:w-[620px] md:h-[620px] lg:w-[820px] lg:h-[820px]">
               <svg
