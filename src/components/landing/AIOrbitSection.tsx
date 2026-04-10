@@ -141,8 +141,8 @@ const AIOrbitSection = () => {
         />
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-8 lg:gap-0 items-center">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-0 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
